@@ -75,7 +75,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         List<Uri> imageUris = getImageUris(smartspaceTarget);
         if (!imageUris.isEmpty()) {
             if (extras != null && extras.containsKey("frameDurationMs")) {
-                this.mGifFrameDurationInMs = extras.getInt("frameDurationMs");
+                mGifFrameDurationInMs = extras.getInt("frameDurationMs");
             }
             loadImageUris(imageUris);
             hideLoadingState(extras);
@@ -101,34 +101,34 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
 
     private void hideLoadingState(Bundle bundle) {
         if (bundle == null || bundle.getBoolean("hideLoadingScreen")) {
-            this.mLoadingScreenView.setVisibility(8);
+            mLoadingScreenView.setVisibility(8);
         }
-        if (this.mLoadingScreenView.getVisibility() == 0) {
-            this.mProgressBar.setVisibility(8);
-            this.mLoadingIcon.setVisibility(8);
+        if (mLoadingScreenView.getVisibility() == 0) {
+            mProgressBar.setVisibility(8);
+            mLoadingIcon.setVisibility(8);
         }
     }
 
     private void showLoadingScreen(String str, int i) {
-        ((ConstraintLayout.LayoutParams) this.mLoadingScreenView.getLayoutParams()).dimensionRatio = str;
-        this.mLoadingScreenView.setVisibility(0);
+        ((ConstraintLayout.LayoutParams) mLoadingScreenView.getLayoutParams()).dimensionRatio = str;
+        mLoadingScreenView.setVisibility(0);
         toggleProgressBarAndLoadingIcon(i);
     }
 
     private void toggleProgressBarAndLoadingIcon(int i) {
         if (i == 2) {
-            this.mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.videocam));
+            mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.videocam));
         }
         if (i == 3) {
-            this.mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.videocam_off));
+            mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.videocam_off));
         }
         boolean z = true;
         int i2 = 0;
         if (i != 1) {
             z = false;
         }
-        this.mProgressBar.setVisibility(z ? 0 : 8);
-        ImageView imageView = this.mLoadingIcon;
+        mProgressBar.setVisibility(z ? 0 : 8);
+        ImageView imageView = mLoadingIcon;
         if (z) {
             i2 = 8;
         }
@@ -142,7 +142,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         }
         RoundedBitmapDrawable create = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
         create.setCornerRadius(getResources().getDimension(R.dimen.enhanced_smartspace_secondary_card_corner_radius));
-        this.mImageView.setImageDrawable(create);
+        mImageView.setImageDrawable(create);
     }
 
     private void loadImageUris(List<Uri> list) {
@@ -158,7 +158,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     }
 
     public /* synthetic */ DrawableWithUri lambda$loadImageUris$1(final ContentResolver contentResolver, final int i, final float f, Uri uri) {
-        return this.mUriToDrawable.computeIfAbsent(uri, new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda1
+        return mUriToDrawable.computeIfAbsent(uri, new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda1
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
                 return BcSmartspaceCardDoorbell.$r8$lambda$6eX6sQTs5MPUIWePViuUlSg5_4g(contentResolver, i, f, (Uri) obj);
@@ -175,9 +175,9 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     private void addFramesToAnimatedDrawable(List<Drawable> list) {
         AnimationDrawable animationDrawable = new AnimationDrawable();
         for (Drawable drawable : list) {
-            animationDrawable.addFrame(drawable, this.mGifFrameDurationInMs);
+            animationDrawable.addFrame(drawable, mGifFrameDurationInMs);
         }
-        this.mImageView.setImageDrawable(animationDrawable);
+        mImageView.setImageDrawable(animationDrawable);
         animationDrawable.start();
     }
 
@@ -205,18 +205,18 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
 
         DrawableWithUri(Uri uri, ContentResolver contentResolver, int i, float f) {
             super(new ColorDrawable(0), f);
-            this.mUri = uri;
-            this.mHeightInPx = i;
-            this.mContentResolver = contentResolver;
+            mUri = uri;
+            mHeightInPx = i;
+            mContentResolver = contentResolver;
         }
     }
 
     @Override // com.google.android.systemui.smartspace.BcSmartspaceCardGenericImage, android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mLoadingScreenView = (CardView) findViewById(R.id.loading_screen);
-        this.mProgressBar = (ProgressBar) findViewById(R.id.indeterminateBar);
-        this.mLoadingIcon = (ImageView) findViewById(R.id.loading_screen_icon);
+        mLoadingScreenView = (CardView) findViewById(R.id.loading_screen);
+        mProgressBar = (ProgressBar) findViewById(R.id.indeterminateBar);
+        mLoadingIcon = (ImageView) findViewById(R.id.loading_screen_icon);
     }
 
     public static Drawable getSampleBitmapDrawable(InputStream inputStream, final int i) {

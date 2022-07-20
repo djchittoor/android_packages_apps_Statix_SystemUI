@@ -36,20 +36,20 @@ public class BcSmartspaceCardGenericImage extends BcSmartspaceCardSecondary {
         if (extras.containsKey("imageScaleType")) {
             String string = extras.getString("imageScaleType");
             try {
-                this.mImageView.setScaleType(ImageView.ScaleType.valueOf(string));
+                mImageView.setScaleType(ImageView.ScaleType.valueOf(string));
             } catch (IllegalArgumentException unused) {
                 Log.w("SmartspaceGenericImg", "Invalid imageScaleType value: " + string);
             }
         }
         String dimensionRatio = BcSmartSpaceUtil.getDimensionRatio(extras);
         if (dimensionRatio != null) {
-            ((ConstraintLayout.LayoutParams) this.mImageView.getLayoutParams()).dimensionRatio = dimensionRatio;
+            ((ConstraintLayout.LayoutParams) mImageView.getLayoutParams()).dimensionRatio = dimensionRatio;
         }
         if (extras.containsKey("imageLayoutWidth")) {
-            ((ViewGroup.MarginLayoutParams) ((ConstraintLayout.LayoutParams) this.mImageView.getLayoutParams())).width = extras.getInt("imageLayoutWidth");
+            ((ViewGroup.MarginLayoutParams) ((ConstraintLayout.LayoutParams) mImageView.getLayoutParams())).width = extras.getInt("imageLayoutWidth");
         }
         if (extras.containsKey("imageLayoutHeight")) {
-            ((ViewGroup.MarginLayoutParams) ((ConstraintLayout.LayoutParams) this.mImageView.getLayoutParams())).height = extras.getInt("imageLayoutHeight");
+            ((ViewGroup.MarginLayoutParams) ((ConstraintLayout.LayoutParams) mImageView.getLayoutParams())).height = extras.getInt("imageLayoutHeight");
         }
         setImageBitmap((Bitmap) extras.get("imageBitmap"));
         return true;
@@ -59,11 +59,11 @@ public class BcSmartspaceCardGenericImage extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mImageView = (ImageView) findViewById(R.id.image_view);
+        mImageView = (ImageView) findViewById(R.id.image_view);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
     public void setImageBitmap(Bitmap bitmap) {
-        this.mImageView.setImageBitmap(bitmap);
+        mImageView.setImageBitmap(bitmap);
     }
 }

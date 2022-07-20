@@ -45,15 +45,15 @@ public class CardPagerAdapter extends PagerAdapter {
     }
 
     public CardPagerAdapter(View view) {
-        this.mRoot = view;
+        mRoot = view;
         int attrColor = GraphicsUtils.getAttrColor(view.getContext(), 16842806);
-        this.mPrimaryTextColor = attrColor;
-        this.mCurrentTextColor = attrColor;
+        mPrimaryTextColor = attrColor;
+        mCurrentTextColor = attrColor;
     }
 
     @Override // androidx.viewpager.widget.PagerAdapter
     public int getCount() {
-        return this.mSmartspaceTargets.size();
+        return mSmartspaceTargets.size();
     }
 
     @Override // androidx.viewpager.widget.PagerAdapter
@@ -65,13 +65,13 @@ public class CardPagerAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup viewGroup, int i, Object obj) {
         ViewHolder viewHolder = (ViewHolder) obj;
         viewGroup.removeView(viewHolder.card);
-        if (this.mHolders.get(i) == viewHolder) {
-            this.mHolders.remove(i);
+        if (mHolders.get(i) == viewHolder) {
+            mHolders.remove(i);
         }
     }
 
     public BcSmartspaceCard getCardAtPosition(int i) {
-        ViewHolder viewHolder = this.mHolders.get(i);
+        ViewHolder viewHolder = mHolders.get(i);
         if (viewHolder == null) {
             return null;
         }
@@ -79,14 +79,14 @@ public class CardPagerAdapter extends PagerAdapter {
     }
 
     public SmartspaceTarget getTargetAtPosition(int i) {
-        if (this.mSmartspaceTargets.isEmpty() || i < 0 || i >= this.mSmartspaceTargets.size()) {
+        if (mSmartspaceTargets.isEmpty() || i < 0 || i >= mSmartspaceTargets.size()) {
             return null;
         }
-        return this.mSmartspaceTargets.get(i);
+        return mSmartspaceTargets.get(i);
     }
 
     public List<SmartspaceTarget> getTargets() {
-        return this.mSmartspaceTargets;
+        return mSmartspaceTargets;
     }
 
     @Override // androidx.viewpager.widget.PagerAdapter
@@ -106,12 +106,12 @@ public class CardPagerAdapter extends PagerAdapter {
 
     @Override // androidx.viewpager.widget.PagerAdapter
     public ViewHolder instantiateItem(ViewGroup viewGroup, int i) {
-        SmartspaceTarget smartspaceTarget = this.mSmartspaceTargets.get(i);
+        SmartspaceTarget smartspaceTarget = mSmartspaceTargets.get(i);
         BcSmartspaceCard createBaseCard = createBaseCard(viewGroup, getFeatureType(smartspaceTarget));
         ViewHolder viewHolder = new ViewHolder(i, createBaseCard, smartspaceTarget);
         onBindViewHolder(viewHolder);
         viewGroup.addView(createBaseCard);
-        this.mHolders.put(i, viewHolder);
+        mHolders.put(i, viewHolder);
         return viewHolder;
     }
 
@@ -167,10 +167,10 @@ public class CardPagerAdapter extends PagerAdapter {
 
     private void onBindViewHolder(ViewHolder viewHolder) {
         BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier;
-        SmartspaceTarget smartspaceTarget = this.mSmartspaceTargets.get(viewHolder.position);
+        SmartspaceTarget smartspaceTarget = mSmartspaceTargets.get(viewHolder.position);
         BcSmartspaceCard bcSmartspaceCard = viewHolder.card;
-        BcSmartspaceCardLoggingInfo build = new BcSmartspaceCardLoggingInfo.Builder().setInstanceId(InstanceId.create(smartspaceTarget)).setFeatureType(smartspaceTarget.getFeatureType()).setDisplaySurface(BcSmartSpaceUtil.getLoggingDisplaySurface(this.mRoot.getContext().getPackageName(), this.mDozeAmount)).setRank(viewHolder.position).setCardinality(this.mSmartspaceTargets.size()).setSubcardInfo(BcSmartspaceCardLoggerUtil.createSubcardLoggingInfo(smartspaceTarget)).build();
-        final BcSmartspaceDataPlugin bcSmartspaceDataPlugin = this.mDataProvider;
+        BcSmartspaceCardLoggingInfo build = new BcSmartspaceCardLoggingInfo.Builder().setInstanceId(InstanceId.create(smartspaceTarget)).setFeatureType(smartspaceTarget.getFeatureType()).setDisplaySurface(BcSmartSpaceUtil.getLoggingDisplaySurface(mRoot.getContext().getPackageName(), mDozeAmount)).setRank(viewHolder.position).setCardinality(mSmartspaceTargets.size()).setSubcardInfo(BcSmartspaceCardLoggerUtil.createSubcardLoggingInfo(smartspaceTarget)).build();
+        final BcSmartspaceDataPlugin bcSmartspaceDataPlugin = mDataProvider;
         if (bcSmartspaceDataPlugin == null) {
             smartspaceEventNotifier = null;
         } else {
@@ -178,21 +178,21 @@ public class CardPagerAdapter extends PagerAdapter {
             smartspaceEventNotifier = new BcSmartspaceDataPlugin.SmartspaceEventNotifier() { // from class: com.google.android.systemui.smartspace.CardPagerAdapter$$ExternalSyntheticLambda0
                 @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin.SmartspaceEventNotifier
                 public final void notifySmartspaceEvent(SmartspaceTargetEvent smartspaceTargetEvent) {
-                    BcSmartspaceDataPlugin.this.notifySmartspaceEvent(smartspaceTargetEvent);
+                    BcSmartspaceDataPlugin.notifySmartspaceEvent(smartspaceTargetEvent);
                 }
             };
         }
         bcSmartspaceCard.setEventNotifier(smartspaceEventNotifier);
         BcSmartspaceCardLoggerUtil.forcePrimaryFeatureTypeAndInjectWeatherSubcard(build, smartspaceTarget, 39);
         boolean z = true;
-        if (this.mSmartspaceTargets.size() <= 1) {
+        if (mSmartspaceTargets.size() <= 1) {
             z = false;
         }
         bcSmartspaceCard.setSmartspaceTarget(smartspaceTarget, build, z);
-        bcSmartspaceCard.setPrimaryTextColor(this.mCurrentTextColor);
-        bcSmartspaceCard.setDozeAmount(this.mDozeAmount);
-        bcSmartspaceCard.setDnd(this.mDndImage, this.mDndDescription);
-        bcSmartspaceCard.setNextAlarm(this.mNextAlarmImage, this.mNextAlarmDescription, this.mHolidayAlarmsTarget);
+        bcSmartspaceCard.setPrimaryTextColor(mCurrentTextColor);
+        bcSmartspaceCard.setDozeAmount(mDozeAmount);
+        bcSmartspaceCard.setDnd(mDndImage, mDndDescription);
+        bcSmartspaceCard.setNextAlarm(mNextAlarmImage, mNextAlarmDescription, mHolidayAlarmsTarget);
     }
 
     private boolean isHolidayAlarmsTarget(SmartspaceTarget smartspaceTarget) {
@@ -200,8 +200,8 @@ public class CardPagerAdapter extends PagerAdapter {
     }
 
     public void setTargets(List<? extends Parcelable> list) {
-        this.mTargetsExcludingMediaAndHolidayAlarms.clear();
-        this.mHolidayAlarmsTarget = null;
+        mTargetsExcludingMediaAndHolidayAlarms.clear();
+        mHolidayAlarmsTarget = null;
         list.forEach(new Consumer() { // from class: com.google.android.systemui.smartspace.CardPagerAdapter$$ExternalSyntheticLambda1
             @Override // java.util.function.Consumer
             public final void accept(Object obj) {
@@ -209,13 +209,13 @@ public class CardPagerAdapter extends PagerAdapter {
             }
         });
         boolean z = true;
-        if (this.mTargetsExcludingMediaAndHolidayAlarms.isEmpty()) {
-            this.mTargetsExcludingMediaAndHolidayAlarms.add(new SmartspaceTarget.Builder("date_card_794317_92634", new ComponentName(this.mRoot.getContext(), CardPagerAdapter.class), this.mRoot.getContext().getUser()).setFeatureType(1).build());
+        if (mTargetsExcludingMediaAndHolidayAlarms.isEmpty()) {
+            mTargetsExcludingMediaAndHolidayAlarms.add(new SmartspaceTarget.Builder("date_card_794317_92634", new ComponentName(mRoot.getContext(), CardPagerAdapter.class), mRoot.getContext().getUser()).setFeatureType(1).build());
         }
-        if (this.mTargetsExcludingMediaAndHolidayAlarms.size() != 1 || this.mTargetsExcludingMediaAndHolidayAlarms.get(0).getFeatureType() != 1) {
+        if (mTargetsExcludingMediaAndHolidayAlarms.size() != 1 || mTargetsExcludingMediaAndHolidayAlarms.get(0).getFeatureType() != 1) {
             z = false;
         }
-        this.mHasOnlyDefaultDateCard = z;
+        mHasOnlyDefaultDateCard = z;
         updateTargetVisibility();
         notifyDataSetChanged();
     }
@@ -223,87 +223,87 @@ public class CardPagerAdapter extends PagerAdapter {
     public /* synthetic */ void lambda$setTargets$0(Parcelable parcelable) {
         SmartspaceTarget smartspaceTarget = (SmartspaceTarget) parcelable;
         if (isHolidayAlarmsTarget(smartspaceTarget)) {
-            this.mHolidayAlarmsTarget = smartspaceTarget;
+            mHolidayAlarmsTarget = smartspaceTarget;
         } else {
-            this.mTargetsExcludingMediaAndHolidayAlarms.add(smartspaceTarget);
+            mTargetsExcludingMediaAndHolidayAlarms.add(smartspaceTarget);
         }
     }
 
     public void setDataProvider(BcSmartspaceDataPlugin bcSmartspaceDataPlugin) {
-        this.mDataProvider = bcSmartspaceDataPlugin;
+        mDataProvider = bcSmartspaceDataPlugin;
     }
 
     public void setPrimaryTextColor(int i) {
-        this.mPrimaryTextColor = i;
-        setDozeAmount(this.mDozeAmount);
+        mPrimaryTextColor = i;
+        setDozeAmount(mDozeAmount);
     }
 
     public void setDozeAmount(float f) {
-        this.mCurrentTextColor = ColorUtils.blendARGB(this.mPrimaryTextColor, this.mDozeColor, f);
-        this.mDozeAmount = f;
+        mCurrentTextColor = ColorUtils.blendARGB(mPrimaryTextColor, mDozeColor, f);
+        mDozeAmount = f;
         updateTargetVisibility();
         refreshCardColors();
     }
 
     public float getDozeAmount() {
-        return this.mDozeAmount;
+        return mDozeAmount;
     }
 
     public void setDnd(Drawable drawable, String str) {
-        this.mDndImage = drawable;
-        this.mDndDescription = str;
+        mDndImage = drawable;
+        mDndDescription = str;
         refreshCards();
     }
 
     public void setNextAlarm(Drawable drawable, String str) {
-        this.mNextAlarmImage = drawable;
-        this.mNextAlarmDescription = str;
+        mNextAlarmImage = drawable;
+        mNextAlarmDescription = str;
         refreshCards();
     }
 
     public void setMediaTarget(SmartspaceTarget smartspaceTarget) {
-        this.mMediaTargets.clear();
+        mMediaTargets.clear();
         if (smartspaceTarget != null) {
-            this.mMediaTargets.add(smartspaceTarget);
+            mMediaTargets.add(smartspaceTarget);
         }
         updateTargetVisibility();
     }
 
     public Drawable getNextAlarmImage() {
-        return this.mNextAlarmImage;
+        return mNextAlarmImage;
     }
 
     public SmartspaceTarget getHolidayAlarmsTarget() {
-        return this.mHolidayAlarmsTarget;
+        return mHolidayAlarmsTarget;
     }
 
     private void refreshCards() {
-        for (int i = 0; i < this.mHolders.size(); i++) {
-            onBindViewHolder(this.mHolders.get(i));
+        for (int i = 0; i < mHolders.size(); i++) {
+            onBindViewHolder(mHolders.get(i));
         }
     }
 
     private void refreshCardColors() {
-        for (int i = 0; i < this.mHolders.size(); i++) {
-            this.mHolders.get(i).card.setPrimaryTextColor(this.mCurrentTextColor);
-            this.mHolders.get(i).card.setDozeAmount(this.mDozeAmount);
+        for (int i = 0; i < mHolders.size(); i++) {
+            mHolders.get(i).card.setPrimaryTextColor(mCurrentTextColor);
+            mHolders.get(i).card.setDozeAmount(mDozeAmount);
         }
     }
 
     private void updateTargetVisibility() {
         boolean z;
-        if (this.mMediaTargets.isEmpty()) {
-            this.mSmartspaceTargets = this.mTargetsExcludingMediaAndHolidayAlarms;
+        if (mMediaTargets.isEmpty()) {
+            mSmartspaceTargets = mTargetsExcludingMediaAndHolidayAlarms;
             notifyDataSetChanged();
             return;
         }
-        float f = this.mDozeAmount;
-        if (f == 0.0f || !(z = this.mHasOnlyDefaultDateCard)) {
-            this.mSmartspaceTargets = this.mTargetsExcludingMediaAndHolidayAlarms;
+        float f = mDozeAmount;
+        if (f == 0.0f || !(z = mHasOnlyDefaultDateCard)) {
+            mSmartspaceTargets = mTargetsExcludingMediaAndHolidayAlarms;
             notifyDataSetChanged();
         } else if (f != 1.0f || !z) {
         } else {
-            this.mSmartspaceTargets = this.mMediaTargets;
+            mSmartspaceTargets = mMediaTargets;
             notifyDataSetChanged();
         }
     }
@@ -314,9 +314,9 @@ public class CardPagerAdapter extends PagerAdapter {
         public SmartspaceTarget target;
 
         ViewHolder(int i, BcSmartspaceCard bcSmartspaceCard, SmartspaceTarget smartspaceTarget) {
-            this.position = i;
-            this.card = bcSmartspaceCard;
-            this.target = smartspaceTarget;
+            position = i;
+            card = bcSmartspaceCard;
+            target = smartspaceTarget;
         }
     }
 }

@@ -17,10 +17,10 @@ public final class KeyguardSmartspaceController {
         Intrinsics.checkNotNullParameter(featureFlags, "featureFlags");
         Intrinsics.checkNotNullParameter(zenController, "zenController");
         Intrinsics.checkNotNullParameter(mediaController, "mediaController");
-        this.context = context;
-        this.featureFlags = featureFlags;
-        this.zenController = zenController;
-        this.mediaController = mediaController;
+        context = context;
+        featureFlags = featureFlags;
+        zenController = zenController;
+        mediaController = mediaController;
         if (!featureFlags.isSmartspaceEnabled()) {
             context.getPackageManager().setComponentEnabledSetting(new ComponentName("com.android.systemui", "com.google.android.systemui.keyguard.KeyguardSliceProviderGoogle"), 1, 1);
             return;

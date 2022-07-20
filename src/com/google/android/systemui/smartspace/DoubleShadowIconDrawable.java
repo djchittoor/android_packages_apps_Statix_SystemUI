@@ -28,11 +28,11 @@ public class DoubleShadowIconDrawable extends LayerDrawable {
         int i4 = i3 / 2;
         canvas.translate(((-i) / 2) + i4, ((-i2) / 2) + i4);
         drawable.draw(canvas);
-        this.mIconDrawable = new BitmapDrawable(context.getResources(), createBitmap);
+        mIconDrawable = new BitmapDrawable(context.getResources(), createBitmap);
         Drawable generateShadowDrawable = generateShadowDrawable(createBitmap, context);
-        this.mShadowDrawable = generateShadowDrawable;
+        mShadowDrawable = generateShadowDrawable;
         addLayer(generateShadowDrawable);
-        addLayer(this.mIconDrawable);
+        addLayer(mIconDrawable);
         setBounds(0, 0, i3, i3);
     }
 
@@ -63,11 +63,11 @@ public class DoubleShadowIconDrawable extends LayerDrawable {
 
     @Override // android.graphics.drawable.Drawable
     public void setTint(int i) {
-        Drawable drawable = this.mIconDrawable;
+        Drawable drawable = mIconDrawable;
         if (drawable != null) {
             drawable.setTint(i);
         }
-        Drawable drawable2 = this.mShadowDrawable;
+        Drawable drawable2 = mShadowDrawable;
         if (drawable2 != null) {
             drawable2.setAlpha(ColorUtils.calculateLuminance(i) > 0.5d ? 255 : 0);
         }

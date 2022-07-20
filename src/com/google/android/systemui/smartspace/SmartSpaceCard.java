@@ -26,47 +26,47 @@ public class SmartSpaceCard {
     private int mRequestCode;
 
     public SmartSpaceCard(Context context, SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard, Intent intent, boolean z, Bitmap bitmap, boolean z2, long j) {
-        this.mContext = context.getApplicationContext();
-        this.mCard = smartspaceCard;
-        this.mIsWeather = z;
-        this.mIntent = intent;
-        this.mIcon = bitmap;
-        this.mPublishTime = j;
-        this.mIsIconGrayscale = z2;
+        mContext = context.getApplicationContext();
+        mCard = smartspaceCard;
+        mIsWeather = z;
+        mIntent = intent;
+        mIcon = bitmap;
+        mPublishTime = j;
+        mIsIconGrayscale = z2;
         int i = sRequestCode + 1;
         sRequestCode = i;
         if (i > 2147483646) {
             sRequestCode = 0;
         }
-        this.mRequestCode = sRequestCode;
+        mRequestCode = sRequestCode;
     }
 
     public boolean isSensitive() {
-        return this.mCard.isSensitive;
+        return mCard.isSensitive;
     }
 
     public boolean isWorkProfile() {
-        return this.mCard.isWorkProfile;
+        return mCard.isWorkProfile;
     }
 
     public Intent getIntent() {
-        return this.mIntent;
+        return mIntent;
     }
 
     public Bitmap getIcon() {
-        return this.mIcon;
+        return mIcon;
     }
 
     public void setIcon(Bitmap bitmap) {
-        this.mIcon = bitmap;
+        mIcon = bitmap;
     }
 
     public void setIconProcessed(boolean z) {
-        this.mIconProcessed = z;
+        mIconProcessed = z;
     }
 
     public boolean isIconProcessed() {
-        return this.mIconProcessed;
+        return mIconProcessed;
     }
 
     public String getTitle() {
@@ -103,7 +103,7 @@ public class SmartSpaceCard {
             }
             i++;
         }
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = this.mCard;
+        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         if (smartspaceCard.cardType == 3 && formatParamArr.length == 2) {
             str3 = formatParamArr[0].text;
             str2 = formatParamArr[1].text;
@@ -115,9 +115,9 @@ public class SmartSpaceCard {
             if (message != smartspaceCard.duringEvent) {
                 return str;
             }
-            str3 = this.mContext.getString(R.string.smartspace_now);
+            str3 = mContext.getString(R.string.smartspace_now);
         }
-        return this.mContext.getString(R.string.smartspace_pill_text_format, str3, str2);
+        return mContext.getString(R.string.smartspace_pill_text_format, str3, str2);
     }
 
     public String getSubtitle() {
@@ -128,7 +128,7 @@ public class SmartSpaceCard {
         SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message;
         SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message2;
         long currentTimeMillis = System.currentTimeMillis();
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = this.mCard;
+        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         long j = smartspaceCard.eventTimeMillis;
         long j2 = smartspaceCard.eventDurationMillis + j;
         if (currentTimeMillis >= j || (message2 = smartspaceCard.preEvent) == null) {
@@ -160,10 +160,10 @@ public class SmartSpaceCard {
     long getMillisToEvent(SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
         long j;
         if (formatParam.formatParamArgs == 2) {
-            SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = this.mCard;
+            SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
             j = smartspaceCard.eventTimeMillis + smartspaceCard.eventDurationMillis;
         } else {
-            j = this.mCard.eventTimeMillis;
+            j = mCard.eventTimeMillis;
         }
         return Math.abs(System.currentTimeMillis() - j);
     }
@@ -207,13 +207,13 @@ public class SmartSpaceCard {
         if (minutesToEvent >= 60) {
             int i = minutesToEvent / 60;
             int i2 = minutesToEvent % 60;
-            String quantityString = this.mContext.getResources().getQuantityString(R.plurals.smartspace_hours, i, Integer.valueOf(i));
+            String quantityString = mContext.getResources().getQuantityString(R.plurals.smartspace_hours, i, Integer.valueOf(i));
             if (i2 <= 0) {
                 return quantityString;
             }
-            return this.mContext.getString(R.string.smartspace_hours_mins, quantityString, this.mContext.getResources().getQuantityString(R.plurals.smartspace_minutes, i2, Integer.valueOf(i2)));
+            return mContext.getString(R.string.smartspace_hours_mins, quantityString, mContext.getResources().getQuantityString(R.plurals.smartspace_minutes, i2, Integer.valueOf(i2)));
         }
-        return this.mContext.getResources().getQuantityString(R.plurals.smartspace_minutes, minutesToEvent, Integer.valueOf(minutesToEvent));
+        return mContext.getResources().getQuantityString(R.plurals.smartspace_minutes, minutesToEvent, Integer.valueOf(minutesToEvent));
     }
 
     private String substitute(boolean z, String str) {
@@ -228,7 +228,7 @@ public class SmartSpaceCard {
 
     public long getExpiration() {
         SmartspaceProto$SmartspaceUpdate.SmartspaceCard.ExpiryCriteria expiryCriteria;
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = this.mCard;
+        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         if (smartspaceCard == null || (expiryCriteria = smartspaceCard.expiryCriteria) == null) {
             return 0L;
         }
@@ -236,7 +236,7 @@ public class SmartSpaceCard {
     }
 
     public String toString() {
-        return "title:" + getTitle() + " subtitle:" + getSubtitle() + " expires:" + getExpiration() + " published:" + this.mPublishTime;
+        return "title:" + getTitle() + " subtitle:" + getSubtitle() + " expires:" + getExpiration() + " published:" + mPublishTime;
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -261,19 +261,19 @@ public class SmartSpaceCard {
     }
 
     public PendingIntent getPendingIntent() {
-        if (this.mCard.tapAction == null) {
+        if (mCard.tapAction == null) {
             return null;
         }
         Intent intent = new Intent(getIntent());
-        int i = this.mCard.tapAction.actionType;
+        int i = mCard.tapAction.actionType;
         if (i != 1) {
             if (i == 2) {
-                return PendingIntent.getActivity(this.mContext, this.mRequestCode, intent, 67108864);
+                return PendingIntent.getActivity(mContext, mRequestCode, intent, 67108864);
             }
             return null;
         }
         intent.addFlags(268435456);
         intent.setPackage("com.google.android.googlequicksearchbox");
-        return PendingIntent.getBroadcast(this.mContext, this.mRequestCode, intent, 0);
+        return PendingIntent.getBroadcast(mContext, mRequestCode, intent, 0);
     }
 }

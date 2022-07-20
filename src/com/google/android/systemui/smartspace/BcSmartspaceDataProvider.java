@@ -26,17 +26,17 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
 
         @Override // android.view.View.OnAttachStateChangeListener
         public void onViewAttachedToWindow(View view) {
-            BcSmartspaceDataProvider.this.mViews.add(view);
-            for (View.OnAttachStateChangeListener onAttachStateChangeListener : BcSmartspaceDataProvider.this.mAttachListeners) {
+            BcSmartspaceDataProvider.mViews.add(view);
+            for (View.OnAttachStateChangeListener onAttachStateChangeListener : BcSmartspaceDataProvider.mAttachListeners) {
                 onAttachStateChangeListener.onViewAttachedToWindow(view);
             }
         }
 
         @Override // android.view.View.OnAttachStateChangeListener
         public void onViewDetachedFromWindow(View view) {
-            BcSmartspaceDataProvider.this.mViews.remove(view);
+            BcSmartspaceDataProvider.mViews.remove(view);
             view.removeOnAttachStateChangeListener(this);
-            for (View.OnAttachStateChangeListener onAttachStateChangeListener : BcSmartspaceDataProvider.this.mAttachListeners) {
+            for (View.OnAttachStateChangeListener onAttachStateChangeListener : BcSmartspaceDataProvider.mAttachListeners) {
                 onAttachStateChangeListener.onViewDetachedFromWindow(view);
             }
         }
@@ -48,23 +48,23 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void registerListener(BcSmartspaceDataPlugin.SmartspaceTargetListener smartspaceTargetListener) {
-        this.mSmartspaceTargetListeners.add(smartspaceTargetListener);
-        smartspaceTargetListener.onSmartspaceTargetsUpdated(this.mSmartspaceTargets);
+        mSmartspaceTargetListeners.add(smartspaceTargetListener);
+        smartspaceTargetListener.onSmartspaceTargetsUpdated(mSmartspaceTargets);
     }
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void unregisterListener(BcSmartspaceDataPlugin.SmartspaceTargetListener smartspaceTargetListener) {
-        this.mSmartspaceTargetListeners.remove(smartspaceTargetListener);
+        mSmartspaceTargetListeners.remove(smartspaceTargetListener);
     }
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void registerSmartspaceEventNotifier(BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier) {
-        this.mEventNotifier = smartspaceEventNotifier;
+        mEventNotifier = smartspaceEventNotifier;
     }
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void notifySmartspaceEvent(SmartspaceTargetEvent smartspaceTargetEvent) {
-        BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier = this.mEventNotifier;
+        BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier = mEventNotifier;
         if (smartspaceEventNotifier != null) {
             smartspaceEventNotifier.notifySmartspaceEvent(smartspaceTargetEvent);
         }
@@ -73,27 +73,27 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public BcSmartspaceDataPlugin.SmartspaceView getView(ViewGroup viewGroup) {
         View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.smartspace_enhanced, viewGroup, false);
-        inflate.addOnAttachStateChangeListener(this.mStateChangeListener);
+        inflate.addOnAttachStateChangeListener(mStateChangeListener);
         return (BcSmartspaceDataPlugin.SmartspaceView) inflate;
     }
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener onAttachStateChangeListener) {
-        this.mAttachListeners.add(onAttachStateChangeListener);
-        for (View view : this.mViews) {
+        mAttachListeners.add(onAttachStateChangeListener);
+        for (View view : mViews) {
             onAttachStateChangeListener.onViewAttachedToWindow(view);
         }
     }
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void onTargetsAvailable(List<SmartspaceTarget> list) {
-        this.mSmartspaceTargets.clear();
+        mSmartspaceTargets.clear();
         for (SmartspaceTarget smartspaceTarget : list) {
             if (smartspaceTarget.getFeatureType() != 15) {
-                this.mSmartspaceTargets.add(smartspaceTarget);
+                mSmartspaceTargets.add(smartspaceTarget);
             }
         }
-        this.mSmartspaceTargetListeners.forEach(new Consumer() { // from class: com.google.android.systemui.smartspace.BcSmartspaceDataProvider$$ExternalSyntheticLambda0
+        mSmartspaceTargetListeners.forEach(new Consumer() { // from class: com.google.android.systemui.smartspace.BcSmartspaceDataProvider$$ExternalSyntheticLambda0
             @Override // java.util.function.Consumer
             public final void accept(Object obj) {
                 BcSmartspaceDataProvider.$r8$lambda$CVMuLEb73PWV8fVSpB1qh1kx5WM(BcSmartspaceDataProvider.this, (BcSmartspaceDataPlugin.SmartspaceTargetListener) obj);
@@ -102,6 +102,6 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
     }
 
     public /* synthetic */ void lambda$onTargetsAvailable$0(BcSmartspaceDataPlugin.SmartspaceTargetListener smartspaceTargetListener) {
-        smartspaceTargetListener.onSmartspaceTargetsUpdated(this.mSmartspaceTargets);
+        smartspaceTargetListener.onSmartspaceTargetsUpdated(mSmartspaceTargets);
     }
 }

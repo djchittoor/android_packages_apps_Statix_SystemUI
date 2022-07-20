@@ -18,17 +18,17 @@ public final class KeyguardZenAlarmViewController_Factory implements Factory<Key
     private final Provider<ZenModeController> zenModeControllerProvider;
 
     public KeyguardZenAlarmViewController_Factory(Provider<Context> provider, Provider<BcSmartspaceDataPlugin> provider2, Provider<ZenModeController> provider3, Provider<AlarmManager> provider4, Provider<NextAlarmController> provider5, Provider<Handler> provider6) {
-        this.contextProvider = provider;
-        this.pluginProvider = provider2;
-        this.zenModeControllerProvider = provider3;
-        this.alarmManagerProvider = provider4;
-        this.nextAlarmControllerProvider = provider5;
-        this.handlerProvider = provider6;
+        contextProvider = provider;
+        pluginProvider = provider2;
+        zenModeControllerProvider = provider3;
+        alarmManagerProvider = provider4;
+        nextAlarmControllerProvider = provider5;
+        handlerProvider = provider6;
     }
 
     @Override // javax.inject.Provider
     public KeyguardZenAlarmViewController get() {
-        return newInstance(this.contextProvider.get(), this.pluginProvider.get(), this.zenModeControllerProvider.get(), this.alarmManagerProvider.get(), this.nextAlarmControllerProvider.get(), this.handlerProvider.get());
+        return newInstance(contextProvider.get(), pluginProvider.get(), zenModeControllerProvider.get(), alarmManagerProvider.get(), nextAlarmControllerProvider.get(), handlerProvider.get());
     }
 
     public static KeyguardZenAlarmViewController_Factory create(Provider<Context> provider, Provider<BcSmartspaceDataPlugin> provider2, Provider<ZenModeController> provider3, Provider<AlarmManager> provider4, Provider<NextAlarmController> provider5, Provider<Handler> provider6) {

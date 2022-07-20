@@ -36,10 +36,10 @@ public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
         Bitmap bitmap = null;
         Bundle extras = baseAction == null ? null : baseAction.getExtras();
         if (extras != null) {
-            this.mEmptyListMessageView.setVisibility(8);
-            this.mListIconView.setVisibility(8);
-            this.mCardPromptIconView.setVisibility(8);
-            this.mCardPromptView.setVisibility(8);
+            mEmptyListMessageView.setVisibility(8);
+            mListIconView.setVisibility(8);
+            mCardPromptIconView.setVisibility(8);
+            mCardPromptView.setVisibility(8);
             for (int i = 0; i < 3; i++) {
                 TextView textView = (TextView) findViewById(LIST_ITEM_TEXT_VIEW_IDS[i]);
                 if (textView != null) {
@@ -54,22 +54,22 @@ public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
             setIconBitmap(bitmap);
             if (extras.containsKey("cardPrompt")) {
                 setCardPrompt(extras.getString("cardPrompt"));
-                this.mCardPromptView.setVisibility(0);
+                mCardPromptView.setVisibility(0);
                 if (bitmap != null) {
-                    this.mCardPromptIconView.setVisibility(0);
+                    mCardPromptIconView.setVisibility(0);
                 }
                 return true;
             } else if (extras.containsKey("emptyListString")) {
                 setEmptyListMessage(extras.getString("emptyListString"));
-                this.mEmptyListMessageView.setVisibility(0);
-                this.mListIconView.setVisibility(0);
+                mEmptyListMessageView.setVisibility(0);
+                mListIconView.setVisibility(0);
                 return true;
             } else if (extras.containsKey("listItems")) {
                 String[] stringArray = extras.getStringArray("listItems");
                 if (stringArray.length == 0) {
                     return false;
                 }
-                this.mListIconView.setVisibility(0);
+                mListIconView.setVisibility(0);
                 setShoppingItems(stringArray, extras.getInt("listSize", -1));
                 return true;
             }
@@ -80,19 +80,19 @@ public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mCardPromptView = (TextView) findViewById(R.id.card_prompt);
-        this.mEmptyListMessageView = (TextView) findViewById(R.id.empty_list_message);
-        this.mCardPromptIconView = (ImageView) findViewById(R.id.card_prompt_icon);
-        this.mListIconView = (ImageView) findViewById(R.id.list_icon);
+        mCardPromptView = (TextView) findViewById(R.id.card_prompt);
+        mEmptyListMessageView = (TextView) findViewById(R.id.empty_list_message);
+        mCardPromptIconView = (ImageView) findViewById(R.id.card_prompt_icon);
+        mListIconView = (ImageView) findViewById(R.id.list_icon);
     }
 
     void setIconBitmap(Bitmap bitmap) {
-        this.mCardPromptIconView.setImageBitmap(bitmap);
-        this.mListIconView.setImageBitmap(bitmap);
+        mCardPromptIconView.setImageBitmap(bitmap);
+        mListIconView.setImageBitmap(bitmap);
     }
 
     void setCardPrompt(String str) {
-        TextView textView = this.mCardPromptView;
+        TextView textView = mCardPromptView;
         if (textView == null) {
             Log.w("BcSmartspaceCardShoppingList", "No card prompt view to update");
         } else {
@@ -101,7 +101,7 @@ public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
     }
 
     void setEmptyListMessage(String str) {
-        TextView textView = this.mEmptyListMessageView;
+        TextView textView = mEmptyListMessageView;
         if (textView == null) {
             Log.w("BcSmartspaceCardShoppingList", "No empty list message view to update");
         } else {

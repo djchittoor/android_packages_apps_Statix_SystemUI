@@ -43,16 +43,16 @@ public class PageIndicator extends LinearLayout {
             return;
         }
         setVisibility(0);
-        if (i == this.mNumPages) {
+        if (i == mNumPages) {
             return;
         }
-        this.mNumPages = i;
+        mNumPages = i;
         initializePageIndicators();
     }
 
     public void setPageOffset(int i, float f) {
         int i2 = (f > 0.0f ? 1 : (f == 0.0f ? 0 : -1));
-        if (!(i2 == 0 && i == this.mCurrentPageIndex) && i >= 0 && i < getChildCount() - 1) {
+        if (!(i2 == 0 && i == mCurrentPageIndex) && i >= 0 && i < getChildCount() - 1) {
             ImageView imageView = (ImageView) getChildAt(i);
             int i3 = i + 1;
             ImageView imageView2 = (ImageView) getChildAt(i3);
@@ -65,7 +65,7 @@ public class PageIndicator extends LinearLayout {
             int i4 = R.string.accessibility_smartspace_page;
             Object[] objArr = new Object[2];
             objArr[0] = Integer.valueOf(((double) f) < 0.5d ? i3 : i + 2);
-            objArr[1] = Integer.valueOf(this.mNumPages);
+            objArr[1] = Integer.valueOf(mNumPages);
             setContentDescription(context.getString(i4, objArr));
             if (i2 != 0 && f < 0.99f) {
                 return;
@@ -73,19 +73,19 @@ public class PageIndicator extends LinearLayout {
             if (i2 != 0) {
                 i = i3;
             }
-            this.mCurrentPageIndex = i;
+            mCurrentPageIndex = i;
         }
     }
 
     private void initializePageIndicators() {
         LinearLayout.LayoutParams layoutParams;
-        int childCount = getChildCount() - this.mNumPages;
+        int childCount = getChildCount() - mNumPages;
         for (int i = 0; i < childCount; i++) {
             removeViewAt(0);
         }
         int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.page_indicator_dot_margin);
         int i2 = 0;
-        while (i2 < this.mNumPages) {
+        while (i2 < mNumPages) {
             ImageView imageView = i2 < getChildCount() ? (ImageView) getChildAt(i2) : new ImageView(getContext());
             if (i2 < getChildCount()) {
                 layoutParams = (LinearLayout.LayoutParams) imageView.getLayoutParams();
@@ -97,7 +97,7 @@ public class PageIndicator extends LinearLayout {
             } else {
                 layoutParams.setMarginStart(dimensionPixelSize);
             }
-            if (i2 == this.mNumPages - 1) {
+            if (i2 == mNumPages - 1) {
                 layoutParams.setMarginEnd(0);
             } else {
                 layoutParams.setMarginEnd(dimensionPixelSize);
@@ -106,29 +106,29 @@ public class PageIndicator extends LinearLayout {
                 imageView.setLayoutParams(layoutParams);
             } else {
                 Drawable drawable = AppCompatResources.getDrawable(getContext(), R.drawable.page_indicator_dot);
-                drawable.setTint(this.mPrimaryColor);
+                drawable.setTint(mPrimaryColor);
                 imageView.setImageDrawable(drawable);
                 addView(imageView, layoutParams);
             }
-            int i3 = this.mCurrentPageIndex;
+            int i3 = mCurrentPageIndex;
             if (i3 < 0) {
-                this.mCurrentPageIndex = 0;
+                mCurrentPageIndex = 0;
             } else {
-                int i4 = this.mNumPages;
+                int i4 = mNumPages;
                 if (i3 >= i4) {
-                    this.mCurrentPageIndex = i4 - 1;
+                    mCurrentPageIndex = i4 - 1;
                 }
             }
-            imageView.setAlpha(i2 == this.mCurrentPageIndex ? 1.0f : 0.4f);
+            imageView.setAlpha(i2 == mCurrentPageIndex ? 1.0f : 0.4f);
             i2++;
         }
-        setContentDescription(getContext().getString(R.string.accessibility_smartspace_page, 1, Integer.valueOf(this.mNumPages)));
+        setContentDescription(getContext().getString(R.string.accessibility_smartspace_page, 1, Integer.valueOf(mNumPages)));
     }
 
     public void setPrimaryColor(int i) {
-        this.mPrimaryColor = i;
+        mPrimaryColor = i;
         for (int i2 = 0; i2 < getChildCount(); i2++) {
-            ((ImageView) getChildAt(i2)).getDrawable().setTint(this.mPrimaryColor);
+            ((ImageView) getChildAt(i2)).getDrawable().setTint(mPrimaryColor);
         }
     }
 

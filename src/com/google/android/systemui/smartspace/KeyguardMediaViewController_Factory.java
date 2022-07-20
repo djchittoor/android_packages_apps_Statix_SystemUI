@@ -16,16 +16,16 @@ public final class KeyguardMediaViewController_Factory implements Factory<Keygua
     private final Provider<DelayableExecutor> uiExecutorProvider;
 
     public KeyguardMediaViewController_Factory(Provider<Context> provider, Provider<BcSmartspaceDataPlugin> provider2, Provider<DelayableExecutor> provider3, Provider<NotificationMediaManager> provider4, Provider<BroadcastDispatcher> provider5) {
-        this.contextProvider = provider;
-        this.pluginProvider = provider2;
-        this.uiExecutorProvider = provider3;
-        this.mediaManagerProvider = provider4;
-        this.broadcastDispatcherProvider = provider5;
+        contextProvider = provider;
+        pluginProvider = provider2;
+        uiExecutorProvider = provider3;
+        mediaManagerProvider = provider4;
+        broadcastDispatcherProvider = provider5;
     }
 
     @Override // javax.inject.Provider
     public KeyguardMediaViewController get() {
-        return newInstance(this.contextProvider.get(), this.pluginProvider.get(), this.uiExecutorProvider.get(), this.mediaManagerProvider.get(), this.broadcastDispatcherProvider.get());
+        return newInstance(contextProvider.get(), pluginProvider.get(), uiExecutorProvider.get(), mediaManagerProvider.get(), broadcastDispatcherProvider.get());
     }
 
     public static KeyguardMediaViewController_Factory create(Provider<Context> provider, Provider<BcSmartspaceDataPlugin> provider2, Provider<DelayableExecutor> provider3, Provider<NotificationMediaManager> provider4, Provider<BroadcastDispatcher> provider5) {

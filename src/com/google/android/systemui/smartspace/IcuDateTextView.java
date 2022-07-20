@@ -31,20 +31,20 @@ public class IcuDateTextView extends DoubleShadowTextView {
 
     public IcuDateTextView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet, 0);
-        this.mTicker = new Runnable() { // from class: com.google.android.systemui.smartspace.IcuDateTextView$$ExternalSyntheticLambda0
+        mTicker = new Runnable() { // from class: com.google.android.systemui.smartspace.IcuDateTextView$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
                 IcuDateTextView.m750$r8$lambda$Sd3yswBLpq1S8i1GImy2Qrz2n0(IcuDateTextView.this);
             }
         };
-        this.mIntentReceiver = new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.IcuDateTextView.1
+        mIntentReceiver = new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.IcuDateTextView.1
             {
                 IcuDateTextView.this = this;
             }
 
             @Override // android.content.BroadcastReceiver
             public void onReceive(Context context2, Intent intent) {
-                IcuDateTextView.this.onTimeChanged(!"android.intent.action.TIME_TICK".equals(intent.getAction()));
+                IcuDateTextView.onTimeChanged(!"android.intent.action.TIME_TICK".equals(intent.getAction()));
             }
         };
     }
@@ -55,38 +55,38 @@ public class IcuDateTextView extends DoubleShadowTextView {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("android.intent.action.TIME_SET");
         intentFilter.addAction("android.intent.action.TIMEZONE_CHANGED");
-        getContext().registerReceiver(this.mIntentReceiver, intentFilter);
+        getContext().registerReceiver(mIntentReceiver, intentFilter);
         onTimeChanged(true);
-        this.mHandler = new Handler();
+        mHandler = new Handler();
     }
 
     @Override // android.view.View
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        if (this.mHandler != null) {
-            getContext().unregisterReceiver(this.mIntentReceiver);
-            this.mHandler = null;
+        if (mHandler != null) {
+            getContext().unregisterReceiver(mIntentReceiver);
+            mHandler = null;
         }
     }
 
     public void onTimeTick() {
         onTimeChanged(false);
-        if (this.mHandler != null) {
+        if (mHandler != null) {
             long uptimeMillis = SystemClock.uptimeMillis();
-            this.mHandler.postAtTime(this.mTicker, uptimeMillis + (1000 - (uptimeMillis % 1000)));
+            mHandler.postAtTime(mTicker, uptimeMillis + (1000 - (uptimeMillis % 1000)));
         }
     }
 
     @Override // android.view.View
     public void onVisibilityAggregated(boolean z) {
         super.onVisibilityAggregated(z);
-        Handler handler = this.mHandler;
+        Handler handler = mHandler;
         if (handler != null) {
-            handler.removeCallbacks(this.mTicker);
+            handler.removeCallbacks(mTicker);
             if (!z) {
                 return;
             }
-            this.mTicker.run();
+            mTicker.run();
         }
     }
 
@@ -94,16 +94,16 @@ public class IcuDateTextView extends DoubleShadowTextView {
         if (!isShown()) {
             return;
         }
-        if (this.mFormatter == null || z) {
+        if (mFormatter == null || z) {
             DateFormat instanceForSkeleton = DateFormat.getInstanceForSkeleton(getContext().getString(R.string.smartspace_icu_date_pattern), Locale.getDefault());
-            this.mFormatter = instanceForSkeleton;
+            mFormatter = instanceForSkeleton;
             instanceForSkeleton.setContext(DisplayContext.CAPITALIZATION_FOR_BEGINNING_OF_SENTENCE);
         }
-        String format = this.mFormatter.format(Long.valueOf(System.currentTimeMillis()));
-        if (Objects.equals(this.mText, format)) {
+        String format = mFormatter.format(Long.valueOf(System.currentTimeMillis()));
+        if (Objects.equals(mText, format)) {
             return;
         }
-        this.mText = format;
+        mText = format;
         setText(format);
         setContentDescription(format);
     }

@@ -16,16 +16,16 @@ public final class SmartSpaceController_Factory implements Factory<SmartSpaceCon
     private final Provider<KeyguardUpdateMonitor> keyguardUpdateMonitorProvider;
 
     public SmartSpaceController_Factory(Provider<Context> provider, Provider<KeyguardUpdateMonitor> provider2, Provider<Handler> provider3, Provider<AlarmManager> provider4, Provider<DumpManager> provider5) {
-        this.contextProvider = provider;
-        this.keyguardUpdateMonitorProvider = provider2;
-        this.handlerProvider = provider3;
-        this.alarmManagerProvider = provider4;
-        this.dumpManagerProvider = provider5;
+        contextProvider = provider;
+        keyguardUpdateMonitorProvider = provider2;
+        handlerProvider = provider3;
+        alarmManagerProvider = provider4;
+        dumpManagerProvider = provider5;
     }
 
     @Override // javax.inject.Provider
     public SmartSpaceController get() {
-        return newInstance(this.contextProvider.get(), this.keyguardUpdateMonitorProvider.get(), this.handlerProvider.get(), this.alarmManagerProvider.get(), this.dumpManagerProvider.get());
+        return newInstance(contextProvider.get(), keyguardUpdateMonitorProvider.get(), handlerProvider.get(), alarmManagerProvider.get(), dumpManagerProvider.get());
     }
 
     public static SmartSpaceController_Factory create(Provider<Context> provider, Provider<KeyguardUpdateMonitor> provider2, Provider<Handler> provider3, Provider<AlarmManager> provider4, Provider<DumpManager> provider5) {

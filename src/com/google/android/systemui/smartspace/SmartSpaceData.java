@@ -7,76 +7,76 @@ public class SmartSpaceData {
     SmartSpaceCard mWeatherCard;
 
     public boolean hasWeather() {
-        return this.mWeatherCard != null;
+        return mWeatherCard != null;
     }
 
     public boolean hasCurrent() {
-        return this.mCurrentCard != null;
+        return mCurrentCard != null;
     }
 
     public long getExpirationRemainingMillis() {
         long expiration;
         long currentTimeMillis = System.currentTimeMillis();
         if (hasCurrent() && hasWeather()) {
-            expiration = Math.min(this.mCurrentCard.getExpiration(), this.mWeatherCard.getExpiration());
+            expiration = Math.min(mCurrentCard.getExpiration(), mWeatherCard.getExpiration());
         } else if (hasCurrent()) {
-            expiration = this.mCurrentCard.getExpiration();
+            expiration = mCurrentCard.getExpiration();
         } else if (!hasWeather()) {
             return 0L;
         } else {
-            expiration = this.mWeatherCard.getExpiration();
+            expiration = mWeatherCard.getExpiration();
         }
         return expiration - currentTimeMillis;
     }
 
     public long getExpiresAtMillis() {
         if (hasCurrent() && hasWeather()) {
-            return Math.min(this.mCurrentCard.getExpiration(), this.mWeatherCard.getExpiration());
+            return Math.min(mCurrentCard.getExpiration(), mWeatherCard.getExpiration());
         }
         if (hasCurrent()) {
-            return this.mCurrentCard.getExpiration();
+            return mCurrentCard.getExpiration();
         }
         if (!hasWeather()) {
             return 0L;
         }
-        return this.mWeatherCard.getExpiration();
+        return mWeatherCard.getExpiration();
     }
 
     public void clear() {
-        this.mWeatherCard = null;
-        this.mCurrentCard = null;
+        mWeatherCard = null;
+        mCurrentCard = null;
     }
 
     public boolean handleExpire() {
         boolean z;
-        if (!hasWeather() || !this.mWeatherCard.isExpired()) {
+        if (!hasWeather() || !mWeatherCard.isExpired()) {
             z = false;
         } else {
             if (SmartSpaceController.DEBUG) {
-                Log.d("SmartspaceData", "weather expired " + this.mWeatherCard.getExpiration());
+                Log.d("SmartspaceData", "weather expired " + mWeatherCard.getExpiration());
             }
-            this.mWeatherCard = null;
+            mWeatherCard = null;
             z = true;
         }
-        if (!hasCurrent() || !this.mCurrentCard.isExpired()) {
+        if (!hasCurrent() || !mCurrentCard.isExpired()) {
             return z;
         }
         if (SmartSpaceController.DEBUG) {
-            Log.d("SmartspaceData", "current expired " + this.mCurrentCard.getExpiration());
+            Log.d("SmartspaceData", "current expired " + mCurrentCard.getExpiration());
         }
-        this.mCurrentCard = null;
+        mCurrentCard = null;
         return true;
     }
 
     public String toString() {
-        return "{" + this.mCurrentCard + "," + this.mWeatherCard + "}";
+        return "{" + mCurrentCard + "," + mWeatherCard + "}";
     }
 
     public SmartSpaceCard getWeatherCard() {
-        return this.mWeatherCard;
+        return mWeatherCard;
     }
 
     public SmartSpaceCard getCurrentCard() {
-        return this.mCurrentCard;
+        return mCurrentCard;
     }
 }

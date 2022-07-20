@@ -5,20 +5,20 @@ public class BcSmartspaceCardMetadataLoggingInfo {
     private final int mInstanceId;
 
     private BcSmartspaceCardMetadataLoggingInfo(Builder builder) {
-        this.mInstanceId = builder.mInstanceId;
-        this.mCardTypeId = builder.mCardTypeId;
+        mInstanceId = builder.mInstanceId;
+        mCardTypeId = builder.mCardTypeId;
     }
 
     public int getInstanceId() {
-        return this.mInstanceId;
+        return mInstanceId;
     }
 
     public int getCardTypeId() {
-        return this.mCardTypeId;
+        return mCardTypeId;
     }
 
     public String toString() {
-        return "BcSmartspaceCardMetadataLoggingInfo{mInstanceId=" + this.mInstanceId + ", mCardTypeId=" + this.mCardTypeId + '}';
+        return "BcSmartspaceCardMetadataLoggingInfo{mInstanceId=" + mInstanceId + ", mCardTypeId=" + mCardTypeId + '}';
     }
 
     public static class Builder {
@@ -26,12 +26,12 @@ public class BcSmartspaceCardMetadataLoggingInfo {
         private int mInstanceId;
 
         public Builder setInstanceId(int i) {
-            this.mInstanceId = i;
+            mInstanceId = i;
             return this;
         }
 
         public Builder setCardTypeId(int i) {
-            this.mCardTypeId = i;
+            mCardTypeId = i;
             return this;
         }
 

@@ -22,23 +22,23 @@ public class NewCardInfo {
     private final long mPublishTime;
 
     public NewCardInfo(SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard, Intent intent, boolean z, long j, PackageInfo packageInfo) {
-        this.mCard = smartspaceCard;
-        this.mIsPrimary = z;
-        this.mIntent = intent;
-        this.mPublishTime = j;
-        this.mPackageInfo = packageInfo;
+        mCard = smartspaceCard;
+        mIsPrimary = z;
+        mIntent = intent;
+        mPublishTime = j;
+        mPackageInfo = packageInfo;
     }
 
     public boolean isPrimary() {
-        return this.mIsPrimary;
+        return mIsPrimary;
     }
 
     public Bitmap retrieveIcon(Context context) {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Image image = this.mCard.icon;
+        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Image image = mCard.icon;
         if (image == null) {
             return null;
         }
-        Bitmap bitmap = (Bitmap) retrieveFromIntent(image.key, this.mIntent);
+        Bitmap bitmap = (Bitmap) retrieveFromIntent(image.key, mIntent);
         if (bitmap != null) {
             return bitmap;
         }
@@ -66,9 +66,9 @@ public class NewCardInfo {
             retrieveIcon.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
             smartspaceProto$CardWrapper.icon = byteArrayOutputStream.toByteArray();
         }
-        smartspaceProto$CardWrapper.card = this.mCard;
-        smartspaceProto$CardWrapper.publishTime = this.mPublishTime;
-        PackageInfo packageInfo = this.mPackageInfo;
+        smartspaceProto$CardWrapper.card = mCard;
+        smartspaceProto$CardWrapper.publishTime = mPublishTime;
+        PackageInfo packageInfo = mPackageInfo;
         if (packageInfo != null) {
             smartspaceProto$CardWrapper.gsaVersionCode = packageInfo.versionCode;
             smartspaceProto$CardWrapper.gsaUpdateTime = packageInfo.lastUpdateTime;
@@ -95,11 +95,11 @@ public class NewCardInfo {
     }
 
     public int getUserId() {
-        return this.mIntent.getIntExtra("uid", -1);
+        return mIntent.getIntExtra("uid", -1);
     }
 
     public boolean shouldDiscard() {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = this.mCard;
+        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         return smartspaceCard == null || smartspaceCard.shouldDiscard;
     }
 }

@@ -27,12 +27,12 @@ public final class KeyguardMediaViewController {
     private final KeyguardMediaViewController$mediaListener$1 mediaListener = new NotificationMediaManager.MediaListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1
         @Override // com.android.systemui.statusbar.NotificationMediaManager.MediaListener
         public void onPrimaryMetadataOrStateChanged(final MediaMetadata mediaMetadata, final int i) {
-            DelayableExecutor uiExecutor = KeyguardMediaViewController.this.getUiExecutor();
+            DelayableExecutor uiExecutor = KeyguardMediaViewController.getUiExecutor();
             final KeyguardMediaViewController keyguardMediaViewController = KeyguardMediaViewController.this;
             uiExecutor.execute(new Runnable() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1$onPrimaryMetadataOrStateChanged$1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    KeyguardMediaViewController.this.updateMediaInfo(mediaMetadata, i);
+                    KeyguardMediaViewController.updateMediaInfo(mediaMetadata, i);
                 }
             });
         }
@@ -55,36 +55,36 @@ public final class KeyguardMediaViewController {
         Intrinsics.checkNotNullParameter(uiExecutor, "uiExecutor");
         Intrinsics.checkNotNullParameter(mediaManager, "mediaManager");
         Intrinsics.checkNotNullParameter(broadcastDispatcher, "broadcastDispatcher");
-        this.context = context;
-        this.plugin = plugin;
-        this.uiExecutor = uiExecutor;
-        this.mediaManager = mediaManager;
-        this.broadcastDispatcher = broadcastDispatcher;
-        this.mediaComponent = new ComponentName(context, KeyguardMediaViewController.class);
+        context = context;
+        plugin = plugin;
+        uiExecutor = uiExecutor;
+        mediaManager = mediaManager;
+        broadcastDispatcher = broadcastDispatcher;
+        mediaComponent = new ComponentName(context, KeyguardMediaViewController.class);
     }
 
     public final DelayableExecutor getUiExecutor() {
-        return this.uiExecutor;
+        return uiExecutor;
     }
 
     public final BcSmartspaceDataPlugin.SmartspaceView getSmartspaceView() {
-        return this.smartspaceView;
+        return smartspaceView;
     }
 
     public final void setSmartspaceView(BcSmartspaceDataPlugin.SmartspaceView smartspaceView) {
-        this.smartspaceView = smartspaceView;
+        smartspaceView = smartspaceView;
     }
 
     public final void init() {
-        this.plugin.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$init$1
+        plugin.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$init$1
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewAttachedToWindow(View v) {
                 NotificationMediaManager notificationMediaManager;
                 KeyguardMediaViewController$mediaListener$1 keyguardMediaViewController$mediaListener$1;
                 Intrinsics.checkNotNullParameter(v, "v");
-                KeyguardMediaViewController.this.setSmartspaceView((BcSmartspaceDataPlugin.SmartspaceView) v);
-                notificationMediaManager = KeyguardMediaViewController.this.mediaManager;
-                keyguardMediaViewController$mediaListener$1 = KeyguardMediaViewController.this.mediaListener;
+                KeyguardMediaViewController.setSmartspaceView((BcSmartspaceDataPlugin.SmartspaceView) v);
+                notificationMediaManager = KeyguardMediaViewController.mediaManager;
+                keyguardMediaViewController$mediaListener$1 = KeyguardMediaViewController.mediaListener;
                 notificationMediaManager.addCallback(keyguardMediaViewController$mediaListener$1);
             }
 
@@ -93,17 +93,17 @@ public final class KeyguardMediaViewController {
                 NotificationMediaManager notificationMediaManager;
                 KeyguardMediaViewController$mediaListener$1 keyguardMediaViewController$mediaListener$1;
                 Intrinsics.checkNotNullParameter(v, "v");
-                KeyguardMediaViewController.this.setSmartspaceView(null);
-                notificationMediaManager = KeyguardMediaViewController.this.mediaManager;
-                keyguardMediaViewController$mediaListener$1 = KeyguardMediaViewController.this.mediaListener;
+                KeyguardMediaViewController.setSmartspaceView(null);
+                notificationMediaManager = KeyguardMediaViewController.mediaManager;
+                keyguardMediaViewController$mediaListener$1 = KeyguardMediaViewController.mediaListener;
                 notificationMediaManager.removeCallback(keyguardMediaViewController$mediaListener$1);
             }
         });
-        final BroadcastDispatcher broadcastDispatcher = this.broadcastDispatcher;
-        this.userTracker = new CurrentUserTracker(broadcastDispatcher) { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$init$2
+        final BroadcastDispatcher broadcastDispatcher = broadcastDispatcher;
+        userTracker = new CurrentUserTracker(broadcastDispatcher) { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$init$2
             @Override // com.android.systemui.settings.CurrentUserTracker
             public void onUserSwitched(int i) {
-                KeyguardMediaViewController.this.reset();
+                KeyguardMediaViewController.reset();
             }
         };
     }
@@ -120,23 +120,23 @@ public final class KeyguardMediaViewController {
         } else {
             charSequence = mediaMetadata.getText("android.media.metadata.TITLE");
             if (TextUtils.isEmpty(charSequence)) {
-                charSequence = this.context.getResources().getString(R.string.music_controls_no_title);
+                charSequence = context.getResources().getString(R.string.music_controls_no_title);
             }
         }
         CharSequence text = mediaMetadata == null ? null : mediaMetadata.getText("android.media.metadata.ARTIST");
-        if (TextUtils.equals(this.title, charSequence) && TextUtils.equals(this.artist, text)) {
+        if (TextUtils.equals(title, charSequence) && TextUtils.equals(artist, text)) {
             return;
         }
-        this.title = charSequence;
-        this.artist = text;
+        title = charSequence;
+        artist = text;
         if (charSequence != null) {
-            SmartspaceAction build = new SmartspaceAction.Builder("deviceMediaTitle", charSequence.toString()).setSubtitle(this.artist).setIcon(this.mediaManager.getMediaIcon()).build();
-            CurrentUserTracker currentUserTracker = this.userTracker;
+            SmartspaceAction build = new SmartspaceAction.Builder("deviceMediaTitle", charSequence.toString()).setSubtitle(artist).setIcon(mediaManager.getMediaIcon()).build();
+            CurrentUserTracker currentUserTracker = userTracker;
             if (currentUserTracker == null) {
                 Intrinsics.throwUninitializedPropertyAccessException("userTracker");
                 throw null;
             }
-            SmartspaceTarget build2 = new SmartspaceTarget.Builder("deviceMedia", this.mediaComponent, UserHandle.of(currentUserTracker.getCurrentUserId())).setFeatureType(41).setHeaderAction(build).build();
+            SmartspaceTarget build2 = new SmartspaceTarget.Builder("deviceMedia", mediaComponent, UserHandle.of(currentUserTracker.getCurrentUserId())).setFeatureType(41).setHeaderAction(build).build();
             BcSmartspaceDataPlugin.SmartspaceView smartspaceView = getSmartspaceView();
             if (smartspaceView != null) {
                 smartspaceView.setMediaTarget(build2);
@@ -151,9 +151,9 @@ public final class KeyguardMediaViewController {
 
     /* JADX INFO: Access modifiers changed from: private */
     public final void reset() {
-        this.title = null;
-        this.artist = null;
-        BcSmartspaceDataPlugin.SmartspaceView smartspaceView = this.smartspaceView;
+        title = null;
+        artist = null;
+        BcSmartspaceDataPlugin.SmartspaceView smartspaceView = smartspaceView;
         if (smartspaceView == null) {
             return;
         }

@@ -62,21 +62,21 @@ public class SmartSpaceController implements Dumpable {
 
             @Override // com.android.keyguard.KeyguardUpdateMonitorCallback
             public void onTimeChanged() {
-                if (SmartSpaceController.this.mData == null || !SmartSpaceController.this.mData.hasCurrent() || SmartSpaceController.this.mData.getExpirationRemainingMillis() <= 0) {
+                if (SmartSpaceController.mData == null || !SmartSpaceController.mData.hasCurrent() || SmartSpaceController.mData.getExpirationRemainingMillis() <= 0) {
                     return;
                 }
-                SmartSpaceController.this.update();
+                SmartSpaceController.update();
             }
         };
-        this.mKeyguardMonitorCallback = keyguardUpdateMonitorCallback;
-        this.mContext = context;
+        mKeyguardMonitorCallback = keyguardUpdateMonitorCallback;
+        mContext = context;
         Handler handler2 = new Handler(Looper.getMainLooper());
-        this.mUiHandler = handler2;
-        this.mStore = new ProtoStore(context);
+        mUiHandler = handler2;
+        mStore = new ProtoStore(context);
         new HandlerThread("smartspace-background").start();
-        this.mBackgroundHandler = handler;
-        this.mAppContext = context;
-        this.mAlarmManager = alarmManager;
+        mBackgroundHandler = handler;
+        mAppContext = context;
+        mAlarmManager = alarmManager;
         if (isSmartSpaceDisabledByExperiments()) {
             return;
         }
@@ -90,7 +90,7 @@ public class SmartSpaceController implements Dumpable {
 
             @Override // android.content.BroadcastReceiver
             public void onReceive(Context context2, Intent intent) {
-                SmartSpaceController.this.onGsaChanged();
+                SmartSpaceController.onGsaChanged();
             }
         }, GSAIntents.getGsaPackageFilter("android.intent.action.PACKAGE_ADDED", "android.intent.action.PACKAGE_CHANGED", "android.intent.action.PACKAGE_REMOVED", "android.intent.action.PACKAGE_DATA_CLEARED"));
         IntentFilter intentFilter = new IntentFilter();
@@ -103,9 +103,9 @@ public class SmartSpaceController implements Dumpable {
 
     private SmartSpaceCard loadSmartSpaceData(boolean z) {
         SmartspaceProto$CardWrapper smartspaceProto$CardWrapper = new SmartspaceProto$CardWrapper();
-        ProtoStore protoStore = this.mStore;
-        if (protoStore.load("smartspace_" + this.mCurrentUserId + "_" + z, smartspaceProto$CardWrapper)) {
-            return SmartSpaceCard.fromWrapper(this.mContext, smartspaceProto$CardWrapper, !z);
+        ProtoStore protoStore = mStore;
+        if (protoStore.load("smartspace_" + mCurrentUserId + "_" + z, smartspaceProto$CardWrapper)) {
+            return SmartSpaceCard.fromWrapper(mContext, smartspaceProto$CardWrapper, !z);
         }
         return null;
     }
@@ -116,50 +116,50 @@ public class SmartSpaceController implements Dumpable {
             Log.d("SmartSpaceController", "onNewCard: " + newCardInfo);
         }
         if (newCardInfo != null) {
-            if (newCardInfo.getUserId() == this.mCurrentUserId) {
-                this.mBackgroundHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda1
+            if (newCardInfo.getUserId() == mCurrentUserId) {
+                mBackgroundHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        SmartSpaceController.this.lambda$onNewCard$2(newCardInfo);
+                        SmartSpaceController.lambda$onNewCard$2(newCardInfo);
                     }
                 });
             } else if (!z) {
             } else {
-                Log.d("SmartSpaceController", "Ignore card that belongs to another user target: " + this.mCurrentUserId + " current: " + this.mCurrentUserId);
+                Log.d("SmartSpaceController", "Ignore card that belongs to another user target: " + mCurrentUserId + " current: " + mCurrentUserId);
             }
         }
     }
 
     public /* synthetic */ void lambda$onNewCard$2(final NewCardInfo newCardInfo) {
-        SmartspaceProto$CardWrapper wrapper = newCardInfo.toWrapper(this.mContext);
-        if (!this.mHidePrivateData || !this.mHideWorkData) {
-            ProtoStore protoStore = this.mStore;
-            protoStore.store(wrapper, "smartspace_" + this.mCurrentUserId + "_" + newCardInfo.isPrimary());
+        SmartspaceProto$CardWrapper wrapper = newCardInfo.toWrapper(mContext);
+        if (!mHidePrivateData || !mHideWorkData) {
+            ProtoStore protoStore = mStore;
+            protoStore.store(wrapper, "smartspace_" + mCurrentUserId + "_" + newCardInfo.isPrimary());
         }
-        final SmartSpaceCard fromWrapper = newCardInfo.shouldDiscard() ? null : SmartSpaceCard.fromWrapper(this.mContext, wrapper, newCardInfo.isPrimary());
-        this.mUiHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda2
+        final SmartSpaceCard fromWrapper = newCardInfo.shouldDiscard() ? null : SmartSpaceCard.fromWrapper(mContext, wrapper, newCardInfo.isPrimary());
+        mUiHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda2
             @Override // java.lang.Runnable
             public final void run() {
-                SmartSpaceController.this.lambda$onNewCard$1(newCardInfo, fromWrapper);
+                SmartSpaceController.lambda$onNewCard$1(newCardInfo, fromWrapper);
             }
         });
     }
 
     public /* synthetic */ void lambda$onNewCard$1(NewCardInfo newCardInfo, SmartSpaceCard smartSpaceCard) {
         if (newCardInfo.isPrimary()) {
-            this.mData.mCurrentCard = smartSpaceCard;
+            mData.mCurrentCard = smartSpaceCard;
         } else {
-            this.mData.mWeatherCard = smartSpaceCard;
+            mData.mWeatherCard = smartSpaceCard;
         }
-        this.mData.handleExpire();
+        mData.handleExpire();
         update();
     }
 
     private void clearStore() {
-        ProtoStore protoStore = this.mStore;
-        protoStore.store(null, "smartspace_" + this.mCurrentUserId + "_true");
-        ProtoStore protoStore2 = this.mStore;
-        protoStore2.store(null, "smartspace_" + this.mCurrentUserId + "_false");
+        ProtoStore protoStore = mStore;
+        protoStore.store(null, "smartspace_" + mCurrentUserId + "_true");
+        ProtoStore protoStore2 = mStore;
+        protoStore2.store(null, "smartspace_" + mCurrentUserId + "_false");
     }
 
     public void update() {
@@ -168,31 +168,31 @@ public class SmartSpaceController implements Dumpable {
         if (z) {
             Log.d("SmartSpaceController", "update");
         }
-        if (this.mAlarmRegistered) {
-            this.mAlarmManager.cancel(this.mExpireAlarmAction);
-            this.mAlarmRegistered = false;
+        if (mAlarmRegistered) {
+            mAlarmManager.cancel(mExpireAlarmAction);
+            mAlarmRegistered = false;
         }
-        long expiresAtMillis = this.mData.getExpiresAtMillis();
+        long expiresAtMillis = mData.getExpiresAtMillis();
         if (expiresAtMillis > 0) {
-            this.mAlarmManager.set(0, expiresAtMillis, "SmartSpace", this.mExpireAlarmAction, this.mUiHandler);
-            this.mAlarmRegistered = true;
+            mAlarmManager.set(0, expiresAtMillis, "SmartSpace", mExpireAlarmAction, mUiHandler);
+            mAlarmRegistered = true;
         }
-        if (this.mListeners != null) {
+        if (mListeners != null) {
             if (z) {
-                Log.d("SmartSpaceController", "notifying listeners data=" + this.mData);
+                Log.d("SmartSpaceController", "notifying listeners data=" + mData);
             }
-            ArrayList arrayList = new ArrayList(this.mListeners);
+            ArrayList arrayList = new ArrayList(mListeners);
             int size = arrayList.size();
             for (int i = 0; i < size; i++) {
-                ((SmartSpaceUpdateListener) arrayList.get(i)).onSmartSpaceUpdated(this.mData);
+                ((SmartSpaceUpdateListener) arrayList.get(i)).onSmartSpaceUpdated(mData);
             }
         }
     }
 
     public void onExpire(boolean z) {
         Assert.isMainThread();
-        this.mAlarmRegistered = false;
-        if (this.mData.handleExpire() || z) {
+        mAlarmRegistered = false;
+        if (mData.handleExpire() || z) {
             update();
         } else if (!DEBUG) {
         } else {
@@ -201,21 +201,21 @@ public class SmartSpaceController implements Dumpable {
     }
 
     public void setHideSensitiveData(boolean z, boolean z2) {
-        if (this.mHidePrivateData == z && this.mHideWorkData == z2) {
+        if (mHidePrivateData == z && mHideWorkData == z2) {
             return;
         }
-        this.mHidePrivateData = z;
-        this.mHideWorkData = z2;
-        ArrayList arrayList = new ArrayList(this.mListeners);
+        mHidePrivateData = z;
+        mHideWorkData = z2;
+        ArrayList arrayList = new ArrayList(mListeners);
         boolean z3 = false;
         for (int i = 0; i < arrayList.size(); i++) {
             ((SmartSpaceUpdateListener) arrayList.get(i)).onSensitiveModeChanged(z, z2);
         }
-        if (this.mData.getCurrentCard() == null) {
+        if (mData.getCurrentCard() == null) {
             return;
         }
-        boolean z4 = this.mHidePrivateData && !this.mData.getCurrentCard().isWorkProfile();
-        if (this.mHideWorkData && this.mData.getCurrentCard().isWorkProfile()) {
+        boolean z4 = mHidePrivateData && !mData.getCurrentCard().isWorkProfile();
+        if (mHideWorkData && mData.getCurrentCard().isWorkProfile()) {
             z3 = true;
         }
         if (!z4 && !z3) {
@@ -229,24 +229,24 @@ public class SmartSpaceController implements Dumpable {
             Log.d("SmartSpaceController", "onGsaChanged");
         }
         if (UserHandle.myUserId() == 0) {
-            this.mAppContext.sendBroadcast(new Intent("com.google.android.systemui.smartspace.ENABLE_UPDATE").setPackage("com.google.android.googlequicksearchbox").addFlags(268435456));
-            this.mSmartSpaceEnabledBroadcastSent = true;
+            mAppContext.sendBroadcast(new Intent("com.google.android.systemui.smartspace.ENABLE_UPDATE").setPackage("com.google.android.googlequicksearchbox").addFlags(268435456));
+            mSmartSpaceEnabledBroadcastSent = true;
         }
-        ArrayList arrayList = new ArrayList(this.mListeners);
+        ArrayList arrayList = new ArrayList(mListeners);
         for (int i = 0; i < arrayList.size(); i++) {
             ((SmartSpaceUpdateListener) arrayList.get(i)).onGsaChanged();
         }
     }
 
     public void reloadData() {
-        this.mData.mCurrentCard = loadSmartSpaceData(true);
-        this.mData.mWeatherCard = loadSmartSpaceData(false);
+        mData.mCurrentCard = loadSmartSpaceData(true);
+        mData.mWeatherCard = loadSmartSpaceData(false);
         update();
     }
 
     private boolean isSmartSpaceDisabledByExperiments() {
         boolean z;
-        String string = Settings.Global.getString(this.mContext.getContentResolver(), "always_on_display_constants");
+        String string = Settings.Global.getString(mContext.getContentResolver(), "always_on_display_constants");
         KeyValueListParser keyValueListParser = new KeyValueListParser(',');
         try {
             keyValueListParser.setString(string);
@@ -262,9 +262,9 @@ public class SmartSpaceController implements Dumpable {
     public void dump(FileDescriptor fileDescriptor, PrintWriter printWriter, String[] strArr) {
         printWriter.println();
         printWriter.println("SmartspaceController");
-        printWriter.println("  initial broadcast: " + this.mSmartSpaceEnabledBroadcastSent);
-        printWriter.println("  weather " + this.mData.mWeatherCard);
-        printWriter.println("  current " + this.mData.mCurrentCard);
+        printWriter.println("  initial broadcast: " + mSmartSpaceEnabledBroadcastSent);
+        printWriter.println("  weather " + mData.mWeatherCard);
+        printWriter.println("  current " + mData.mCurrentCard);
         printWriter.println("serialized:");
         printWriter.println("  weather " + loadSmartSpaceData(false));
         printWriter.println("  current " + loadSmartSpaceData(true));
@@ -273,19 +273,19 @@ public class SmartSpaceController implements Dumpable {
 
     public void addListener(SmartSpaceUpdateListener smartSpaceUpdateListener) {
         Assert.isMainThread();
-        this.mListeners.add(smartSpaceUpdateListener);
-        SmartSpaceData smartSpaceData = this.mData;
+        mListeners.add(smartSpaceUpdateListener);
+        SmartSpaceData smartSpaceData = mData;
         if (smartSpaceData != null && smartSpaceUpdateListener != null) {
             smartSpaceUpdateListener.onSmartSpaceUpdated(smartSpaceData);
         }
         if (smartSpaceUpdateListener != null) {
-            smartSpaceUpdateListener.onSensitiveModeChanged(this.mHidePrivateData, this.mHideWorkData);
+            smartSpaceUpdateListener.onSensitiveModeChanged(mHidePrivateData, mHideWorkData);
         }
     }
 
     public void removeListener(SmartSpaceUpdateListener smartSpaceUpdateListener) {
         Assert.isMainThread();
-        this.mListeners.remove(smartSpaceUpdateListener);
+        mListeners.remove(smartSpaceUpdateListener);
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -300,11 +300,11 @@ public class SmartSpaceController implements Dumpable {
                 Log.d("SmartSpaceController", "Switching user: " + intent.getAction() + " uid: " + UserHandle.myUserId());
             }
             if (intent.getAction().equals("android.intent.action.USER_SWITCHED")) {
-                SmartSpaceController.this.mCurrentUserId = intent.getIntExtra("android.intent.extra.user_handle", -1);
-                SmartSpaceController.this.mData.clear();
-                SmartSpaceController.this.onExpire(true);
+                SmartSpaceController.mCurrentUserId = intent.getIntExtra("android.intent.extra.user_handle", -1);
+                SmartSpaceController.mData.clear();
+                SmartSpaceController.onExpire(true);
             }
-            SmartSpaceController.this.onExpire(true);
+            SmartSpaceController.onExpire(true);
         }
     }
 }

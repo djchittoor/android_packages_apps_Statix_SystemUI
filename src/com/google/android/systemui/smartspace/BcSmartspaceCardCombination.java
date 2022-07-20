@@ -31,8 +31,8 @@ public class BcSmartspaceCardCombination extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mFirstSubCard = (ConstraintLayout) findViewById(R.id.first_sub_card);
-        this.mSecondSubCard = (ConstraintLayout) findViewById(R.id.second_sub_card);
+        mFirstSubCard = (ConstraintLayout) findViewById(R.id.first_sub_card);
+        mSecondSubCard = (ConstraintLayout) findViewById(R.id.second_sub_card);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -43,10 +43,10 @@ public class BcSmartspaceCardCombination extends BcSmartspaceCardSecondary {
         if (actionChips == null || actionChips.size() < 1 || (smartspaceAction = (SmartspaceAction) actionChips.get(0)) == null) {
             return false;
         }
-        ConstraintLayout constraintLayout = this.mFirstSubCard;
+        ConstraintLayout constraintLayout = mFirstSubCard;
         boolean z = constraintLayout != null && fillSubCard(constraintLayout, smartspaceTarget, smartspaceAction, smartspaceEventNotifier, bcSmartspaceCardLoggingInfo);
         boolean z2 = actionChips.size() > 1 && actionChips.get(1) != null;
-        boolean fillSubCard = z2 ? fillSubCard(this.mSecondSubCard, smartspaceTarget, (SmartspaceAction) actionChips.get(1), smartspaceEventNotifier, bcSmartspaceCardLoggingInfo) : true;
+        boolean fillSubCard = z2 ? fillSubCard(mSecondSubCard, smartspaceTarget, (SmartspaceAction) actionChips.get(1), smartspaceEventNotifier, bcSmartspaceCardLoggingInfo) : true;
         if (getLayoutParams() instanceof LinearLayout.LayoutParams) {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) getLayoutParams();
             if (z2 && fillSubCard) {

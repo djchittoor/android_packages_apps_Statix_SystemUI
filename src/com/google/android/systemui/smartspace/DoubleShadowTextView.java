@@ -28,26 +28,26 @@ public class DoubleShadowTextView extends TextView {
     public DoubleShadowTextView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         updateDrawShadow(getCurrentTextColor());
-        this.mKeyShadowBlur = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_radius);
-        this.mKeyShadowOffsetX = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dx);
-        this.mKeyShadowOffsetY = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dy);
-        this.mKeyShadowColor = context.getResources().getColor(R.color.key_text_shadow_color);
-        this.mAmbientShadowBlur = context.getResources().getDimensionPixelSize(R.dimen.ambient_text_shadow_radius);
-        this.mAmbientShadowColor = context.getResources().getColor(R.color.ambient_text_shadow_color);
+        mKeyShadowBlur = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_radius);
+        mKeyShadowOffsetX = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dx);
+        mKeyShadowOffsetY = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dy);
+        mKeyShadowColor = context.getResources().getColor(R.color.key_text_shadow_color);
+        mAmbientShadowBlur = context.getResources().getDimensionPixelSize(R.dimen.ambient_text_shadow_radius);
+        mAmbientShadowColor = context.getResources().getColor(R.color.ambient_text_shadow_color);
     }
 
     @Override // android.widget.TextView, android.view.View
     public void onDraw(Canvas canvas) {
-        if (!this.mDrawShadow) {
+        if (!mDrawShadow) {
             getPaint().clearShadowLayer();
             super.onDraw(canvas);
             return;
         }
-        getPaint().setShadowLayer(this.mAmbientShadowBlur, 0.0f, 0.0f, this.mAmbientShadowColor);
+        getPaint().setShadowLayer(mAmbientShadowBlur, 0.0f, 0.0f, mAmbientShadowColor);
         super.onDraw(canvas);
         canvas.save();
         canvas.clipRect(getScrollX(), getScrollY() + getExtendedPaddingTop(), getScrollX() + getWidth(), getScrollY() + getHeight());
-        getPaint().setShadowLayer(this.mKeyShadowBlur, this.mKeyShadowOffsetX, this.mKeyShadowOffsetY, this.mKeyShadowColor);
+        getPaint().setShadowLayer(mKeyShadowBlur, mKeyShadowOffsetX, mKeyShadowOffsetY, mKeyShadowColor);
         super.onDraw(canvas);
         canvas.restore();
     }
@@ -59,6 +59,6 @@ public class DoubleShadowTextView extends TextView {
     }
 
     private void updateDrawShadow(int i) {
-        this.mDrawShadow = ColorUtils.calculateLuminance(i) > 0.5d;
+        mDrawShadow = ColorUtils.calculateLuminance(i) > 0.5d;
     }
 }

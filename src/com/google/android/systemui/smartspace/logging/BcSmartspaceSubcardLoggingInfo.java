@@ -9,31 +9,31 @@ public class BcSmartspaceSubcardLoggingInfo {
 
     private BcSmartspaceSubcardLoggingInfo(Builder builder) {
         if (builder.mSubcards == null) {
-            this.mSubcards = new ArrayList();
+            mSubcards = new ArrayList();
         } else {
-            this.mSubcards = builder.mSubcards;
+            mSubcards = builder.mSubcards;
         }
-        this.mClickedSubcardIndex = builder.mClickedSubcardIndex;
+        mClickedSubcardIndex = builder.mClickedSubcardIndex;
     }
 
     public List<BcSmartspaceCardMetadataLoggingInfo> getSubcards() {
-        return this.mSubcards;
+        return mSubcards;
     }
 
     public void setSubcards(List<BcSmartspaceCardMetadataLoggingInfo> list) {
-        this.mSubcards = list;
+        mSubcards = list;
     }
 
     public int getClickedSubcardIndex() {
-        return this.mClickedSubcardIndex;
+        return mClickedSubcardIndex;
     }
 
     public void setClickedSubcardIndex(int i) {
-        this.mClickedSubcardIndex = i;
+        mClickedSubcardIndex = i;
     }
 
     public String toString() {
-        return "BcSmartspaceSubcardLoggingInfo{mSubcards=" + this.mSubcards + ", mClickedSubcardIndex=" + this.mClickedSubcardIndex + '}';
+        return "BcSmartspaceSubcardLoggingInfo{mSubcards=" + mSubcards + ", mClickedSubcardIndex=" + mClickedSubcardIndex + '}';
     }
 
     public static class Builder {
@@ -41,12 +41,12 @@ public class BcSmartspaceSubcardLoggingInfo {
         private List<BcSmartspaceCardMetadataLoggingInfo> mSubcards;
 
         public Builder setSubcards(List<BcSmartspaceCardMetadataLoggingInfo> list) {
-            this.mSubcards = list;
+            mSubcards = list;
             return this;
         }
 
         public Builder setClickedSubcardIndex(int i) {
-            this.mClickedSubcardIndex = i;
+            mClickedSubcardIndex = i;
             return this;
         }
 

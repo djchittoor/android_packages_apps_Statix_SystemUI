@@ -37,24 +37,24 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
         Bundle extras = baseAction == null ? null : baseAction.getExtras();
         boolean z = true;
         if (extras != null) {
-            this.mBoardingPassUI.setVisibility(8);
-            this.mCardPromptView.setVisibility(8);
-            this.mCardPromptLogoView.setVisibility(8);
+            mBoardingPassUI.setVisibility(8);
+            mCardPromptView.setVisibility(8);
+            mCardPromptLogoView.setVisibility(8);
             if (extras.containsKey("cardPrompt") || extras.containsKey("cardPromptBitmap")) {
                 if (extras.containsKey("cardPrompt")) {
                     setCardPrompt(extras.getString("cardPrompt"));
-                    this.mCardPromptView.setVisibility(0);
+                    mCardPromptView.setVisibility(0);
                 }
                 if (!extras.containsKey("cardPromptBitmap")) {
                     return true;
                 }
                 setCardPromptLogo((Bitmap) extras.get("cardPromptBitmap"));
-                this.mCardPromptLogoView.setVisibility(0);
+                mCardPromptLogoView.setVisibility(0);
                 return true;
             }
             if (extras.containsKey("qrCodeBitmap")) {
                 setFlightQrCode((Bitmap) extras.get("qrCodeBitmap"));
-                this.mBoardingPassUI.setVisibility(0);
+                mBoardingPassUI.setVisibility(0);
             } else {
                 z = false;
             }
@@ -76,19 +76,19 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mCardPromptView = (TextView) findViewById(R.id.card_prompt);
-        this.mCardPromptLogoView = (ImageView) findViewById(R.id.card_prompt_logo);
+        mCardPromptView = (TextView) findViewById(R.id.card_prompt);
+        mCardPromptLogoView = (ImageView) findViewById(R.id.card_prompt_logo);
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.boarding_pass_ui);
-        this.mBoardingPassUI = constraintLayout;
+        mBoardingPassUI = constraintLayout;
         if (constraintLayout != null) {
-            this.mGateValueView = (TextView) constraintLayout.findViewById(R.id.gate_value);
-            this.mSeatValueView = (TextView) this.mBoardingPassUI.findViewById(R.id.seat_value);
-            this.mQrCodeView = (ImageView) this.mBoardingPassUI.findViewById(R.id.flight_qr_code);
+            mGateValueView = (TextView) constraintLayout.findViewById(R.id.gate_value);
+            mSeatValueView = (TextView) mBoardingPassUI.findViewById(R.id.seat_value);
+            mQrCodeView = (ImageView) mBoardingPassUI.findViewById(R.id.flight_qr_code);
         }
     }
 
     protected void setCardPrompt(String str) {
-        TextView textView = this.mCardPromptView;
+        TextView textView = mCardPromptView;
         if (textView == null) {
             Log.w("BcSmartspaceCardFlight", "No card prompt view to update");
         } else {
@@ -97,7 +97,7 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
     }
 
     protected void setCardPromptLogo(Bitmap bitmap) {
-        ImageView imageView = this.mCardPromptLogoView;
+        ImageView imageView = mCardPromptLogoView;
         if (imageView == null) {
             Log.w("BcSmartspaceCardFlight", "No card prompt logo view to update");
         } else {
@@ -106,7 +106,7 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
     }
 
     void setFlightGateText(CharSequence charSequence) {
-        TextView textView = this.mGateValueView;
+        TextView textView = mGateValueView;
         if (textView == null) {
             Log.w("BcSmartspaceCardFlight", "No flight gate value view to update");
         } else {
@@ -115,7 +115,7 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
     }
 
     void setFlightSeatText(CharSequence charSequence) {
-        TextView textView = this.mSeatValueView;
+        TextView textView = mSeatValueView;
         if (textView == null) {
             Log.w("BcSmartspaceCardFlight", "No flight seat value view to update");
         } else {
@@ -124,7 +124,7 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
     }
 
     void setFlightQrCode(Bitmap bitmap) {
-        ImageView imageView = this.mQrCodeView;
+        ImageView imageView = mQrCodeView;
         if (imageView == null) {
             Log.w("BcSmartspaceCardFlight", "No flight QR code view to update");
         } else {

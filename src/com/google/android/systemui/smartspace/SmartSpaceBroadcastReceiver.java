@@ -15,7 +15,7 @@ public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
     private final SmartSpaceController mController;
 
     public SmartSpaceBroadcastReceiver(SmartSpaceController smartSpaceController) {
-        this.mController = smartSpaceController;
+        mController = smartSpaceController;
     }
 
     @Override // android.content.BroadcastReceiver
@@ -69,6 +69,6 @@ public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
             Log.w("SmartSpaceReceiver", "Cannot find GSA", e);
             packageInfo = null;
         }
-        this.mController.onNewCard(new NewCardInfo(smartspaceCard, intent, z, currentTimeMillis, packageInfo));
+        mController.onNewCard(new NewCardInfo(smartspaceCard, intent, z, currentTimeMillis, packageInfo));
     }
 }

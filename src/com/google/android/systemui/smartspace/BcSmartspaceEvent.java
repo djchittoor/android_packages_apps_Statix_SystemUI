@@ -12,11 +12,11 @@ public enum BcSmartspaceEvent implements EventEnum {
     private final int mId;
 
     BcSmartspaceEvent(int i) {
-        this.mId = i;
+        mId = i;
     }
 
     @Override // com.google.android.systemui.smartspace.EventEnum
     public int getId() {
-        return this.mId;
+        return mId;
     }
 }

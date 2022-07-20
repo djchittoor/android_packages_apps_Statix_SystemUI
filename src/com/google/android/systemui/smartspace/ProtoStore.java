@@ -12,17 +12,17 @@ public class ProtoStore {
     private final Context mContext;
 
     public ProtoStore(Context context) {
-        this.mContext = context.getApplicationContext();
+        mContext = context.getApplicationContext();
     }
 
     public void store(MessageNano messageNano, String str) {
         try {
-            FileOutputStream openFileOutput = this.mContext.openFileOutput(str, 0);
+            FileOutputStream openFileOutput = mContext.openFileOutput(str, 0);
             if (messageNano != null) {
                 openFileOutput.write(MessageNano.toByteArray(messageNano));
             } else {
                 Log.d("ProtoStore", "deleting " + str);
-                this.mContext.deleteFile(str);
+                mContext.deleteFile(str);
             }
             if (openFileOutput == null) {
                 return;
@@ -36,7 +36,7 @@ public class ProtoStore {
     }
 
     public <T extends MessageNano> boolean load(String str, T t) {
-        File fileStreamPath = this.mContext.getFileStreamPath(str);
+        File fileStreamPath = mContext.getFileStreamPath(str);
         try {
             FileInputStream fileInputStream = new FileInputStream(fileStreamPath);
             try {

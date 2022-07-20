@@ -12,15 +12,15 @@ public final class KeyguardSmartspaceController_Factory implements Factory<Keygu
     private final Provider<KeyguardZenAlarmViewController> zenControllerProvider;
 
     public KeyguardSmartspaceController_Factory(Provider<Context> provider, Provider<FeatureFlags> provider2, Provider<KeyguardZenAlarmViewController> provider3, Provider<KeyguardMediaViewController> provider4) {
-        this.contextProvider = provider;
-        this.featureFlagsProvider = provider2;
-        this.zenControllerProvider = provider3;
-        this.mediaControllerProvider = provider4;
+        contextProvider = provider;
+        featureFlagsProvider = provider2;
+        zenControllerProvider = provider3;
+        mediaControllerProvider = provider4;
     }
 
     @Override // javax.inject.Provider
     public KeyguardSmartspaceController get() {
-        return newInstance(this.contextProvider.get(), this.featureFlagsProvider.get(), this.zenControllerProvider.get(), this.mediaControllerProvider.get());
+        return newInstance(contextProvider.get(), featureFlagsProvider.get(), zenControllerProvider.get(), mediaControllerProvider.get());
     }
 
     public static KeyguardSmartspaceController_Factory create(Provider<Context> provider, Provider<FeatureFlags> provider2, Provider<KeyguardZenAlarmViewController> provider3, Provider<KeyguardMediaViewController> provider4) {
