@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
@@ -66,9 +66,9 @@ public class BcSmartspaceCardLoyalty extends BcSmartspaceCardGenericImage {
     @Override // com.google.android.systemui.smartspace.BcSmartspaceCardGenericImage, android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mLoyaltyProgramLogoView = (ImageView) findViewById(R$id.loyalty_program_logo);
-        this.mLoyaltyProgramNameView = (TextView) findViewById(R$id.loyalty_program_name);
-        this.mCardPromptView = (TextView) findViewById(R$id.card_prompt);
+        this.mLoyaltyProgramLogoView = (ImageView) findViewById(R.id.loyalty_program_logo);
+        this.mLoyaltyProgramNameView = (TextView) findViewById(R.id.loyalty_program_name);
+        this.mCardPromptView = (TextView) findViewById(R.id.card_prompt);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */

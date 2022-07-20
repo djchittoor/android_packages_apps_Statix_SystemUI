@@ -5,7 +5,7 @@ import android.app.smartspace.SmartspaceTargetEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.android.systemui.bcsmartspace.R$layout;
+import com.android.systemui.bcsmartspace.R.layout;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -72,7 +72,7 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
 
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public BcSmartspaceDataPlugin.SmartspaceView getView(ViewGroup viewGroup) {
-        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R$layout.smartspace_enhanced, viewGroup, false);
+        View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.smartspace_enhanced, viewGroup, false);
         inflate.addOnAttachStateChangeListener(this.mStateChangeListener);
         return (BcSmartspaceDataPlugin.SmartspaceView) inflate;
     }

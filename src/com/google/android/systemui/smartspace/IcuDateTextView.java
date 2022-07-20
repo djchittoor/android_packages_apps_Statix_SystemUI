@@ -9,7 +9,7 @@ import android.icu.text.DisplayContext;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import com.android.systemui.bcsmartspace.R$string;
+import com.android.systemui.bcsmartspace.R.string;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -95,7 +95,7 @@ public class IcuDateTextView extends DoubleShadowTextView {
             return;
         }
         if (this.mFormatter == null || z) {
-            DateFormat instanceForSkeleton = DateFormat.getInstanceForSkeleton(getContext().getString(R$string.smartspace_icu_date_pattern), Locale.getDefault());
+            DateFormat instanceForSkeleton = DateFormat.getInstanceForSkeleton(getContext().getString(R.string.smartspace_icu_date_pattern), Locale.getDefault());
             this.mFormatter = instanceForSkeleton;
             instanceForSkeleton.setContext(DisplayContext.CAPITALIZATION_FOR_BEGINNING_OF_SENTENCE);
         }

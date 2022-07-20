@@ -9,7 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import com.android.internal.graphics.ColorUtils;
-import com.android.systemui.bcsmartspace.R$dimen;
+import com.android.systemui.bcsmartspace.R.dimen;
 
 public class DoubleShadowIconDrawable extends LayerDrawable {
     private Drawable mIconDrawable;
@@ -17,7 +17,7 @@ public class DoubleShadowIconDrawable extends LayerDrawable {
 
     public DoubleShadowIconDrawable(Drawable drawable, Context context) {
         super(new Drawable[0]);
-        int dimensionPixelSize = context.getResources().getDimensionPixelSize(R$dimen.enhanced_smartspace_icon_size);
+        int dimensionPixelSize = context.getResources().getDimensionPixelSize(R.dimen.enhanced_smartspace_icon_size);
         generateIconAndShadow(drawable, context, dimensionPixelSize, dimensionPixelSize, dimensionPixelSize);
     }
 
@@ -39,10 +39,10 @@ public class DoubleShadowIconDrawable extends LayerDrawable {
     private static Drawable generateShadowDrawable(Bitmap bitmap, Context context) {
         Bitmap createBitmap = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(createBitmap);
-        float dimensionPixelSize = context.getResources().getDimensionPixelSize(R$dimen.ambient_text_shadow_radius);
-        float dimensionPixelSize2 = context.getResources().getDimensionPixelSize(R$dimen.key_text_shadow_radius);
-        float dimensionPixelSize3 = context.getResources().getDimensionPixelSize(R$dimen.key_text_shadow_dx);
-        float dimensionPixelSize4 = context.getResources().getDimensionPixelSize(R$dimen.key_text_shadow_dy);
+        float dimensionPixelSize = context.getResources().getDimensionPixelSize(R.dimen.ambient_text_shadow_radius);
+        float dimensionPixelSize2 = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_radius);
+        float dimensionPixelSize3 = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dx);
+        float dimensionPixelSize4 = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dy);
         int[] iArr = new int[2];
         Paint paint = new Paint(3);
         Paint paint2 = new Paint(3);

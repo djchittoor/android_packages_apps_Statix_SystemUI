@@ -17,9 +17,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import com.android.launcher3.icons.GraphicsUtils;
-import com.android.systemui.bcsmartspace.R$dimen;
-import com.android.systemui.bcsmartspace.R$id;
-import com.android.systemui.bcsmartspace.R$string;
+import com.android.systemui.bcsmartspace.R.dimen;
+import com.android.systemui.bcsmartspace.R.id;
+import com.android.systemui.bcsmartspace.R.string;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardMetadataLoggingInfo;
@@ -68,17 +68,17 @@ public class BcSmartspaceCard extends LinearLayout {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mDateView = (IcuDateTextView) findViewById(R$id.date);
-        this.mTitleTextView = (TextView) findViewById(R$id.title_text);
-        this.mSubtitleTextView = (TextView) findViewById(R$id.subtitle_text);
-        this.mBaseActionIconSubtitleView = (DoubleShadowTextView) findViewById(R$id.base_action_icon_subtitle);
-        this.mExtrasGroup = (ViewGroup) findViewById(R$id.smartspace_extras_group);
+        this.mDateView = (IcuDateTextView) findViewById(R.id.date);
+        this.mTitleTextView = (TextView) findViewById(R.id.title_text);
+        this.mSubtitleTextView = (TextView) findViewById(R.id.subtitle_text);
+        this.mBaseActionIconSubtitleView = (DoubleShadowTextView) findViewById(R.id.base_action_icon_subtitle);
+        this.mExtrasGroup = (ViewGroup) findViewById(R.id.smartspace_extras_group);
         this.mTopPadding = getPaddingTop();
         ViewGroup viewGroup = this.mExtrasGroup;
         if (viewGroup != null) {
-            this.mDndImageView = (ImageView) viewGroup.findViewById(R$id.dnd_icon);
-            this.mNextAlarmImageView = (ImageView) this.mExtrasGroup.findViewById(R$id.alarm_icon);
-            this.mNextAlarmTextView = (TextView) this.mExtrasGroup.findViewById(R$id.alarm_text);
+            this.mDndImageView = (ImageView) viewGroup.findViewById(R.id.dnd_icon);
+            this.mNextAlarmImageView = (ImageView) this.mExtrasGroup.findViewById(R.id.alarm_icon);
+            this.mNextAlarmTextView = (TextView) this.mExtrasGroup.findViewById(R.id.alarm_text);
         }
     }
 
@@ -187,10 +187,10 @@ public class BcSmartspaceCard extends LinearLayout {
             removeViewAt(1);
         }
         if (bcSmartspaceCardSecondary != null) {
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R$dimen.enhanced_smartspace_height));
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.dimen.enhanced_smartspace_height));
             layoutParams.weight = 3.0f;
-            layoutParams.setMarginStart(getResources().getDimensionPixelSize(R$dimen.enhanced_smartspace_secondary_card_start_margin));
-            layoutParams.setMarginEnd(getResources().getDimensionPixelSize(R$dimen.enhanced_smartspace_secondary_card_end_margin));
+            layoutParams.setMarginStart(getResources().getDimensionPixelSize(R.dimen.enhanced_smartspace_secondary_card_start_margin));
+            layoutParams.setMarginEnd(getResources().getDimensionPixelSize(R.dimen.enhanced_smartspace_secondary_card_end_margin));
             addView(bcSmartspaceCardSecondary, 1, layoutParams);
         }
     }
@@ -361,7 +361,7 @@ public class BcSmartspaceCard extends LinearLayout {
             String maybeAppendHolidayInfoToNextAlarm = maybeAppendHolidayInfoToNextAlarm(str, smartspaceTarget);
             this.mNextAlarmImageView.setImageDrawable(new DoubleShadowIconDrawable(drawable.mutate(), getContext()));
             this.mNextAlarmImageView.setVisibility(0);
-            this.mNextAlarmTextView.setContentDescription(getContext().getString(R$string.accessibility_next_alarm, maybeAppendHolidayInfoToNextAlarm));
+            this.mNextAlarmTextView.setContentDescription(getContext().getString(R.string.accessibility_next_alarm, maybeAppendHolidayInfoToNextAlarm));
             this.mNextAlarmTextView.setText(maybeAppendHolidayInfoToNextAlarm);
             this.mNextAlarmTextView.setVisibility(0);
             setNextAlarmClickListener(this.mNextAlarmImageView, smartspaceTarget);
@@ -429,7 +429,7 @@ public class BcSmartspaceCard extends LinearLayout {
         if (TextUtils.isEmpty(charSequence)) {
             charSequence = charSequence2;
         } else if (!TextUtils.isEmpty(charSequence2)) {
-            charSequence = ((LinearLayout) this).mContext.getString(R$string.generic_smartspace_concatenated_desc, charSequence2, charSequence);
+            charSequence = ((LinearLayout) this).mContext.getString(R.string.generic_smartspace_concatenated_desc, charSequence2, charSequence);
         }
         textView.setContentDescription(charSequence);
     }

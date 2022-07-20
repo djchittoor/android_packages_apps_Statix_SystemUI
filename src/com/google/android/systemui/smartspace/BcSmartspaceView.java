@@ -22,8 +22,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.viewpager.widget.ViewPager;
-import com.android.systemui.bcsmartspace.R$dimen;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.dimen;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.plugins.FalsingManager;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLogger;
@@ -153,8 +153,8 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mViewPager = (ViewPager) findViewById(R$id.smartspace_card_pager);
-        this.mPageIndicator = (PageIndicator) findViewById(R$id.smartspace_page_indicator);
+        this.mViewPager = (ViewPager) findViewById(R.id.smartspace_card_pager);
+        this.mPageIndicator = (PageIndicator) findViewById(R.id.smartspace_page_indicator);
     }
 
     @Override // android.view.ViewGroup, android.view.View
@@ -188,7 +188,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
     @Override // android.widget.FrameLayout, android.view.View
     protected void onMeasure(int i, int i2) {
         int size = View.MeasureSpec.getSize(i2);
-        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R$dimen.enhanced_smartspace_height);
+        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.enhanced_smartspace_height);
         if (size > 0 && size < dimensionPixelSize) {
             float f = size;
             float f2 = dimensionPixelSize;
@@ -287,7 +287,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
             bcSmartspaceCard.measure(View.MeasureSpec.makeMeasureSpec(this.mViewPager.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(this.mViewPager.getHeight(), 1073741824));
             bcSmartspaceCard.layout(this.mViewPager.getLeft(), this.mViewPager.getTop(), this.mViewPager.getRight(), this.mViewPager.getBottom());
             AnimatorSet animatorSet = new AnimatorSet();
-            float dimension = getContext().getResources().getDimension(R$dimen.enhanced_smartspace_dismiss_margin);
+            float dimension = getContext().getResources().getDimension(R.dimen.enhanced_smartspace_dismiss_margin);
             animatorSet.play(ObjectAnimator.ofFloat(bcSmartspaceCard, View.TRANSLATION_Y, 0.0f, (-getHeight()) - dimension));
             animatorSet.play(ObjectAnimator.ofFloat(bcSmartspaceCard, View.ALPHA, 1.0f, 0.0f));
             animatorSet.play(ObjectAnimator.ofFloat(this.mViewPager, View.TRANSLATION_Y, getHeight() + dimension, 0.0f));

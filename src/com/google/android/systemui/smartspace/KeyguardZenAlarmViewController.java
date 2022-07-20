@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.text.format.DateFormat;
 import android.view.View;
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.systemui.R$drawable;
-import com.android.systemui.R$string;
+import com.android.systemui.R.drawable;
+import com.android.systemui.R.string;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.statusbar.policy.NextAlarmController;
 import com.android.systemui.statusbar.policy.ZenModeController;
@@ -68,7 +68,7 @@ public final class KeyguardZenAlarmViewController {
         this.alarmManager = alarmManager;
         this.nextAlarmController = nextAlarmController;
         this.handler = handler;
-        this.alarmImage = context.getResources().getDrawable(R$drawable.ic_access_alarms_big, null);
+        this.alarmImage = context.getResources().getDrawable(R.drawable.ic_access_alarms_big, null);
     }
 
     public static final /* synthetic */ void access$updateNextAlarm(KeyguardZenAlarmViewController keyguardZenAlarmViewController) {
@@ -137,7 +137,7 @@ public final class KeyguardZenAlarmViewController {
     }
 
     private final Drawable loadDndImage() {
-        Drawable drawable = this.context.getResources().getDrawable(R$drawable.stat_sys_dnd, null);
+        Drawable drawable = this.context.getResources().getDrawable(R.drawable.stat_sys_dnd, null);
         Objects.requireNonNull(drawable, "null cannot be cast to non-null type android.graphics.drawable.InsetDrawable");
         Drawable drawable2 = ((InsetDrawable) drawable).getDrawable();
         Intrinsics.checkNotNullExpressionValue(drawable2, "withInsets.getDrawable()");
@@ -147,7 +147,7 @@ public final class KeyguardZenAlarmViewController {
     @VisibleForTesting
     public final void updateDnd() {
         if (this.zenModeController.getZen() != 0) {
-            String string = this.context.getResources().getString(R$string.accessibility_quick_settings_dnd);
+            String string = this.context.getResources().getString(R.string.accessibility_quick_settings_dnd);
             for (BcSmartspaceDataPlugin.SmartspaceView smartspaceView : this.smartspaceViews) {
                 smartspaceView.setDnd(this.dndImage, string);
             }

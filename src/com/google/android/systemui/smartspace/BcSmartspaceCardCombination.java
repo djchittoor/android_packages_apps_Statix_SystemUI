@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.List;
@@ -31,8 +31,8 @@ public class BcSmartspaceCardCombination extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mFirstSubCard = (ConstraintLayout) findViewById(R$id.first_sub_card);
-        this.mSecondSubCard = (ConstraintLayout) findViewById(R$id.second_sub_card);
+        this.mFirstSubCard = (ConstraintLayout) findViewById(R.id.first_sub_card);
+        this.mSecondSubCard = (ConstraintLayout) findViewById(R.id.second_sub_card);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
@@ -62,8 +62,8 @@ public class BcSmartspaceCardCombination extends BcSmartspaceCardSecondary {
     /* JADX INFO: Access modifiers changed from: protected */
     public boolean fillSubCard(ConstraintLayout constraintLayout, SmartspaceTarget smartspaceTarget, SmartspaceAction smartspaceAction, BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier, BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo) {
         boolean z;
-        TextView textView = (TextView) constraintLayout.findViewById(R$id.sub_card_text);
-        ImageView imageView = (ImageView) constraintLayout.findViewById(R$id.sub_card_icon);
+        TextView textView = (TextView) constraintLayout.findViewById(R.id.sub_card_text);
+        ImageView imageView = (ImageView) constraintLayout.findViewById(R.id.sub_card_icon);
         if (textView == null) {
             Log.w("BcSmartspaceCardCombination", "No sub-card text field to update");
             return false;

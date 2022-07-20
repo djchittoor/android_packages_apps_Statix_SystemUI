@@ -7,9 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
-import com.android.systemui.R$dimen;
-import com.android.systemui.R$plurals;
-import com.android.systemui.R$string;
+import com.android.systemui.R.dimen;
+import com.android.systemui.R.plurals;
+import com.android.systemui.R.string;
 import com.android.systemui.smartspace.nano.SmartspaceProto$CardWrapper;
 import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
 
@@ -115,9 +115,9 @@ public class SmartSpaceCard {
             if (message != smartspaceCard.duringEvent) {
                 return str;
             }
-            str3 = this.mContext.getString(R$string.smartspace_now);
+            str3 = this.mContext.getString(R.string.smartspace_now);
         }
-        return this.mContext.getString(R$string.smartspace_pill_text_format, str3, str2);
+        return this.mContext.getString(R.string.smartspace_pill_text_format, str3, str2);
     }
 
     public String getSubtitle() {
@@ -207,13 +207,13 @@ public class SmartSpaceCard {
         if (minutesToEvent >= 60) {
             int i = minutesToEvent / 60;
             int i2 = minutesToEvent % 60;
-            String quantityString = this.mContext.getResources().getQuantityString(R$plurals.smartspace_hours, i, Integer.valueOf(i));
+            String quantityString = this.mContext.getResources().getQuantityString(R.plurals.smartspace_hours, i, Integer.valueOf(i));
             if (i2 <= 0) {
                 return quantityString;
             }
-            return this.mContext.getString(R$string.smartspace_hours_mins, quantityString, this.mContext.getResources().getQuantityString(R$plurals.smartspace_minutes, i2, Integer.valueOf(i2)));
+            return this.mContext.getString(R.string.smartspace_hours_mins, quantityString, this.mContext.getResources().getQuantityString(R.plurals.smartspace_minutes, i2, Integer.valueOf(i2)));
         }
-        return this.mContext.getResources().getQuantityString(R$plurals.smartspace_minutes, minutesToEvent, Integer.valueOf(minutesToEvent));
+        return this.mContext.getResources().getQuantityString(R.plurals.smartspace_minutes, minutesToEvent, Integer.valueOf(minutesToEvent));
     }
 
     private String substitute(boolean z, String str) {
@@ -249,7 +249,7 @@ public class SmartSpaceCard {
             Intent parseUri = (tapAction == null || TextUtils.isEmpty(tapAction.intent)) ? null : Intent.parseUri(smartspaceProto$CardWrapper.card.tapAction.intent, 0);
             byte[] bArr = smartspaceProto$CardWrapper.icon;
             Bitmap decodeByteArray = bArr != null ? BitmapFactory.decodeByteArray(bArr, 0, bArr.length, null) : null;
-            int dimensionPixelSize = context.getResources().getDimensionPixelSize(R$dimen.header_icon_size);
+            int dimensionPixelSize = context.getResources().getDimensionPixelSize(R.dimen.header_icon_size);
             if (decodeByteArray != null && decodeByteArray.getHeight() > dimensionPixelSize) {
                 decodeByteArray = Bitmap.createScaledBitmap(decodeByteArray, (int) (decodeByteArray.getWidth() * (dimensionPixelSize / decodeByteArray.getHeight())), dimensionPixelSize, true);
             }

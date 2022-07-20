@@ -5,8 +5,8 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import androidx.core.graphics.ColorUtils;
-import com.android.systemui.bcsmartspace.R$color;
-import com.android.systemui.bcsmartspace.R$dimen;
+import com.android.systemui.bcsmartspace.R.color;
+import com.android.systemui.bcsmartspace.R.dimen;
 
 public class DoubleShadowTextView extends TextView {
     private final float mAmbientShadowBlur;
@@ -28,12 +28,12 @@ public class DoubleShadowTextView extends TextView {
     public DoubleShadowTextView(Context context, AttributeSet attributeSet, int i) {
         super(context, attributeSet, i);
         updateDrawShadow(getCurrentTextColor());
-        this.mKeyShadowBlur = context.getResources().getDimensionPixelSize(R$dimen.key_text_shadow_radius);
-        this.mKeyShadowOffsetX = context.getResources().getDimensionPixelSize(R$dimen.key_text_shadow_dx);
-        this.mKeyShadowOffsetY = context.getResources().getDimensionPixelSize(R$dimen.key_text_shadow_dy);
-        this.mKeyShadowColor = context.getResources().getColor(R$color.key_text_shadow_color);
-        this.mAmbientShadowBlur = context.getResources().getDimensionPixelSize(R$dimen.ambient_text_shadow_radius);
-        this.mAmbientShadowColor = context.getResources().getColor(R$color.ambient_text_shadow_color);
+        this.mKeyShadowBlur = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_radius);
+        this.mKeyShadowOffsetX = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dx);
+        this.mKeyShadowOffsetY = context.getResources().getDimensionPixelSize(R.dimen.key_text_shadow_dy);
+        this.mKeyShadowColor = context.getResources().getColor(R.color.key_text_shadow_color);
+        this.mAmbientShadowBlur = context.getResources().getDimensionPixelSize(R.dimen.ambient_text_shadow_radius);
+        this.mAmbientShadowColor = context.getResources().getColor(R.color.ambient_text_shadow_color);
     }
 
     @Override // android.widget.TextView, android.view.View

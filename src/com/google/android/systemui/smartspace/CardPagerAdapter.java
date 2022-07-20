@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import androidx.viewpager.widget.PagerAdapter;
 import com.android.internal.graphics.ColorUtils;
 import com.android.launcher3.icons.GraphicsUtils;
-import com.android.systemui.bcsmartspace.R$layout;
+import com.android.systemui.bcsmartspace.R.layout;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggerUtil;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
@@ -125,39 +125,39 @@ public class CardPagerAdapter extends PagerAdapter {
         int i2;
         int i3;
         if (i == -2) {
-            i2 = R$layout.smartspace_card_at_store;
+            i2 = R.layout.smartspace_card_at_store;
         } else if (i == 1) {
-            i2 = R$layout.smartspace_card_date;
+            i2 = R.layout.smartspace_card_date;
         } else if (i == 20) {
-            i2 = R$layout.smartspace_base_card_package_delivery;
+            i2 = R.layout.smartspace_base_card_package_delivery;
         } else if (i == 30) {
-            i2 = R$layout.smartspace_base_card_doorbell;
+            i2 = R.layout.smartspace_base_card_doorbell;
         } else {
-            i2 = R$layout.smartspace_card;
+            i2 = R.layout.smartspace_card;
         }
         LayoutInflater from = LayoutInflater.from(viewGroup.getContext());
         BcSmartspaceCard bcSmartspaceCard = (BcSmartspaceCard) from.inflate(i2, viewGroup, false);
         if (i == -2) {
-            i3 = R$layout.smartspace_card_combination_at_store;
+            i3 = R.layout.smartspace_card_combination_at_store;
         } else if (i == -1) {
-            i3 = R$layout.smartspace_card_combination;
+            i3 = R.layout.smartspace_card_combination;
         } else {
             if (i != 3) {
                 if (i == 4) {
-                    i3 = R$layout.smartspace_card_flight;
+                    i3 = R.layout.smartspace_card_flight;
                 } else if (i == 9) {
-                    i3 = R$layout.smartspace_card_sports;
+                    i3 = R.layout.smartspace_card_sports;
                 } else if (i == 10) {
-                    i3 = R$layout.smartspace_card_weather_forecast;
+                    i3 = R.layout.smartspace_card_weather_forecast;
                 } else if (i == 13) {
-                    i3 = R$layout.smartspace_card_shopping_list;
+                    i3 = R.layout.smartspace_card_shopping_list;
                 } else if (i == 14) {
-                    i3 = R$layout.smartspace_card_loyalty;
+                    i3 = R.layout.smartspace_card_loyalty;
                 } else if (i != 18) {
-                    i3 = (i == 20 || i == 30) ? R$layout.smartspace_card_doorbell : 0;
+                    i3 = (i == 20 || i == 30) ? R.layout.smartspace_card_doorbell : 0;
                 }
             }
-            i3 = R$layout.smartspace_card_generic_landscape_image;
+            i3 = R.layout.smartspace_card_generic_landscape_image;
         }
         if (i3 != 0) {
             bcSmartspaceCard.setSecondaryCard((BcSmartspaceCardSecondary) from.inflate(i3, (ViewGroup) bcSmartspaceCard, false));

@@ -9,7 +9,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
@@ -55,7 +55,7 @@ public class BcSmartspaceCardSports extends BcSmartspaceCardSecondary {
     }
 
     void setMatchTimeSummaryText(String str) {
-        TextView textView = (TextView) findViewById(R$id.match_time_summary);
+        TextView textView = (TextView) findViewById(R.id.match_time_summary);
         if (textView == null) {
             Log.w("BcSmartspaceCardSports", "No match time summary view to update");
         } else {
@@ -64,7 +64,7 @@ public class BcSmartspaceCardSports extends BcSmartspaceCardSecondary {
     }
 
     void setFirstCompetitorScore(String str) {
-        TextView textView = (TextView) findViewById(R$id.first_competitor_score);
+        TextView textView = (TextView) findViewById(R.id.first_competitor_score);
         if (textView == null) {
             Log.w("BcSmartspaceCardSports", "No first competitor logo view to update");
         } else {
@@ -73,7 +73,7 @@ public class BcSmartspaceCardSports extends BcSmartspaceCardSecondary {
     }
 
     void setSecondCompetitorScore(String str) {
-        TextView textView = (TextView) findViewById(R$id.second_competitor_score);
+        TextView textView = (TextView) findViewById(R.id.second_competitor_score);
         if (textView == null) {
             Log.w("BcSmartspaceCardSports", "No second competitor logo view to update");
         } else {
@@ -82,7 +82,7 @@ public class BcSmartspaceCardSports extends BcSmartspaceCardSecondary {
     }
 
     void setFirstCompetitorLogo(Bitmap bitmap) {
-        ImageView imageView = (ImageView) findViewById(R$id.first_competitor_logo);
+        ImageView imageView = (ImageView) findViewById(R.id.first_competitor_logo);
         if (imageView == null) {
             Log.w("BcSmartspaceCardSports", "No first competitor logo view to update");
         } else {
@@ -91,7 +91,7 @@ public class BcSmartspaceCardSports extends BcSmartspaceCardSecondary {
     }
 
     void setSecondCompetitorLogo(Bitmap bitmap) {
-        ImageView imageView = (ImageView) findViewById(R$id.second_competitor_logo);
+        ImageView imageView = (ImageView) findViewById(R.id.second_competitor_logo);
         if (imageView == null) {
             Log.w("BcSmartspaceCardSports", "No second competitor logo view to update");
         } else {

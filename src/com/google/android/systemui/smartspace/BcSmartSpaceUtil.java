@@ -17,7 +17,7 @@ import android.os.UserHandle;
 import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.View;
-import com.android.systemui.bcsmartspace.R$dimen;
+import com.android.systemui.bcsmartspace.R.dimen;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.plugins.FalsingManager;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLogger;
@@ -105,7 +105,7 @@ public final class BcSmartSpaceUtil {
             drawable = icon.loadDrawable(context);
         }
         if (drawable != null) {
-            int dimensionPixelSize = context.getResources().getDimensionPixelSize(R$dimen.enhanced_smartspace_icon_size);
+            int dimensionPixelSize = context.getResources().getDimensionPixelSize(R.dimen.enhanced_smartspace_icon_size);
             drawable.setBounds(0, 0, dimensionPixelSize, dimensionPixelSize);
         }
         return drawable;

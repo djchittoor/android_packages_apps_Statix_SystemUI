@@ -13,8 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Constraints;
-import com.android.systemui.bcsmartspace.R$id;
-import com.android.systemui.bcsmartspace.R$layout;
+import com.android.systemui.bcsmartspace.R.id;
+import com.android.systemui.bcsmartspace.R.layout;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.Locale;
@@ -70,7 +70,7 @@ public class BcSmartspaceCardWeatherForecast extends BcSmartspaceCardSecondary {
             }
             int min = Math.min(4, strArr.length);
             for (int i = 0; i < min; i++) {
-                TextView textView = (TextView) getChildAt(i).findViewById(R$id.temperature_value);
+                TextView textView = (TextView) getChildAt(i).findViewById(R.id.temperature_value);
                 if (textView == null) {
                     Log.w("BcSmartspaceCardWeatherForecast", String.format(Locale.US, "Missing temperature value view to update at column: %d.", Integer.valueOf(i + 1)));
                     return;
@@ -92,7 +92,7 @@ public class BcSmartspaceCardWeatherForecast extends BcSmartspaceCardSecondary {
             }
             int min = Math.min(4, bitmapArr.length);
             for (int i = 0; i < min; i++) {
-                ImageView imageView = (ImageView) getChildAt(i).findViewById(R$id.weather_icon);
+                ImageView imageView = (ImageView) getChildAt(i).findViewById(R.id.weather_icon);
                 if (imageView == null) {
                     Log.w("BcSmartspaceCardWeatherForecast", String.format(Locale.US, "Missing weather logo view to update at column: %d.", Integer.valueOf(i + 1)));
                     return;
@@ -114,7 +114,7 @@ public class BcSmartspaceCardWeatherForecast extends BcSmartspaceCardSecondary {
             }
             int min = Math.min(4, strArr.length);
             for (int i = 0; i < min; i++) {
-                TextView textView = (TextView) getChildAt(i).findViewById(R$id.timestamp);
+                TextView textView = (TextView) getChildAt(i).findViewById(R.id.timestamp);
                 if (textView == null) {
                     Log.w("BcSmartspaceCardWeatherForecast", String.format(Locale.US, "Missing timestamp view to update at column: %d.", Integer.valueOf(i + 1)));
                     return;
@@ -127,7 +127,7 @@ public class BcSmartspaceCardWeatherForecast extends BcSmartspaceCardSecondary {
     private void createWeatherForecastColumns() {
         View[] viewArr = new ConstraintLayout[4];
         for (int i = 0; i < 4; i++) {
-            ConstraintLayout constraintLayout = (ConstraintLayout) ViewGroup.inflate(getContext(), R$layout.smartspace_card_weather_forecast_column, null);
+            ConstraintLayout constraintLayout = (ConstraintLayout) ViewGroup.inflate(getContext(), R.layout.smartspace_card_weather_forecast_column, null);
             constraintLayout.setId(View.generateViewId());
             viewArr[i] = constraintLayout;
         }

@@ -5,7 +5,7 @@ import android.app.smartspace.SmartspaceTarget;
 import android.content.Context;
 import android.util.AttributeSet;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.android.systemui.bcsmartspace.R$drawable;
+import com.android.systemui.bcsmartspace.R.drawable;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.List;
@@ -32,7 +32,7 @@ public class BcSmartspaceCardCombinationAtStore extends BcSmartspaceCardCombinat
         ConstraintLayout constraintLayout2 = this.mSecondSubCard;
         boolean z2 = constraintLayout2 != null && fillSubCard(constraintLayout2, smartspaceTarget, smartspaceAction, smartspaceEventNotifier, bcSmartspaceCardLoggingInfo);
         if (z) {
-            this.mFirstSubCard.setBackgroundResource(R$drawable.bg_smartspace_combination_sub_card);
+            this.mFirstSubCard.setBackgroundResource(R.drawable.bg_smartspace_combination_sub_card);
         }
         return z && z2;
     }

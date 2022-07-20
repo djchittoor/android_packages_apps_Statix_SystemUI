@@ -8,9 +8,9 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.content.res.AppCompatResources;
-import com.android.systemui.bcsmartspace.R$dimen;
-import com.android.systemui.bcsmartspace.R$drawable;
-import com.android.systemui.bcsmartspace.R$string;
+import com.android.systemui.bcsmartspace.R.dimen;
+import com.android.systemui.bcsmartspace.R.drawable;
+import com.android.systemui.bcsmartspace.R.string;
 
 public class PageIndicator extends LinearLayout {
     private int mPrimaryColor = getAttrColor(getContext(), 16842806);
@@ -62,7 +62,7 @@ public class PageIndicator extends LinearLayout {
             imageView.setAlpha(((1.0f - f) * 0.6f) + 0.4f);
             imageView2.setAlpha((0.6f * f) + 0.4f);
             Context context = getContext();
-            int i4 = R$string.accessibility_smartspace_page;
+            int i4 = R.string.accessibility_smartspace_page;
             Object[] objArr = new Object[2];
             objArr[0] = Integer.valueOf(((double) f) < 0.5d ? i3 : i + 2);
             objArr[1] = Integer.valueOf(this.mNumPages);
@@ -83,7 +83,7 @@ public class PageIndicator extends LinearLayout {
         for (int i = 0; i < childCount; i++) {
             removeViewAt(0);
         }
-        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R$dimen.page_indicator_dot_margin);
+        int dimensionPixelSize = getContext().getResources().getDimensionPixelSize(R.dimen.page_indicator_dot_margin);
         int i2 = 0;
         while (i2 < this.mNumPages) {
             ImageView imageView = i2 < getChildCount() ? (ImageView) getChildAt(i2) : new ImageView(getContext());
@@ -105,7 +105,7 @@ public class PageIndicator extends LinearLayout {
             if (i2 < getChildCount()) {
                 imageView.setLayoutParams(layoutParams);
             } else {
-                Drawable drawable = AppCompatResources.getDrawable(getContext(), R$drawable.page_indicator_dot);
+                Drawable drawable = AppCompatResources.getDrawable(getContext(), R.drawable.page_indicator_dot);
                 drawable.setTint(this.mPrimaryColor);
                 imageView.setImageDrawable(drawable);
                 addView(imageView, layoutParams);
@@ -122,7 +122,7 @@ public class PageIndicator extends LinearLayout {
             imageView.setAlpha(i2 == this.mCurrentPageIndex ? 1.0f : 0.4f);
             i2++;
         }
-        setContentDescription(getContext().getString(R$string.accessibility_smartspace_page, 1, Integer.valueOf(this.mNumPages)));
+        setContentDescription(getContext().getString(R.string.accessibility_smartspace_page, 1, Integer.valueOf(this.mNumPages)));
     }
 
     public void setPrimaryColor(int i) {

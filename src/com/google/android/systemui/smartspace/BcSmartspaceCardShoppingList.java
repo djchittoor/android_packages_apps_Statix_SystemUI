@@ -9,13 +9,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.Locale;
 
 public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
-    private static final int[] LIST_ITEM_TEXT_VIEW_IDS = {R$id.list_item_1, R$id.list_item_2, R$id.list_item_3};
+    private static final int[] LIST_ITEM_TEXT_VIEW_IDS = {R.id.list_item_1, R.id.list_item_2, R.id.list_item_3};
     private ImageView mCardPromptIconView;
     private TextView mCardPromptView;
     private TextView mEmptyListMessageView;
@@ -80,10 +80,10 @@ public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mCardPromptView = (TextView) findViewById(R$id.card_prompt);
-        this.mEmptyListMessageView = (TextView) findViewById(R$id.empty_list_message);
-        this.mCardPromptIconView = (ImageView) findViewById(R$id.card_prompt_icon);
-        this.mListIconView = (ImageView) findViewById(R$id.list_icon);
+        this.mCardPromptView = (TextView) findViewById(R.id.card_prompt);
+        this.mEmptyListMessageView = (TextView) findViewById(R.id.empty_list_message);
+        this.mCardPromptIconView = (ImageView) findViewById(R.id.card_prompt_icon);
+        this.mListIconView = (ImageView) findViewById(R.id.list_icon);
     }
 
     void setIconBitmap(Bitmap bitmap) {

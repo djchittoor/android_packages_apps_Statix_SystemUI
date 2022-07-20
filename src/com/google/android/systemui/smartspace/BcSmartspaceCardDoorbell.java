@@ -24,9 +24,9 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import com.android.launcher3.icons.RoundDrawableWrapper;
-import com.android.systemui.bcsmartspace.R$dimen;
-import com.android.systemui.bcsmartspace.R$drawable;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.dimen;
+import com.android.systemui.bcsmartspace.R.drawable;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.io.IOException;
@@ -117,10 +117,10 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
 
     private void toggleProgressBarAndLoadingIcon(int i) {
         if (i == 2) {
-            this.mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R$drawable.videocam));
+            this.mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.videocam));
         }
         if (i == 3) {
-            this.mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R$drawable.videocam_off));
+            this.mLoadingIcon.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.videocam_off));
         }
         boolean z = true;
         int i2 = 0;
@@ -137,18 +137,18 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
 
     private void setRoundedBitmapDrawable(Bitmap bitmap) {
         if (bitmap.getHeight() != 0) {
-            int dimension = (int) getResources().getDimension(R$dimen.enhanced_smartspace_height);
+            int dimension = (int) getResources().getDimension(R.dimen.enhanced_smartspace_height);
             bitmap = Bitmap.createScaledBitmap(bitmap, (int) (dimension * (bitmap.getWidth() / bitmap.getHeight())), dimension, true);
         }
         RoundedBitmapDrawable create = RoundedBitmapDrawableFactory.create(getResources(), bitmap);
-        create.setCornerRadius(getResources().getDimension(R$dimen.enhanced_smartspace_secondary_card_corner_radius));
+        create.setCornerRadius(getResources().getDimension(R.dimen.enhanced_smartspace_secondary_card_corner_radius));
         this.mImageView.setImageDrawable(create);
     }
 
     private void loadImageUris(List<Uri> list) {
         final ContentResolver contentResolver = getContext().getApplicationContext().getContentResolver();
-        final int dimensionPixelOffset = getResources().getDimensionPixelOffset(R$dimen.enhanced_smartspace_height);
-        final float dimension = getResources().getDimension(R$dimen.enhanced_smartspace_secondary_card_corner_radius);
+        final int dimensionPixelOffset = getResources().getDimensionPixelOffset(R.dimen.enhanced_smartspace_height);
+        final float dimension = getResources().getDimension(R.dimen.enhanced_smartspace_secondary_card_corner_radius);
         addFramesToAnimatedDrawable((List) list.stream().map(new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda2
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
@@ -214,9 +214,9 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     @Override // com.google.android.systemui.smartspace.BcSmartspaceCardGenericImage, android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mLoadingScreenView = (CardView) findViewById(R$id.loading_screen);
-        this.mProgressBar = (ProgressBar) findViewById(R$id.indeterminateBar);
-        this.mLoadingIcon = (ImageView) findViewById(R$id.loading_screen_icon);
+        this.mLoadingScreenView = (CardView) findViewById(R.id.loading_screen);
+        this.mProgressBar = (ProgressBar) findViewById(R.id.indeterminateBar);
+        this.mLoadingIcon = (ImageView) findViewById(R.id.loading_screen_icon);
     }
 
     public static Drawable getSampleBitmapDrawable(InputStream inputStream, final int i) {

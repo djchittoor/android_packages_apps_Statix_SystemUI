@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
@@ -59,7 +59,7 @@ public class BcSmartspaceCardGenericImage extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     public void onFinishInflate() {
         super.onFinishInflate();
-        this.mImageView = (ImageView) findViewById(R$id.image_view);
+        this.mImageView = (ImageView) findViewById(R.id.image_view);
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */

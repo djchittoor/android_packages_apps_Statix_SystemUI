@@ -10,7 +10,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import com.android.systemui.bcsmartspace.R$id;
+import com.android.systemui.bcsmartspace.R.id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
@@ -76,14 +76,14 @@ public class BcSmartspaceCardFlight extends BcSmartspaceCardSecondary {
     @Override // android.view.View
     protected void onFinishInflate() {
         super.onFinishInflate();
-        this.mCardPromptView = (TextView) findViewById(R$id.card_prompt);
-        this.mCardPromptLogoView = (ImageView) findViewById(R$id.card_prompt_logo);
-        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R$id.boarding_pass_ui);
+        this.mCardPromptView = (TextView) findViewById(R.id.card_prompt);
+        this.mCardPromptLogoView = (ImageView) findViewById(R.id.card_prompt_logo);
+        ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.boarding_pass_ui);
         this.mBoardingPassUI = constraintLayout;
         if (constraintLayout != null) {
-            this.mGateValueView = (TextView) constraintLayout.findViewById(R$id.gate_value);
-            this.mSeatValueView = (TextView) this.mBoardingPassUI.findViewById(R$id.seat_value);
-            this.mQrCodeView = (ImageView) this.mBoardingPassUI.findViewById(R$id.flight_qr_code);
+            this.mGateValueView = (TextView) constraintLayout.findViewById(R.id.gate_value);
+            this.mSeatValueView = (TextView) this.mBoardingPassUI.findViewById(R.id.seat_value);
+            this.mQrCodeView = (ImageView) this.mBoardingPassUI.findViewById(R.id.flight_qr_code);
         }
     }
 
