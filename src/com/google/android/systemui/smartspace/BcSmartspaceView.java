@@ -260,7 +260,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
             }
         }
         mLastReceivedTargets.clear();
-        mLastReceivedTargets.addAll((Collection) mAdapter.getTargets().stream().map(BcSmartspaceView$$ExternalSyntheticLambda0.INSTANCE).collect(Collectors.toList()));
+        mLastReceivedTargets.addAll((Collection) mAdapter.getTargets().stream().map(getSmartspaceTargetId()).collect(Collectors.toList()));
         mAdapter.notifyDataSetChanged();
     }
 

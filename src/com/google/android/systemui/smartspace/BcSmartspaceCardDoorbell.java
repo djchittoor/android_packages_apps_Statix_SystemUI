@@ -143,7 +143,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
                 new LoadUriTask().execute(drawableWithUri);
                 return drawableWithUri;
             }
-        }).filter(BcSmartspaceCardDoorbell$$ExternalSyntheticLambda6.INSTANCE).collect(Collectors.toList()));
+        }).filter(drawableWithUri -> drawableWithUri != null).collect(Collectors.toList()));
     }
 
     private void addFramesToAnimatedDrawable(List<Drawable> list) {
@@ -156,15 +156,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     }
 
     private List<Uri> getImageUris(SmartspaceTarget smartspaceTarget) {
-        return (List) smartspaceTarget.getIconGrid().stream().filter(BcSmartspaceCardDoorbell$$ExternalSyntheticLambda5.INSTANCE).map(BcSmartspaceCardDoorbell$$ExternalSyntheticLambda3.INSTANCE).map(BcSmartspaceCardDoorbell$$ExternalSyntheticLambda4.INSTANCE).collect(Collectors.toList());
-    }
-
-    public static /* synthetic */ boolean lambda$getImageUris$2(SmartspaceAction smartspaceAction) {
-        return smartspaceAction.getExtras().containsKey("imageUri");
-    }
-
-    public static /* synthetic */ String lambda$getImageUris$3(SmartspaceAction smartspaceAction) {
-        return smartspaceAction.getExtras().getString("imageUri");
+        return (List) smartspaceTarget.getIconGrid().stream().filter(getExtras().containsKey("imageUri");).map(getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
     }
 
     private boolean isSysUiContext() {
@@ -206,11 +198,6 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
             Log.e("BcSmartspaceCardBell", "Unable to decode stream: " + e);
             return null;
         }
-    }
-
-    public static /* synthetic */ void lambda$getSampleBitmapDrawable$4(int i, ImageDecoder imageDecoder, ImageDecoder.ImageInfo imageInfo, ImageDecoder.Source source) {
-        imageDecoder.setAllocator(3);
-        imageDecoder.setTargetSize((int) (i * getTargetRatio(imageInfo)), i);
     }
 
     private static float getTargetRatio(ImageDecoder.ImageInfo imageInfo) {

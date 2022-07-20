@@ -71,16 +71,6 @@ public final class KeyguardZenAlarmViewController {
         return smartspaceViews;
     }
 
-    /* compiled from: KeyguardZenAlarmViewController.kt */
-    public static final class Companion {
-        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
-            this();
-        }
-
-        private Companion() {
-        }
-    }
-
     public final void init() {
         plugin.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$init$1
             @Override // android.view.View.OnAttachStateChangeListener
@@ -152,11 +142,11 @@ public final class KeyguardZenAlarmViewController {
 
     public final void updateNextAlarm() {
         AlarmManager alarmManager = alarmManager;
-        final Function0 function0 = (Function0) showNextAlarm;
+        //final Function0 function0 = (Function0) showNextAlarm;
         alarmManager.cancel(new AlarmManager.OnAlarmListener() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$sam$android_app_AlarmManager_OnAlarmListener$0
             @Override // android.app.AlarmManager.OnAlarmListener
-            public final /* synthetic */ void onAlarm() {
-                Function0.invoke();
+            public final void onAlarm() {
+                showAlarm();
             }
         });
         long nextAlarm = zenModeController.getNextAlarm();
@@ -164,11 +154,11 @@ public final class KeyguardZenAlarmViewController {
             long millis = nextAlarm - TimeUnit.HOURS.toMillis(12L);
             if (millis > 0) {
                 AlarmManager alarmManager2 = alarmManager;
-                final Function0 function02 = (Function0) showNextAlarm;
+                //final Function0 function02 = (Function0) showNextAlarm;
                 alarmManager2.setExact(1, millis, "lock_screen_next_alarm", new AlarmManager.OnAlarmListener() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$sam$android_app_AlarmManager_OnAlarmListener$0
                     @Override // android.app.AlarmManager.OnAlarmListener
-                    public final /* synthetic */ void onAlarm() {
-                        Function0.invoke();
+                    public final void onAlarm() {
+                        showAlarm();
                     }
                 }, handler);
             }
