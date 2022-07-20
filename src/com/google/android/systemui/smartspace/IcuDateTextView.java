@@ -20,11 +20,6 @@ public class IcuDateTextView extends DoubleShadowTextView {
     private String mText;
     private final Runnable mTicker;
 
-    /* renamed from: $r8$lambda$Sd3yswBLpq1S8-i1GImy2Qrz2n0 */
-    public static /* synthetic */ void m750$r8$lambda$Sd3yswBLpq1S8i1GImy2Qrz2n0(IcuDateTextView icuDateTextView) {
-        icuDateTextView.onTimeTick();
-    }
-
     public IcuDateTextView(Context context) {
         this(context, null);
     }
@@ -34,7 +29,7 @@ public class IcuDateTextView extends DoubleShadowTextView {
         mTicker = new Runnable() { // from class: com.google.android.systemui.smartspace.IcuDateTextView$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                IcuDateTextView.m750$r8$lambda$Sd3yswBLpq1S8i1GImy2Qrz2n0(IcuDateTextView.this);
+                IcuDateTextView.onTimeTick();
             }
         };
         mIntentReceiver = new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.IcuDateTextView.1

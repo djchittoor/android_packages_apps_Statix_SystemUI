@@ -39,20 +39,11 @@ public class SmartSpaceController implements Dumpable {
     private final AlarmManager.OnAlarmListener mExpireAlarmAction = new AlarmManager.OnAlarmListener() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda0
         @Override // android.app.AlarmManager.OnAlarmListener
         public final void onAlarm() {
-            SmartSpaceController.m754$r8$lambda$K_QlODJG5r6W7YnckkJzjTCf8Q(SmartSpaceController.this);
+            onExpire(false);
         }
     };
     private int mCurrentUserId = UserHandle.myUserId();
     private final SmartSpaceData mData = new SmartSpaceData();
-
-    /* renamed from: $r8$lambda$K_QlODJG5r6W7YnckkJz-jTCf8Q */
-    public static /* synthetic */ void m754$r8$lambda$K_QlODJG5r6W7YnckkJzjTCf8Q(SmartSpaceController smartSpaceController) {
-        smartSpaceController.lambda$new$0();
-    }
-
-    public /* synthetic */ void lambda$new$0() {
-        onExpire(false);
-    }
 
     public SmartSpaceController(Context context, KeyguardUpdateMonitor keyguardUpdateMonitor, Handler handler, AlarmManager alarmManager, DumpManager dumpManager) {
         KeyguardUpdateMonitorCallback keyguardUpdateMonitorCallback = new KeyguardUpdateMonitorCallback() { // from class: com.google.android.systemui.smartspace.SmartSpaceController.1
@@ -112,7 +103,25 @@ public class SmartSpaceController implements Dumpable {
                 mBackgroundHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        SmartSpaceController.lambda$onNewCard$2(newCardInfo);
+                        SmartspaceProto$CardWrapper wrapper = newCardInfo.toWrapper(mContext);
+                        if (!mHidePrivateData || !mHideWorkData) {
+                            ProtoStore protoStore = mStore;
+                            protoStore.store(wrapper, "smartspace_" + mCurrentUserId + "_" + newCardInfo.isPrimary());
+                        }
+                        final SmartSpaceCard fromWrapper = newCardInfo.shouldDiscard() ? null : SmartSpaceCard.fromWrapper(mContext, wrapper, newCardInfo.isPrimary());
+                        mUiHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda2
+                            @Override // java.lang.Runnable
+                            public final void run() {
+                                SmartSpaceCard smartSpaceCard = fromWrapper;
+                                if (newCardInfo.isPrimary()) {
+                                    mData.mCurrentCard = smartSpaceCard;
+                                } else {
+                                    mData.mWeatherCard = smartSpaceCard;
+                                }
+                                mData.handleExpire();
+                                update();
+                            }
+                        });
                     }
                 });
             } else if (!z) {
@@ -122,30 +131,6 @@ public class SmartSpaceController implements Dumpable {
         }
     }
 
-    public /* synthetic */ void lambda$onNewCard$2(final NewCardInfo newCardInfo) {
-        SmartspaceProto$CardWrapper wrapper = newCardInfo.toWrapper(mContext);
-        if (!mHidePrivateData || !mHideWorkData) {
-            ProtoStore protoStore = mStore;
-            protoStore.store(wrapper, "smartspace_" + mCurrentUserId + "_" + newCardInfo.isPrimary());
-        }
-        final SmartSpaceCard fromWrapper = newCardInfo.shouldDiscard() ? null : SmartSpaceCard.fromWrapper(mContext, wrapper, newCardInfo.isPrimary());
-        mUiHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda2
-            @Override // java.lang.Runnable
-            public final void run() {
-                SmartSpaceController.lambda$onNewCard$1(newCardInfo, fromWrapper);
-            }
-        });
-    }
-
-    public /* synthetic */ void lambda$onNewCard$1(NewCardInfo newCardInfo, SmartSpaceCard smartSpaceCard) {
-        if (newCardInfo.isPrimary()) {
-            mData.mCurrentCard = smartSpaceCard;
-        } else {
-            mData.mWeatherCard = smartSpaceCard;
-        }
-        mData.handleExpire();
-        update();
-    }
 
     private void clearStore() {
         ProtoStore protoStore = mStore;

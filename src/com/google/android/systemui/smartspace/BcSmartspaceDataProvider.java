@@ -38,10 +38,6 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
         }
     };
 
-    public static /* synthetic */ void $r8$lambda$CVMuLEb73PWV8fVSpB1qh1kx5WM(BcSmartspaceDataProvider bcSmartspaceDataProvider, BcSmartspaceDataPlugin.SmartspaceTargetListener smartspaceTargetListener) {
-        bcSmartspaceDataProvider.lambda$onTargetsAvailable$0(smartspaceTargetListener);
-    }
-
     @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin
     public void registerListener(BcSmartspaceDataPlugin.SmartspaceTargetListener smartspaceTargetListener) {
         mSmartspaceTargetListeners.add(smartspaceTargetListener);
@@ -92,12 +88,8 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
         mSmartspaceTargetListeners.forEach(new Consumer() { // from class: com.google.android.systemui.smartspace.BcSmartspaceDataProvider$$ExternalSyntheticLambda0
             @Override // java.util.function.Consumer
             public final void accept(Object obj) {
-                BcSmartspaceDataProvider.$r8$lambda$CVMuLEb73PWV8fVSpB1qh1kx5WM(BcSmartspaceDataProvider.this, (BcSmartspaceDataPlugin.SmartspaceTargetListener) obj);
+                ((BcSmartspaceDataPlugin.SmartspaceTargetListener) obj).onSmartspaceTargetsUpdated(mSmartspaceTargets);
             }
         });
-    }
-
-    public /* synthetic */ void lambda$onTargetsAvailable$0(BcSmartspaceDataPlugin.SmartspaceTargetListener smartspaceTargetListener) {
-        smartspaceTargetListener.onSmartspaceTargetsUpdated(mSmartspaceTargets);
     }
 }

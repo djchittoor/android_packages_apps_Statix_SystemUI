@@ -44,19 +44,6 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     private final Map<Uri, DrawableWithUri> mUriToDrawable = new HashMap();
     private int mGifFrameDurationInMs = 200;
 
-    public static /* synthetic */ DrawableWithUri $r8$lambda$6eX6sQTs5MPUIWePViuUlSg5_4g(ContentResolver contentResolver, int i, float f, Uri uri) {
-        return lambda$loadImageUris$0(contentResolver, i, f, uri);
-    }
-
-    /* renamed from: $r8$lambda$BLDdJkDrhhwYM8HQX-zENpCl6Gg */
-    public static /* synthetic */ DrawableWithUri m747$r8$lambda$BLDdJkDrhhwYM8HQXzENpCl6Gg(BcSmartspaceCardDoorbell bcSmartspaceCardDoorbell, ContentResolver contentResolver, int i, float f, Uri uri) {
-        return bcSmartspaceCardDoorbell.lambda$loadImageUris$1(contentResolver, i, f, uri);
-    }
-
-    public static /* synthetic */ void $r8$lambda$eykm8iRqqH92wRKQolruWoheRgQ(int i, ImageDecoder imageDecoder, ImageDecoder.ImageInfo imageInfo, ImageDecoder.Source source) {
-        lambda$getSampleBitmapDrawable$4(i, imageDecoder, imageInfo, source);
-    }
-
     public BcSmartspaceCardDoorbell(Context context) {
         super(context);
     }
@@ -152,24 +139,11 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         addFramesToAnimatedDrawable((List) list.stream().map(new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda2
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                return BcSmartspaceCardDoorbell.m747$r8$lambda$BLDdJkDrhhwYM8HQXzENpCl6Gg(BcSmartspaceCardDoorbell.this, contentResolver, dimensionPixelOffset, dimension, (Uri) obj);
+                DrawableWithUri drawableWithUri = new DrawableWithUri(uri, contentResolver, i, f);
+                new LoadUriTask().execute(drawableWithUri);
+                return drawableWithUri;
             }
         }).filter(BcSmartspaceCardDoorbell$$ExternalSyntheticLambda6.INSTANCE).collect(Collectors.toList()));
-    }
-
-    public /* synthetic */ DrawableWithUri lambda$loadImageUris$1(final ContentResolver contentResolver, final int i, final float f, Uri uri) {
-        return mUriToDrawable.computeIfAbsent(uri, new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda1
-            @Override // java.util.function.Function
-            public final Object apply(Object obj) {
-                return BcSmartspaceCardDoorbell.$r8$lambda$6eX6sQTs5MPUIWePViuUlSg5_4g(contentResolver, i, f, (Uri) obj);
-            }
-        });
-    }
-
-    public static /* synthetic */ DrawableWithUri lambda$loadImageUris$0(ContentResolver contentResolver, int i, float f, Uri uri) {
-        DrawableWithUri drawableWithUri = new DrawableWithUri(uri, contentResolver, i, f);
-        new LoadUriTask().execute(drawableWithUri);
-        return drawableWithUri;
     }
 
     private void addFramesToAnimatedDrawable(List<Drawable> list) {
@@ -224,7 +198,8 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
             return ImageDecoder.decodeDrawable(ImageDecoder.createSource((Resources) null, inputStream), new ImageDecoder.OnHeaderDecodedListener() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda0
                 @Override // android.graphics.ImageDecoder.OnHeaderDecodedListener
                 public final void onHeaderDecoded(ImageDecoder imageDecoder, ImageDecoder.ImageInfo imageInfo, ImageDecoder.Source source) {
-                    BcSmartspaceCardDoorbell.$r8$lambda$eykm8iRqqH92wRKQolruWoheRgQ(i, imageDecoder, imageInfo, source);
+                    imageDecoder.setAllocator(3);
+                    imageDecoder.setTargetSize((int) (i * getTargetRatio(imageInfo)), i);
                 }
             });
         } catch (IOException e) {

@@ -44,10 +44,6 @@ public final class KeyguardMediaViewController {
     private final DelayableExecutor uiExecutor;
     private CurrentUserTracker userTracker;
 
-    @VisibleForTesting
-    public static /* synthetic */ void getSmartspaceView$annotations() {
-    }
-
     /* JADX WARN: Type inference failed for: r3v1, types: [com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1] */
     public KeyguardMediaViewController(Context context, BcSmartspaceDataPlugin plugin, DelayableExecutor uiExecutor, NotificationMediaManager mediaManager, BroadcastDispatcher broadcastDispatcher) {
         Intrinsics.checkNotNullParameter(context, "context");

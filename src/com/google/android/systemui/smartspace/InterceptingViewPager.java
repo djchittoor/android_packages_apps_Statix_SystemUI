@@ -12,46 +12,24 @@ public class InterceptingViewPager extends ViewPager {
     private final EventProxy mSuperOnTouch = new EventProxy() { // from class: com.google.android.systemui.smartspace.InterceptingViewPager$$ExternalSyntheticLambda1
         @Override // com.google.android.systemui.smartspace.InterceptingViewPager.EventProxy
         public final boolean delegateEvent(MotionEvent motionEvent) {
-            return InterceptingViewPager.m752$r8$lambda$Kinb8UkpjhBhKntCOQxRMNdiw(InterceptingViewPager.this, motionEvent);
+            return InterceptingViewPager.onTouchEvent(motionEvent);
         }
     };
     private final EventProxy mSuperOnIntercept = new EventProxy() { // from class: com.google.android.systemui.smartspace.InterceptingViewPager$$ExternalSyntheticLambda0
         @Override // com.google.android.systemui.smartspace.InterceptingViewPager.EventProxy
         public final boolean delegateEvent(MotionEvent motionEvent) {
-            return InterceptingViewPager.$r8$lambda$3SWsnYuFjnqtbymqfR4U1UuMdzc(InterceptingViewPager.this, motionEvent);
+            return InterceptingViewPager.onInterceptTouchEvent(motionEvent);
         }
     };
     private final Runnable mLongPressCallback = new Runnable() { // from class: com.google.android.systemui.smartspace.InterceptingViewPager$$ExternalSyntheticLambda2
         @Override // java.lang.Runnable
         public final void run() {
-            InterceptingViewPager.m751$r8$lambda$8ptLCUmemqW7BFR05TfzQ3Fpqk(InterceptingViewPager.this);
+            triggerLongPress();
         }
     };
 
     public interface EventProxy {
         boolean delegateEvent(MotionEvent motionEvent);
-    }
-
-    public static /* synthetic */ boolean $r8$lambda$3SWsnYuFjnqtbymqfR4U1UuMdzc(InterceptingViewPager interceptingViewPager, MotionEvent motionEvent) {
-        return interceptingViewPager.lambda$new$1(motionEvent);
-    }
-
-    /* renamed from: $r8$lambda$8ptLC-UmemqW7BFR05TfzQ3Fpqk */
-    public static /* synthetic */ void m751$r8$lambda$8ptLCUmemqW7BFR05TfzQ3Fpqk(InterceptingViewPager interceptingViewPager) {
-        interceptingViewPager.triggerLongPress();
-    }
-
-    /* renamed from: $r8$lambda$Kinb8UkpjhBhKntC-OQxRM-Ndiw */
-    public static /* synthetic */ boolean m752$r8$lambda$Kinb8UkpjhBhKntCOQxRMNdiw(InterceptingViewPager interceptingViewPager, MotionEvent motionEvent) {
-        return interceptingViewPager.lambda$new$0(motionEvent);
-    }
-
-    public /* synthetic */ boolean lambda$new$0(MotionEvent motionEvent) {
-        return super.onTouchEvent(motionEvent);
-    }
-
-    public /* synthetic */ boolean lambda$new$1(MotionEvent motionEvent) {
-        return super.onInterceptTouchEvent(motionEvent);
     }
 
     public InterceptingViewPager(Context context) {

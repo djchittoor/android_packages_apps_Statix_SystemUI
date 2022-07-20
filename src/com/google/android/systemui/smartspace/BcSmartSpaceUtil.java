@@ -27,11 +27,6 @@ public final class BcSmartSpaceUtil {
     private static FalsingManager sFalsingManager;
     private static BcSmartspaceDataPlugin.IntentStarter sIntentStarter;
 
-    /* renamed from: $r8$lambda$9zh3Z9kOVTmnU2qd7oOV-54cyjw */
-    public static /* synthetic */ void m746$r8$lambda$9zh3Z9kOVTmnU2qd7oOV54cyjw(BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo, int i, boolean z, BcSmartspaceDataPlugin.IntentStarter intentStarter, SmartspaceAction smartspaceAction, boolean z2, View.OnClickListener onClickListener, BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier, String str, SmartspaceTarget smartspaceTarget, View view) {
-        lambda$setOnClickListener$0(bcSmartspaceCardLoggingInfo, i, z, intentStarter, smartspaceAction, z2, onClickListener, smartspaceEventNotifier, str, smartspaceTarget, view);
-    }
-
     public static void setOnClickListener(View view, SmartspaceTarget smartspaceTarget, SmartspaceAction smartspaceAction, String str, BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier, BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo) {
         setOnClickListener(view, smartspaceTarget, smartspaceAction, null, str, smartspaceEventNotifier, bcSmartspaceCardLoggingInfo, 0);
     }
@@ -55,32 +50,28 @@ public final class BcSmartSpaceUtil {
         view.setOnClickListener(new View.OnClickListener() { // from class: com.google.android.systemui.smartspace.BcSmartSpaceUtil$$ExternalSyntheticLambda0
             @Override // android.view.View.OnClickListener
             public final void onClick(View view2) {
-                BcSmartSpaceUtil.m746$r8$lambda$9zh3Z9kOVTmnU2qd7oOV54cyjw(BcSmartspaceCardLoggingInfo.this, i, z2, intentStarter2, smartspaceAction, z, onClickListener, smartspaceEventNotifier, str, smartspaceTarget, view2);
+                if (bcSmartspaceCardLoggingInfo != null) {
+                    if (bcSmartspaceCardLoggingInfo.getSubcardInfo() != null) {
+                        bcSmartspaceCardLoggingInfo.getSubcardInfo().setClickedSubcardIndex(i);
+                    }
+                    BcSmartspaceCardLogger.log(BcSmartspaceEvent.SMARTSPACE_CARD_CLICK, bcSmartspaceCardLoggingInfo);
+                }
+                FalsingManager falsingManager = sFalsingManager;
+                if (falsingManager == null || !falsingManager.isFalseTap(1)) {
+                    if (!z) {
+                        intentStarter.startFromAction(smartspaceAction, view2, z2);
+                    }
+                    if (onClickListener != null) {
+                        onClickListener.onClick(view2);
+                    }
+                    if (smartspaceEventNotifier == null) {
+                        Log.w(str, "Cannot notify target interaction smartspace event: event notifier null.");
+                    } else {
+                        smartspaceEventNotifier.notifySmartspaceEvent(new SmartspaceTargetEvent.Builder(1).setSmartspaceTarget(smartspaceTarget).setSmartspaceActionId(smartspaceAction.getId()).build());
+                    }
+                }
             }
         });
-    }
-
-    public static /* synthetic */ void lambda$setOnClickListener$0(BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo, int i, boolean z, BcSmartspaceDataPlugin.IntentStarter intentStarter, SmartspaceAction smartspaceAction, boolean z2, View.OnClickListener onClickListener, BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier, String str, SmartspaceTarget smartspaceTarget, View view) {
-        if (bcSmartspaceCardLoggingInfo != null) {
-            if (bcSmartspaceCardLoggingInfo.getSubcardInfo() != null) {
-                bcSmartspaceCardLoggingInfo.getSubcardInfo().setClickedSubcardIndex(i);
-            }
-            BcSmartspaceCardLogger.log(BcSmartspaceEvent.SMARTSPACE_CARD_CLICK, bcSmartspaceCardLoggingInfo);
-        }
-        FalsingManager falsingManager = sFalsingManager;
-        if (falsingManager == null || !falsingManager.isFalseTap(1)) {
-            if (!z) {
-                intentStarter.startFromAction(smartspaceAction, view, z2);
-            }
-            if (onClickListener != null) {
-                onClickListener.onClick(view);
-            }
-            if (smartspaceEventNotifier == null) {
-                Log.w(str, "Cannot notify target interaction smartspace event: event notifier null.");
-            } else {
-                smartspaceEventNotifier.notifySmartspaceEvent(new SmartspaceTargetEvent.Builder(1).setSmartspaceTarget(smartspaceTarget).setSmartspaceActionId(smartspaceAction.getId()).build());
-            }
-        }
     }
 
     public static String getDimensionRatio(Bundle bundle) {

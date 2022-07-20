@@ -39,11 +39,6 @@ public class CardPagerAdapter extends PagerAdapter {
     private Drawable mNextAlarmImage = null;
     private SmartspaceTarget mHolidayAlarmsTarget = null;
 
-    /* renamed from: $r8$lambda$S-RMUIR888hx7Olx-M4EEkQ_BFA */
-    public static /* synthetic */ void m749$r8$lambda$SRMUIR888hx7OlxM4EEkQ_BFA(CardPagerAdapter cardPagerAdapter, Parcelable parcelable) {
-        cardPagerAdapter.lambda$setTargets$0(parcelable);
-    }
-
     public CardPagerAdapter(View view) {
         mRoot = view;
         int attrColor = GraphicsUtils.getAttrColor(view.getContext(), 16842806);
@@ -205,7 +200,13 @@ public class CardPagerAdapter extends PagerAdapter {
         list.forEach(new Consumer() { // from class: com.google.android.systemui.smartspace.CardPagerAdapter$$ExternalSyntheticLambda1
             @Override // java.util.function.Consumer
             public final void accept(Object obj) {
-                CardPagerAdapter.m749$r8$lambda$SRMUIR888hx7OlxM4EEkQ_BFA(CardPagerAdapter.this, (Parcelable) obj);
+                SmartspaceTarget smartspaceTarget = (SmartspaceTarget) (Parcelable) obj;
+                if (isHolidayAlarmsTarget(smartspaceTarget)) {
+                    mHolidayAlarmsTarget = smartspaceTarget;
+                } else {
+                    mTargetsExcludingMediaAndHolidayAlarms.add(smartspaceTarget);
+                }
+
             }
         });
         boolean z = true;
@@ -218,15 +219,6 @@ public class CardPagerAdapter extends PagerAdapter {
         mHasOnlyDefaultDateCard = z;
         updateTargetVisibility();
         notifyDataSetChanged();
-    }
-
-    public /* synthetic */ void lambda$setTargets$0(Parcelable parcelable) {
-        SmartspaceTarget smartspaceTarget = (SmartspaceTarget) parcelable;
-        if (isHolidayAlarmsTarget(smartspaceTarget)) {
-            mHolidayAlarmsTarget = smartspaceTarget;
-        } else {
-            mTargetsExcludingMediaAndHolidayAlarms.add(smartspaceTarget);
-        }
     }
 
     public void setDataProvider(BcSmartspaceDataPlugin bcSmartspaceDataPlugin) {

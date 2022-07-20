@@ -45,14 +45,10 @@ public final class KeyguardZenAlarmViewController {
     private final NextAlarmController.NextAlarmChangeCallback nextAlarmCallback = new NextAlarmController.NextAlarmChangeCallback() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$nextAlarmCallback$1
         @Override // com.android.systemui.statusbar.policy.NextAlarmController.NextAlarmChangeCallback
         public final void onNextAlarmChanged(AlarmManager.AlarmClockInfo alarmClockInfo) {
-            KeyguardZenAlarmViewController.access$updateNextAlarm(KeyguardZenAlarmViewController.this);
+            updateNextAlarm();
         }
     };
     private final Drawable dndImage = loadDndImage();
-
-    @VisibleForTesting
-    public static /* synthetic */ void getSmartspaceViews$annotations() {
-    }
 
     /* JADX WARN: Type inference failed for: r3v3, types: [com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$zenModeCallback$1] */
     public KeyguardZenAlarmViewController(Context context, BcSmartspaceDataPlugin plugin, ZenModeController zenModeController, AlarmManager alarmManager, NextAlarmController nextAlarmController, Handler handler) {
@@ -69,10 +65,6 @@ public final class KeyguardZenAlarmViewController {
         nextAlarmController = nextAlarmController;
         handler = handler;
         alarmImage = context.getResources().getDrawable(R.drawable.ic_access_alarms_big, null);
-    }
-
-    public static final /* synthetic */ void access$updateNextAlarm(KeyguardZenAlarmViewController keyguardZenAlarmViewController) {
-        keyguardZenAlarmViewController.updateNextAlarm();
     }
 
     public final Set<BcSmartspaceDataPlugin.SmartspaceView> getSmartspaceViews() {
