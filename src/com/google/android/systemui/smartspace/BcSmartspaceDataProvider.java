@@ -20,10 +20,6 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
     private Set<View.OnAttachStateChangeListener> mAttachListeners = new HashSet();
     private BcSmartspaceDataPlugin.SmartspaceEventNotifier mEventNotifier = null;
     private View.OnAttachStateChangeListener mStateChangeListener = new View.OnAttachStateChangeListener() { // from class: com.google.android.systemui.smartspace.BcSmartspaceDataProvider.1
-        {
-            BcSmartspaceDataProvider.this = this;
-        }
-
         @Override // android.view.View.OnAttachStateChangeListener
         public void onViewAttachedToWindow(View view) {
             BcSmartspaceDataProvider.mViews.add(view);

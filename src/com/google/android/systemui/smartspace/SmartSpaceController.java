@@ -56,10 +56,6 @@ public class SmartSpaceController implements Dumpable {
 
     public SmartSpaceController(Context context, KeyguardUpdateMonitor keyguardUpdateMonitor, Handler handler, AlarmManager alarmManager, DumpManager dumpManager) {
         KeyguardUpdateMonitorCallback keyguardUpdateMonitorCallback = new KeyguardUpdateMonitorCallback() { // from class: com.google.android.systemui.smartspace.SmartSpaceController.1
-            {
-                SmartSpaceController.this = this;
-            }
-
             @Override // com.android.keyguard.KeyguardUpdateMonitorCallback
             public void onTimeChanged() {
                 if (SmartSpaceController.mData == null || !SmartSpaceController.mData.hasCurrent() || SmartSpaceController.mData.getExpirationRemainingMillis() <= 0) {
@@ -84,10 +80,6 @@ public class SmartSpaceController implements Dumpable {
         reloadData();
         onGsaChanged();
         context.registerReceiver(new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.SmartSpaceController.2
-            {
-                SmartSpaceController.this = this;
-            }
-
             @Override // android.content.BroadcastReceiver
             public void onReceive(Context context2, Intent intent) {
                 SmartSpaceController.onGsaChanged();

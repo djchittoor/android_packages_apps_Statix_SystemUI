@@ -38,10 +38,6 @@ public class IcuDateTextView extends DoubleShadowTextView {
             }
         };
         mIntentReceiver = new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.IcuDateTextView.1
-            {
-                IcuDateTextView.this = this;
-            }
-
             @Override // android.content.BroadcastReceiver
             public void onReceive(Context context2, Intent intent) {
                 IcuDateTextView.onTimeChanged(!"android.intent.action.TIME_TICK".equals(intent.getAction()));
