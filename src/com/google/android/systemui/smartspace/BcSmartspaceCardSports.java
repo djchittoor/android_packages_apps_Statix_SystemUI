@@ -13,7 +13,6 @@ import com.android.systemui.bcsmartspace.R$id;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardSports extends BcSmartspaceCardSecondary {
     public BcSmartspaceCardSports(Context context) {
         super(context);

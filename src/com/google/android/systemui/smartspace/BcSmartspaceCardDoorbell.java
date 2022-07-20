@@ -37,7 +37,6 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     private ImageView mLoadingIcon;
     private CardView mLoadingScreenView;
@@ -198,7 +197,6 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         return getContext().getPackageName().equals("com.android.systemui");
     }
 
-    /* loaded from: classes2.dex */
     public static class DrawableWithUri extends RoundDrawableWrapper {
         ContentResolver mContentResolver;
         Drawable mDrawable;
@@ -248,7 +246,6 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         return 0.0f;
     }
 
-    /* loaded from: classes2.dex */
     public static class LoadUriTask extends AsyncTask<DrawableWithUri, Void, DrawableWithUri> {
         private LoadUriTask() {
         }

@@ -2,7 +2,6 @@ package com.google.android.systemui.smartspace;
 
 import java.util.Objects;
 
-/* loaded from: classes2.dex */
 public final class SmallHash {
     public static int hash(String str) {
         return hash(Objects.hashCode(str));

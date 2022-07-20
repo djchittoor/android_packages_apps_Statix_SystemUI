@@ -8,7 +8,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-/* loaded from: classes2.dex */
 public class ProtoStore {
     private final Context mContext;
 

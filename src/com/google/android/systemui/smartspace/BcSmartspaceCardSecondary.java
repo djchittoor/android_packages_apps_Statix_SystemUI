@@ -7,7 +7,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
-/* loaded from: classes2.dex */
 public abstract class BcSmartspaceCardSecondary extends ConstraintLayout {
     /* JADX INFO: Access modifiers changed from: package-private */
     public abstract boolean setSmartspaceActions(SmartspaceTarget smartspaceTarget, BcSmartspaceDataPlugin.SmartspaceEventNotifier smartspaceEventNotifier, BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo);

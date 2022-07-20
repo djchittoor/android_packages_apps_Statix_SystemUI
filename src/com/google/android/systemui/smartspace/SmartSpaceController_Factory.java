@@ -8,7 +8,6 @@ import com.android.systemui.dump.DumpManager;
 import dagger.internal.Factory;
 import javax.inject.Provider;
 
-/* loaded from: classes2.dex */
 public final class SmartSpaceController_Factory implements Factory<SmartSpaceController> {
     private final Provider<AlarmManager> alarmManagerProvider;
     private final Provider<Context> contextProvider;

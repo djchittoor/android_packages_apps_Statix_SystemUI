@@ -3,7 +3,6 @@ package com.google.android.systemui.smartspace;
 import android.app.smartspace.SmartspaceTarget;
 import java.util.UUID;
 
-/* loaded from: classes2.dex */
 public class InstanceId {
     public static int create(SmartspaceTarget smartspaceTarget) {
         if (smartspaceTarget == null) {

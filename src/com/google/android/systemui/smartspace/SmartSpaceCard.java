@@ -13,7 +13,6 @@ import com.android.systemui.R$string;
 import com.android.systemui.smartspace.nano.SmartspaceProto$CardWrapper;
 import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
 
-/* loaded from: classes2.dex */
 public class SmartSpaceCard {
     private static int sRequestCode;
     private final SmartspaceProto$SmartspaceUpdate.SmartspaceCard mCard;

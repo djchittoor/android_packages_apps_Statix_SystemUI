@@ -11,7 +11,6 @@ import com.google.protobuf.nano.MessageNano;
 import java.util.ArrayList;
 import java.util.List;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardLoggerUtil {
     public static byte[] convertSubcardInfoToBytes(BcSmartspaceSubcardLoggingInfo bcSmartspaceSubcardLoggingInfo) {
         if (bcSmartspaceSubcardLoggingInfo == null || bcSmartspaceSubcardLoggingInfo.getSubcards() == null || bcSmartspaceSubcardLoggingInfo.getSubcards().isEmpty()) {

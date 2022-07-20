@@ -12,7 +12,6 @@ import com.android.systemui.bcsmartspace.R$dimen;
 import com.android.systemui.bcsmartspace.R$drawable;
 import com.android.systemui.bcsmartspace.R$string;
 
-/* loaded from: classes2.dex */
 public class PageIndicator extends LinearLayout {
     private int mPrimaryColor = getAttrColor(getContext(), 16842806);
     private int mCurrentPageIndex = -1;

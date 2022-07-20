@@ -5,7 +5,6 @@ import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.FunctionReferenceImpl;
 
 /* compiled from: KeyguardZenAlarmViewController.kt */
-/* loaded from: classes2.dex */
 /* synthetic */ class KeyguardZenAlarmViewController$showNextAlarm$1 extends FunctionReferenceImpl implements Function0<Unit> {
     /* JADX INFO: Access modifiers changed from: package-private */
     public KeyguardZenAlarmViewController$showNextAlarm$1(KeyguardZenAlarmViewController keyguardZenAlarmViewController) {

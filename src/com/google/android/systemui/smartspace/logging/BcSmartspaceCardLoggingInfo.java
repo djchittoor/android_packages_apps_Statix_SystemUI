@@ -1,6 +1,5 @@
 package com.google.android.systemui.smartspace.logging;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardLoggingInfo {
     private final int mCardinality;
     private final int mDisplaySurface;
@@ -60,7 +59,6 @@ public class BcSmartspaceCardLoggingInfo {
         return "instance_id = " + getInstanceId() + ", feature type = " + getFeatureType() + ", display surface = " + getDisplaySurface() + ", rank = " + getRank() + ", cardinality = " + getCardinality() + ", receivedLatencyMillis = " + getReceivedLatency() + ", subcardInfo = " + getSubcardInfo();
     }
 
-    /* loaded from: classes2.dex */
     public static class Builder {
         private int mCardinality;
         private int mDisplaySurface = 1;

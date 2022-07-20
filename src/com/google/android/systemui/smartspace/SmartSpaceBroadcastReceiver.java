@@ -11,7 +11,6 @@ import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
 import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 
-/* loaded from: classes2.dex */
 public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
     private final SmartSpaceController mController;
 

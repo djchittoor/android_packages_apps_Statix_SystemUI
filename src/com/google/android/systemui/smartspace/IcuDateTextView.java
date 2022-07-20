@@ -13,7 +13,6 @@ import com.android.systemui.bcsmartspace.R$string;
 import java.util.Locale;
 import java.util.Objects;
 
-/* loaded from: classes2.dex */
 public class IcuDateTextView extends DoubleShadowTextView {
     private DateFormat mFormatter;
     private Handler mHandler;

@@ -27,7 +27,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCard extends LinearLayout {
     private static final SmartspaceAction SHOW_ALARMS_ACTION = new SmartspaceAction.Builder("nextAlarmId", "Next alarm").setIntent(new Intent("android.intent.action.SHOW_ALARMS")).build();
     private DoubleShadowTextView mBaseActionIconSubtitleView;

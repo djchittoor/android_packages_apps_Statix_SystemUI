@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-/* loaded from: classes2.dex */
 public class CardPagerAdapter extends PagerAdapter {
     private int mCurrentTextColor;
     private BcSmartspaceDataPlugin mDataProvider;
@@ -309,7 +308,6 @@ public class CardPagerAdapter extends PagerAdapter {
         }
     }
 
-    /* loaded from: classes2.dex */
     public static class ViewHolder {
         public final BcSmartspaceCard card;
         public final int position;

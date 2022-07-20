@@ -1,6 +1,5 @@
 package com.google.android.systemui.smartspace;
 
-/* loaded from: classes2.dex */
 public enum BcSmartspaceEvent implements EventEnum {
     IGNORE(-1),
     SMARTSPACE_CARD_RECEIVED(759),

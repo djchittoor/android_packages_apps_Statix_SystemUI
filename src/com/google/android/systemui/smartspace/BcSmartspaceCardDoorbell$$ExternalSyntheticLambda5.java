@@ -3,7 +3,6 @@ package com.google.android.systemui.smartspace;
 import android.app.smartspace.SmartspaceAction;
 import java.util.function.Predicate;
 
-/* loaded from: classes2.dex */
 public final /* synthetic */ class BcSmartspaceCardDoorbell$$ExternalSyntheticLambda5 implements Predicate {
     public static final /* synthetic */ BcSmartspaceCardDoorbell$$ExternalSyntheticLambda5 INSTANCE = new BcSmartspaceCardDoorbell$$ExternalSyntheticLambda5();
 

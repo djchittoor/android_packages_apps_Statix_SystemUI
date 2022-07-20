@@ -19,7 +19,6 @@ import kotlin.Unit;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: KeyguardMediaViewController.kt */
-/* loaded from: classes2.dex */
 public final class KeyguardMediaViewController {
     private CharSequence artist;
     private final BroadcastDispatcher broadcastDispatcher;

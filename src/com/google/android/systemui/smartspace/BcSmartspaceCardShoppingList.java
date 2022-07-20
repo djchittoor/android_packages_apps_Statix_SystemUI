@@ -14,7 +14,6 @@ import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.Locale;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardShoppingList extends BcSmartspaceCardSecondary {
     private static final int[] LIST_ITEM_TEXT_VIEW_IDS = {R$id.list_item_1, R$id.list_item_2, R$id.list_item_3};
     private ImageView mCardPromptIconView;

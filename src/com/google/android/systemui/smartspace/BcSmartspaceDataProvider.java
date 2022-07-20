@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
     private final Set<BcSmartspaceDataPlugin.SmartspaceTargetListener> mSmartspaceTargetListeners = new HashSet();
     private final List<SmartspaceTarget> mSmartspaceTargets = new ArrayList();

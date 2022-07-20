@@ -1,6 +1,5 @@
 package com.google.android.systemui.smartspace.logging;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardMetadataLoggingInfo {
     private final int mCardTypeId;
     private final int mInstanceId;
@@ -22,7 +21,6 @@ public class BcSmartspaceCardMetadataLoggingInfo {
         return "BcSmartspaceCardMetadataLoggingInfo{mInstanceId=" + this.mInstanceId + ", mCardTypeId=" + this.mCardTypeId + '}';
     }
 
-    /* loaded from: classes2.dex */
     public static class Builder {
         private int mCardTypeId;
         private int mInstanceId;

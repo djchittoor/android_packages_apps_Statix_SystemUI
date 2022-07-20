@@ -4,7 +4,6 @@ import com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-/* loaded from: classes2.dex */
 public final /* synthetic */ class BcSmartspaceCardDoorbell$$ExternalSyntheticLambda6 implements Predicate {
     public static final /* synthetic */ BcSmartspaceCardDoorbell$$ExternalSyntheticLambda6 INSTANCE = new BcSmartspaceCardDoorbell$$ExternalSyntheticLambda6();
 

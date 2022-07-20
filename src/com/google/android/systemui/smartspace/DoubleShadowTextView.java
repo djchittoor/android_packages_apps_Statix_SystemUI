@@ -8,7 +8,6 @@ import androidx.core.graphics.ColorUtils;
 import com.android.systemui.bcsmartspace.R$color;
 import com.android.systemui.bcsmartspace.R$dimen;
 
-/* loaded from: classes2.dex */
 public class DoubleShadowTextView extends TextView {
     private final float mAmbientShadowBlur;
     private final int mAmbientShadowColor;

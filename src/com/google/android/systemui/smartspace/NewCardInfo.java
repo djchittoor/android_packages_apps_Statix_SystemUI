@@ -14,7 +14,6 @@ import com.android.systemui.smartspace.nano.SmartspaceProto$CardWrapper;
 import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
 import java.io.ByteArrayOutputStream;
 
-/* loaded from: classes2.dex */
 public class NewCardInfo {
     private final SmartspaceProto$SmartspaceUpdate.SmartspaceCard mCard;
     private final Intent mIntent;

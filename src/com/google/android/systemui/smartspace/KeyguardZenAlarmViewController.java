@@ -25,7 +25,6 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.reflect.KFunction;
 
 /* compiled from: KeyguardZenAlarmViewController.kt */
-/* loaded from: classes2.dex */
 public final class KeyguardZenAlarmViewController {
     public static final Companion Companion = new Companion(null);
     private final Drawable alarmImage;
@@ -81,7 +80,6 @@ public final class KeyguardZenAlarmViewController {
     }
 
     /* compiled from: KeyguardZenAlarmViewController.kt */
-    /* loaded from: classes2.dex */
     public static final class Companion {
         public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
             this();

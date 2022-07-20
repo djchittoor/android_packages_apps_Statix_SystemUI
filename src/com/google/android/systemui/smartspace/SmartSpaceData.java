@@ -2,7 +2,6 @@ package com.google.android.systemui.smartspace;
 
 import android.util.Log;
 
-/* loaded from: classes2.dex */
 public class SmartSpaceData {
     SmartSpaceCard mCurrentCard;
     SmartSpaceCard mWeatherCard;

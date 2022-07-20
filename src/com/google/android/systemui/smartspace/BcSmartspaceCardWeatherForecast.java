@@ -19,7 +19,6 @@ import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.Locale;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardWeatherForecast extends BcSmartspaceCardSecondary {
     public BcSmartspaceCardWeatherForecast(Context context) {
         super(context);

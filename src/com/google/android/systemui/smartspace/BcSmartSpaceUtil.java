@@ -23,7 +23,6 @@ import com.android.systemui.plugins.FalsingManager;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLogger;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 
-/* loaded from: classes2.dex */
 public final class BcSmartSpaceUtil {
     private static FalsingManager sFalsingManager;
     private static BcSmartspaceDataPlugin.IntentStarter sIntentStarter;

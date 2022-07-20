@@ -2,7 +2,6 @@ package com.google.android.systemui.smartspace;
 
 import android.content.IntentFilter;
 
-/* loaded from: classes2.dex */
 public class GSAIntents {
     public static IntentFilter getGsaPackageFilter(String... strArr) {
         return getPackageFilter("com.google.android.googlequicksearchbox", strArr);

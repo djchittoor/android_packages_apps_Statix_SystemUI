@@ -11,7 +11,6 @@ import android.graphics.drawable.LayerDrawable;
 import com.android.internal.graphics.ColorUtils;
 import com.android.systemui.bcsmartspace.R$dimen;
 
-/* loaded from: classes2.dex */
 public class DoubleShadowIconDrawable extends LayerDrawable {
     private Drawable mIconDrawable;
     private Drawable mShadowDrawable;

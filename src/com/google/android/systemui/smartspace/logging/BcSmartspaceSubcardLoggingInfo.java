@@ -3,7 +3,6 @@ package com.google.android.systemui.smartspace.logging;
 import java.util.ArrayList;
 import java.util.List;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceSubcardLoggingInfo {
     private int mClickedSubcardIndex;
     private List<BcSmartspaceCardMetadataLoggingInfo> mSubcards;
@@ -37,7 +36,6 @@ public class BcSmartspaceSubcardLoggingInfo {
         return "BcSmartspaceSubcardLoggingInfo{mSubcards=" + this.mSubcards + ", mClickedSubcardIndex=" + this.mClickedSubcardIndex + '}';
     }
 
-    /* loaded from: classes2.dex */
     public static class Builder {
         private int mClickedSubcardIndex;
         private List<BcSmartspaceCardMetadataLoggingInfo> mSubcards;

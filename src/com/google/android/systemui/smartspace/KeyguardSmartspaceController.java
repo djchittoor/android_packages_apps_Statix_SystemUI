@@ -6,7 +6,6 @@ import com.android.systemui.flags.FeatureFlags;
 import kotlin.jvm.internal.Intrinsics;
 
 /* compiled from: KeyguardSmartspaceController.kt */
-/* loaded from: classes2.dex */
 public final class KeyguardSmartspaceController {
     private final Context context;
     private final FeatureFlags featureFlags;

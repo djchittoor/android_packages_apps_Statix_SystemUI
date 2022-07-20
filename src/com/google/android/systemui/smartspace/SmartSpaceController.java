@@ -22,7 +22,6 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/* loaded from: classes2.dex */
 public class SmartSpaceController implements Dumpable {
     static final boolean DEBUG = Log.isLoggable("SmartSpaceController", 3);
     private final AlarmManager mAlarmManager;
@@ -290,7 +289,6 @@ public class SmartSpaceController implements Dumpable {
     }
 
     /* JADX INFO: Access modifiers changed from: private */
-    /* loaded from: classes2.dex */
     public class UserSwitchReceiver extends BroadcastReceiver {
         private UserSwitchReceiver() {
             SmartSpaceController.this = r1;

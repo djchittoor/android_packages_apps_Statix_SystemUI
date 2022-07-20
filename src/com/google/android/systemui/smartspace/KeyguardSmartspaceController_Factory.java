@@ -5,7 +5,6 @@ import com.android.systemui.flags.FeatureFlags;
 import dagger.internal.Factory;
 import javax.inject.Provider;
 
-/* loaded from: classes2.dex */
 public final class KeyguardSmartspaceController_Factory implements Factory<KeyguardSmartspaceController> {
     private final Provider<Context> contextProvider;
     private final Provider<FeatureFlags> featureFlagsProvider;

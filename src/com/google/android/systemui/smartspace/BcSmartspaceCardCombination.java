@@ -16,7 +16,6 @@ import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.List;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardCombination extends BcSmartspaceCardSecondary {
     protected ConstraintLayout mFirstSubCard;
     protected ConstraintLayout mSecondSubCard;

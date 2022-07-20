@@ -6,7 +6,6 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import androidx.viewpager.widget.ViewPager;
 
-/* loaded from: classes2.dex */
 public class InterceptingViewPager extends ViewPager {
     private boolean mHasPerformedLongPress;
     private boolean mHasPostedLongPress;
@@ -29,7 +28,6 @@ public class InterceptingViewPager extends ViewPager {
         }
     };
 
-    /* loaded from: classes2.dex */
     public interface EventProxy {
         boolean delegateEvent(MotionEvent motionEvent);
     }

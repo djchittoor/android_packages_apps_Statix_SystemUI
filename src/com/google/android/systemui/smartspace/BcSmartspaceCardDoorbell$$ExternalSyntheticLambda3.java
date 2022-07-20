@@ -3,7 +3,6 @@ package com.google.android.systemui.smartspace;
 import android.app.smartspace.SmartspaceAction;
 import java.util.function.Function;
 
-/* loaded from: classes2.dex */
 public final /* synthetic */ class BcSmartspaceCardDoorbell$$ExternalSyntheticLambda3 implements Function {
     public static final /* synthetic */ BcSmartspaceCardDoorbell$$ExternalSyntheticLambda3 INSTANCE = new BcSmartspaceCardDoorbell$$ExternalSyntheticLambda3();
 

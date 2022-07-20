@@ -37,7 +37,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlugin.SmartspaceTargetListener, BcSmartspaceDataPlugin.SmartspaceView {
     private static ArraySet<String> mLastReceivedTargets = new ArraySet<>();
     private static int sLastSurface = -1;

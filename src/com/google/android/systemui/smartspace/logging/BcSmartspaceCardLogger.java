@@ -5,7 +5,6 @@ import com.android.systemui.shared.system.SysUiStatsLog;
 import com.google.android.systemui.smartspace.BcSmartSpaceUtil;
 import com.google.android.systemui.smartspace.EventEnum;
 
-/* loaded from: classes2.dex */
 public class BcSmartspaceCardLogger {
     private static final boolean IS_VERBOSE = BcSmartSpaceUtil.isLoggable("StatsLog");
 
