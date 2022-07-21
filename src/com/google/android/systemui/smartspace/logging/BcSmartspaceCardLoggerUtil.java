@@ -16,19 +16,19 @@ public class BcSmartspaceCardLoggerUtil {
         if (bcSmartspaceSubcardLoggingInfo == null || bcSmartspaceSubcardLoggingInfo.getSubcards() == null || bcSmartspaceSubcardLoggingInfo.getSubcards().isEmpty()) {
             return null;
         }
-        SmartSpaceSubcards SmartSpaceSubcards = new SmartSpaceSubcards();
+        SmartSpaceSubcards smartSpaceSubcards = new SmartSpaceSubcards();
         SmartSpaceSubcards.clickedSubcardIndex = bcSmartspaceSubcardLoggingInfo.getClickedSubcardIndex();
         List<BcSmartspaceCardMetadataLoggingInfo> subcards = bcSmartspaceSubcardLoggingInfo.getSubcards();
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < subcards.size(); i++) {
             BcSmartspaceCardMetadataLoggingInfo bcSmartspaceCardMetadataLoggingInfo = subcards.get(i);
-            SmartSpaceCardMetadata SmartSpaceCardMetadata = new SmartSpaceCardMetadata();
-            SmartSpaceCardMetadata.instanceId = bcSmartspaceCardMetadataLoggingInfo.getInstanceId();
-            SmartSpaceCardMetadata.cardTypeId = bcSmartspaceCardMetadataLoggingInfo.getCardTypeId();
-            arrayList.add(SmartSpaceCardMetadata);
+            SmartSpaceCardMetadata smartSpaceCardMetadata = new SmartSpaceCardMetadata();
+            smartSpaceCardMetadata.instanceId = bcSmartspaceCardMetadataLoggingInfo.getInstanceId();
+            smartSpaceCardMetadata.cardTypeId = bcSmartspaceCardMetadataLoggingInfo.getCardTypeId();
+            arrayList.add(smartSpaceCardMetadata);
         }
-        SmartSpaceSubcards.subcards = (SmartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
-        return MessageNano.toByteArray(SmartSpaceSubcards);
+        smartSpaceSubcards.subcards = (smartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
+        return MessageNano.toByteArray(smartSpaceSubcards);
     }
 
     public static void forcePrimaryFeatureTypeAndInjectWeatherSubcard(BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo, SmartspaceTarget smartspaceTarget, int i) {
