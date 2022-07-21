@@ -7,9 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.text.TextUtils;
 import android.util.Log;
-import com.android.systemui.R.dimen;
-import com.android.systemui.R.plurals;
-import com.android.systemui.R.string;
+import com.android.systemui.R;
 import com.android.systemui.smartspace.nano.SmartspaceProto.CardWrapper;
 import com.android.systemui.smartspace.nano.SmartspaceProto.SmartspaceUpdate;
 

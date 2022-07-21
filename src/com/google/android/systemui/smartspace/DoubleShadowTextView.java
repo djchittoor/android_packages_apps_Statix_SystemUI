@@ -5,8 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import androidx.core.graphics.ColorUtils;
-import com.android.systemui.bcsmartspace.R.color;
-import com.android.systemui.bcsmartspace.R.dimen;
+import com.android.systemui.bcsmartspace.R;
 
 public class DoubleShadowTextView extends TextView {
     private final float mAmbientShadowBlur;

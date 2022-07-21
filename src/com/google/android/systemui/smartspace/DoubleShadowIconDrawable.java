@@ -9,7 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import com.android.internal.graphics.ColorUtils;
-import com.android.systemui.bcsmartspace.R.dimen;
+import com.android.systemui.bcsmartspace.R;
 
 public class DoubleShadowIconDrawable extends LayerDrawable {
     private Drawable mIconDrawable;

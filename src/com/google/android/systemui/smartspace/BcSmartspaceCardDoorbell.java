@@ -24,9 +24,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.RoundedBitmapDrawable;
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import com.android.launcher3.icons.RoundDrawableWrapper;
-import com.android.systemui.bcsmartspace.R.dimen;
-import com.android.systemui.bcsmartspace.R.drawable;
-import com.android.systemui.bcsmartspace.R.id;
+import com.android.systemui.bcsmartspace.R;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.io.IOException;
@@ -156,7 +154,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     }
 
     private List<Uri> getImageUris(SmartspaceTarget smartspaceTarget) {
-        return (List) smartspaceTarget.getIconGrid().stream().filter(getExtras().containsKey("imageUri")).map(getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
+        return (List<Uri>) smartspaceTarget.getIconGrid().stream().filter(getExtras().containsKey("imageUri")).map(getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
     }
 
     private boolean isSysUiContext() {

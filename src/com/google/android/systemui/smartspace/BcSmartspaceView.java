@@ -22,8 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import androidx.viewpager.widget.ViewPager;
-import com.android.systemui.bcsmartspace.R.dimen;
-import com.android.systemui.bcsmartspace.R.id;
+import com.android.systemui.bcsmartspace.R;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.plugins.FalsingManager;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLogger;
@@ -52,7 +51,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
     private final ContentObserver mAodObserver = new ContentObserver(new Handler()) { // from class: com.google.android.systemui.smartspace.BcSmartspaceView.1
         @Override // android.database.ContentObserver
         public void onChange(boolean z) {
-            BcSmartspaceView.onSettingsChanged();
+            onSettingsChanged();
         }
     };
     private final CardPagerAdapter mAdapter = new CardPagerAdapter(this);
@@ -61,30 +60,30 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
 
         @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
         public void onPageScrollStateChanged(int i) {
-            BcSmartspaceView.mScrollState = i;
-            if (i != 0 || BcSmartspaceView.mPendingTargets == null) {
+            mScrollState = i;
+            if (i != 0 || mPendingTargets == null) {
                 return;
             }
             BcSmartspaceView bcSmartspaceView = BcSmartspaceView.this;
-            bcSmartspaceView.onSmartspaceTargetsUpdated(bcSmartspaceView.mPendingTargets);
-            BcSmartspaceView.mPendingTargets = null;
+            onSmartspaceTargetsUpdated(mPendingTargets);
+            mPendingTargets = null;
         }
 
         @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
         public void onPageScrolled(int i, float f, int i2) {
-            if (BcSmartspaceView.mPageIndicator != null) {
-                BcSmartspaceView.mPageIndicator.setPageOffset(i, f);
+            if (mPageIndicator != null) {
+                mPageIndicator.setPageOffset(i, f);
             }
         }
 
         @Override // androidx.viewpager.widget.ViewPager.OnPageChangeListener
         public void onPageSelected(int i) {
-            BcSmartspaceView.mCardPosition = i;
-            BcSmartspaceCard cardAtPosition = BcSmartspaceView.mAdapter.getCardAtPosition(mCurrentPosition);
+            mCardPosition = i;
+            BcSmartspaceCard cardAtPosition = mAdapter.getCardAtPosition(mCurrentPosition);
             mCurrentPosition = i;
-            SmartspaceTarget targetAtPosition = BcSmartspaceView.mAdapter.getTargetAtPosition(mCurrentPosition);
-            BcSmartspaceView.logSmartspaceEvent(targetAtPosition, mCurrentPosition, BcSmartspaceEvent.SMARTSPACE_CARD_SEEN);
-            if (BcSmartspaceView.mDataProvider == null) {
+            SmartspaceTarget targetAtPosition = mAdapter.getTargetAtPosition(mCurrentPosition);
+            logSmartspaceEvent(targetAtPosition, mCurrentPosition, BcSmartspaceEvent.SMARTSPACE_CARD_SEEN);
+            if (mDataProvider == null) {
                 Log.w("BcSmartspaceView", "Cannot notify target hidden/shown smartspace events: data provider null");
                 return;
             }
@@ -101,7 +100,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
                     if (baseAction != null) {
                         builder.setSmartspaceActionId(baseAction.getId());
                     }
-                    BcSmartspaceView.mDataProvider.notifySmartspaceEvent(builder.build());
+                    mDataProvider.notifySmartspaceEvent(builder.build());
                 }
             }
             if (targetAtPosition == null) {
@@ -114,7 +113,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
             if (baseAction2 != null) {
                 builder2.setSmartspaceActionId(baseAction2.getId());
             }
-            BcSmartspaceView.mDataProvider.notifySmartspaceEvent(builder2.build());
+            mDataProvider.notifySmartspaceEvent(builder2.build());
         }
     };
 
@@ -127,7 +126,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
         super.onVisibilityAggregated(z);
         BcSmartspaceDataPlugin bcSmartspaceDataPlugin = mDataProvider;
         if (bcSmartspaceDataPlugin != null) {
-            bcSmartspaceDataPlugin.notifySmartspaceEvent(new SmartspaceTargetEvent.Builder(z ? 6 : 7).build());
+            notifySmartspaceEvent(new SmartspaceTargetEvent.Builder(z ? 6 : 7).build());
         }
     }
 
@@ -260,7 +259,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
             }
         }
         mLastReceivedTargets.clear();
-        mLastReceivedTargets.addAll((Collection) mAdapter.getTargets().stream().map(getSmartspaceTargetId()).collect(Collectors.toList()));
+        mLastReceivedTargets.addAll((Collection) mAdapter.getTargets().stream().map(smartspaceTarget -> smartspaceTarget.getSmartspaceTargetId()).collect(Collectors.toList()));
         mAdapter.notifyDataSetChanged();
     }
 
@@ -367,4 +366,4 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
     private static boolean isAodEnabled(Context context) {
         return Settings.Secure.getIntForUser(context.getContentResolver(), "doze_always_on", 0, context.getUserId()) == 1;
     }
-}
+mLastReceivedTargets.addAllmLastReceivedTargets.addAll}

@@ -13,8 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Constraints;
-import com.android.systemui.bcsmartspace.R.id;
-import com.android.systemui.bcsmartspace.R.layout;
+import com.android.systemui.bcsmartspace.R;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
 import java.util.Locale;
@@ -135,8 +134,8 @@ public class BcSmartspaceCardWeatherForecast extends BcSmartspaceCardSecondary {
         while (i2 < 4) {
             Constraints.LayoutParams layoutParams = new Constraints.LayoutParams(-2, 0);
             View view = viewArr[i2];
-            ConstraintLayout constraintLayout2 = i2 > 0 ? viewArr[i2 - 1] : null;
-            ConstraintLayout constraintLayout3 = i2 < 3 ? viewArr[i2 + 1] : null;
+            ConstraintLayout constraintLayout2 = i2 > 0 ? ((ConstraintLayout) viewArr[i2 - 1]) : null;
+            ConstraintLayout constraintLayout3 = i2 < 3 ? ((ConstraintLayout) viewArr[i2 + 1]) : null;
             if (i2 == 0) {
                 layoutParams.startToStart = 0;
                 layoutParams.horizontalChainStyle = 1;

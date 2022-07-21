@@ -9,7 +9,7 @@ import android.icu.text.DisplayContext;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import com.android.systemui.bcsmartspace.R.string;
+import com.android.systemui.bcsmartspace.R;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -29,13 +29,13 @@ public class IcuDateTextView extends DoubleShadowTextView {
         mTicker = new Runnable() { // from class: com.google.android.systemui.smartspace.IcuDateTextView$$ExternalSyntheticLambda0
             @Override // java.lang.Runnable
             public final void run() {
-                IcuDateTextView.onTimeTick();
+                onTimeTick();
             }
         };
         mIntentReceiver = new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.IcuDateTextView.1
             @Override // android.content.BroadcastReceiver
             public void onReceive(Context context2, Intent intent) {
-                IcuDateTextView.onTimeChanged(!"android.intent.action.TIME_TICK".equals(intent.getAction()));
+                onTimeChanged(!"android.intent.action.TIME_TICK".equals(intent.getAction()));
             }
         };
     }

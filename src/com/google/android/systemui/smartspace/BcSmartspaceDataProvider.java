@@ -5,7 +5,7 @@ import android.app.smartspace.SmartspaceTargetEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.android.systemui.bcsmartspace.R.layout;
+import com.android.systemui.bcsmartspace.R;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,17 +22,17 @@ public class BcSmartspaceDataProvider implements BcSmartspaceDataPlugin {
     private View.OnAttachStateChangeListener mStateChangeListener = new View.OnAttachStateChangeListener() { // from class: com.google.android.systemui.smartspace.BcSmartspaceDataProvider.1
         @Override // android.view.View.OnAttachStateChangeListener
         public void onViewAttachedToWindow(View view) {
-            BcSmartspaceDataProvider.mViews.add(view);
-            for (View.OnAttachStateChangeListener onAttachStateChangeListener : BcSmartspaceDataProvider.mAttachListeners) {
+            mViews.add(view);
+            for (View.OnAttachStateChangeListener onAttachStateChangeListener : mAttachListeners) {
                 onAttachStateChangeListener.onViewAttachedToWindow(view);
             }
         }
 
         @Override // android.view.View.OnAttachStateChangeListener
         public void onViewDetachedFromWindow(View view) {
-            BcSmartspaceDataProvider.mViews.remove(view);
+            mViews.remove(view);
             view.removeOnAttachStateChangeListener(this);
-            for (View.OnAttachStateChangeListener onAttachStateChangeListener : BcSmartspaceDataProvider.mAttachListeners) {
+            for (View.OnAttachStateChangeListener onAttachStateChangeListener : mAttachListeners) {
                 onAttachStateChangeListener.onViewDetachedFromWindow(view);
             }
         }

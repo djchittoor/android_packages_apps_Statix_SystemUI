@@ -9,7 +9,7 @@ import android.os.UserHandle;
 import android.text.TextUtils;
 import android.view.View;
 import com.android.internal.annotations.VisibleForTesting;
-import com.android.systemui.R.string;
+import com.android.systemui.R;
 import com.android.systemui.broadcast.BroadcastDispatcher;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.android.systemui.settings.CurrentUserTracker;
@@ -27,12 +27,12 @@ public final class KeyguardMediaViewController {
     private final NotificationMediaManager mediaListener = new NotificationMediaManager.MediaListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1
         @Override // com.android.systemui.statusbar.NotificationMediaManager.MediaListener
         public void onPrimaryMetadataOrStateChanged(final MediaMetadata mediaMetadata, final int i) {
-            DelayableExecutor uiExecutor = KeyguardMediaViewController.getUiExecutor();
+            DelayableExecutor uiExecutor = getUiExecutor();
             final KeyguardMediaViewController keyguardMediaViewController = KeyguardMediaViewController.this;
             uiExecutor.execute(new Runnable() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1$onPrimaryMetadataOrStateChanged$1
                 @Override // java.lang.Runnable
                 public final void run() {
-                    KeyguardMediaViewController.updateMediaInfo(mediaMetadata, i);
+                    updateMediaInfo(mediaMetadata, i);
                 }
             });
         }
@@ -78,9 +78,9 @@ public final class KeyguardMediaViewController {
                 NotificationMediaManager notificationMediaManager;
                 KeyguardMediaViewController$mediaListener$1 keyguardMediaViewController$mediaListener$1;
                 Intrinsics.checkNotNullParameter(v, "v");
-                KeyguardMediaViewController.setSmartspaceView((BcSmartspaceDataPlugin.SmartspaceView) v);
+                setSmartspaceView((BcSmartspaceDataPlugin.SmartspaceView) v);
                 notificationMediaManager = KeyguardMediaViewController.mediaManager;
-                keyguardMediaViewController$mediaListener$1 = KeyguardMediaViewController.mediaListener;
+                keyguardMediaViewController$mediaListener$1 = mediaListener;
                 notificationMediaManager.addCallback(keyguardMediaViewController$mediaListener$1);
             }
 
@@ -89,9 +89,9 @@ public final class KeyguardMediaViewController {
                 NotificationMediaManager notificationMediaManager;
                 KeyguardMediaViewController$mediaListener$1 keyguardMediaViewController$mediaListener$1;
                 Intrinsics.checkNotNullParameter(v, "v");
-                KeyguardMediaViewController.setSmartspaceView(null);
-                notificationMediaManager = KeyguardMediaViewController.mediaManager;
-                keyguardMediaViewController$mediaListener$1 = KeyguardMediaViewController.mediaListener;
+                setSmartspaceView(null);
+                notificationMediaManager = mediaManager;
+                keyguardMediaViewController$mediaListener$1 = mediaListener;
                 notificationMediaManager.removeCallback(keyguardMediaViewController$mediaListener$1);
             }
         });
@@ -99,7 +99,7 @@ public final class KeyguardMediaViewController {
         userTracker = new CurrentUserTracker(broadcastDispatcher) { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$init$2
             @Override // com.android.systemui.settings.CurrentUserTracker
             public void onUserSwitched(int i) {
-                KeyguardMediaViewController.reset();
+                reset();
             }
         };
     }

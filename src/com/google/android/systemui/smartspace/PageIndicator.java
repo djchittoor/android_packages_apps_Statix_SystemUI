@@ -8,9 +8,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import androidx.appcompat.content.res.AppCompatResources;
-import com.android.systemui.bcsmartspace.R.dimen;
-import com.android.systemui.bcsmartspace.R.drawable;
-import com.android.systemui.bcsmartspace.R.string;
+import com.android.systemui.bcsmartspace.R;
 
 public class PageIndicator extends LinearLayout {
     private int mPrimaryColor = getAttrColor(getContext(), 16842806);

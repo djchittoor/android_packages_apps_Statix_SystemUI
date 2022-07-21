@@ -12,13 +12,13 @@ public class InterceptingViewPager extends ViewPager {
     private final EventProxy mSuperOnTouch = new EventProxy() { // from class: com.google.android.systemui.smartspace.InterceptingViewPager$$ExternalSyntheticLambda1
         @Override // com.google.android.systemui.smartspace.InterceptingViewPager.EventProxy
         public final boolean delegateEvent(MotionEvent motionEvent) {
-            return InterceptingViewPager.onTouchEvent(motionEvent);
+            return onTouchEvent(motionEvent);
         }
     };
     private final EventProxy mSuperOnIntercept = new EventProxy() { // from class: com.google.android.systemui.smartspace.InterceptingViewPager$$ExternalSyntheticLambda0
         @Override // com.google.android.systemui.smartspace.InterceptingViewPager.EventProxy
         public final boolean delegateEvent(MotionEvent motionEvent) {
-            return InterceptingViewPager.onInterceptTouchEvent(motionEvent);
+            return onInterceptTouchEvent(motionEvent);
         }
     };
     private final Runnable mLongPressCallback = new Runnable() { // from class: com.google.android.systemui.smartspace.InterceptingViewPager$$ExternalSyntheticLambda2

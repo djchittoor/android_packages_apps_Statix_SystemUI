@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import androidx.viewpager.widget.PagerAdapter;
 import com.android.internal.graphics.ColorUtils;
 import com.android.launcher3.icons.GraphicsUtils;
-import com.android.systemui.bcsmartspace.R.layout;
+import com.android.systemui.bcsmartspace.R;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggerUtil;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardLoggingInfo;
@@ -173,7 +173,7 @@ public class CardPagerAdapter extends PagerAdapter {
             smartspaceEventNotifier = new BcSmartspaceDataPlugin.SmartspaceEventNotifier() { // from class: com.google.android.systemui.smartspace.CardPagerAdapter$$ExternalSyntheticLambda0
                 @Override // com.android.systemui.plugins.BcSmartspaceDataPlugin.SmartspaceEventNotifier
                 public final void notifySmartspaceEvent(SmartspaceTargetEvent smartspaceTargetEvent) {
-                    BcSmartspaceDataPlugin.notifySmartspaceEvent(smartspaceTargetEvent);
+                    notifySmartspaceEvent(smartspaceTargetEvent);
                 }
             };
         }
