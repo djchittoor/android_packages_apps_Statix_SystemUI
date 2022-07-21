@@ -11,6 +11,7 @@ message CardWrapper {
     required int64 publishTime = 3;
     required int32 gsaVersionCode = 4;
     required int64 gsaUpdateTime = 5;
+    required bool isIconGrayscale = 6;
 }
 
 message SmartSpaceCardMetadata {

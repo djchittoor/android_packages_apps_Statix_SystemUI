@@ -73,7 +73,7 @@ public class SmartSpaceController implements Dumpable {
         context.registerReceiver(new BroadcastReceiver() { // from class: com.google.android.systemui.smartspace.SmartSpaceController.2
             @Override // android.content.BroadcastReceiver
             public void onReceive(Context context2, Intent intent) {
-                SmartSpaceController.onGsaChanged();
+                onGsaChanged();
             }
         }, GSAIntents.getGsaPackageFilter("android.intent.action.PACKAGE_ADDED", "android.intent.action.PACKAGE_CHANGED", "android.intent.action.PACKAGE_REMOVED", "android.intent.action.PACKAGE_DATA_CLEARED"));
         IntentFilter intentFilter = new IntentFilter();
@@ -267,10 +267,6 @@ public class SmartSpaceController implements Dumpable {
 
     /* JADX INFO: Access modifiers changed from: private */
     public class UserSwitchReceiver extends BroadcastReceiver {
-        private UserSwitchReceiver() {
-            SmartSpaceController.this = r1;
-        }
-
         @Override // android.content.BroadcastReceiver
         public void onReceive(Context context, Intent intent) {
             if (SmartSpaceController.DEBUG) {

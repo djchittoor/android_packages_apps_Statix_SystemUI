@@ -262,7 +262,7 @@ public class BcSmartspaceCard extends LinearLayout {
             } catch (IllegalArgumentException unused) {
                 Log.w("BcSmartspaceCard", "Invalid TruncateAt value: " + string);
             }
-        } else if (mTarget.getFeatureType() == 2 && Locale.ENGLISH.getLanguage().equals(((LinearLayout) this).mContext.getResources().getConfiguration().locale.getLanguage())) {
+        } else if (mTarget.getFeatureType() == 2 && Locale.ENGLISH.getLanguage().equals(mContext.getResources().getConfiguration().locale.getLanguage())) {
             mTitleTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
         } else {
             mTitleTextView.setEllipsize(TextUtils.TruncateAt.END);
@@ -427,7 +427,7 @@ public class BcSmartspaceCard extends LinearLayout {
         if (TextUtils.isEmpty(charSequence)) {
             charSequence = charSequence2;
         } else if (!TextUtils.isEmpty(charSequence2)) {
-            charSequence = ((LinearLayout) this).mContext.getString(R.string.generic_smartspace_concatenated_desc, charSequence2, charSequence);
+            charSequence = mContext.getString(R.string.generic_smartspace_concatenated_desc, charSequence2, charSequence);
         }
         textView.setContentDescription(charSequence);
     }

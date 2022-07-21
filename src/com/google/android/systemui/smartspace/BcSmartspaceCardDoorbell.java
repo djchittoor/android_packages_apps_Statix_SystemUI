@@ -137,7 +137,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         addFramesToAnimatedDrawable((List) list.stream().map(new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda2
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                DrawableWithUri drawableWithUri = new DrawableWithUri(uri, contentResolver, i, f);
+                DrawableWithUri drawableWithUri = new DrawableWithUri(obj, contentResolver, dimensionPixelOffset, dimension);
                 new LoadUriTask().execute(drawableWithUri);
                 return drawableWithUri;
             }
@@ -154,7 +154,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     }
 
     private List<Uri> getImageUris(SmartspaceTarget smartspaceTarget) {
-        return (List<Uri>) smartspaceTarget.getIconGrid().stream().filter(getExtras().containsKey("imageUri")).map(getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
+        return (List<Uri>) smartspaceTarget.getIconGrid().stream().filter(smartspaceAction ->smartspaceAction.getExtras().containsKey("imageUri")).map(smartspaceAction ->smartspaceAction.getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
     }
 
     private boolean isSysUiContext() {

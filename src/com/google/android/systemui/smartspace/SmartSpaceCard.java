@@ -217,7 +217,7 @@ public class SmartSpaceCard {
     private String substitute(boolean z, String str) {
         String str2;
         SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText = getFormattedText(z);
-        return (formattedText == null || (str2 = formattedText.text) == null) ? "" : hasParams(formattedText) ? String.format(str2, getTextArgs(formattedText.formatParam, str)) : str2;
+        return (formattedText == null || (str2 = formattedText.text) == null) ? "" : hasParams(formattedText) ? String.format(str2, (Object) getTextArgs(formattedText.formatParam, str)) : str2;
     }
 
     public boolean isExpired() {

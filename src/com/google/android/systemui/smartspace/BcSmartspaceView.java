@@ -126,7 +126,7 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
         super.onVisibilityAggregated(z);
         BcSmartspaceDataPlugin bcSmartspaceDataPlugin = mDataProvider;
         if (bcSmartspaceDataPlugin != null) {
-            notifySmartspaceEvent(new SmartspaceTargetEvent.Builder(z ? 6 : 7).build());
+            bcSmartspaceDataPlugin.notifySmartspaceEvent(new SmartspaceTargetEvent.Builder(z ? 6 : 7).build());
         }
     }
 
@@ -299,8 +299,8 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
                 @Override // android.animation.AnimatorListenerAdapter, android.animation.Animator.AnimatorListener
                 public void onAnimationEnd(Animator animator) {
                     viewGroup.getOverlay().remove(bcSmartspaceCard);
-                    BcSmartspaceView.mRunningAnimation = null;
-                    BcSmartspaceView.mAnimateSmartspaceUpdate = false;
+                    mRunningAnimation = null;
+                    mAnimateSmartspaceUpdate = false;
                 }
             });
             mRunningAnimation = animatorSet;
