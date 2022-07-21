@@ -240,8 +240,8 @@ public class SmartSpaceCard {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public static SmartSpaceCard fromWrapper(Context context, CardWrapper smartspaceProto$CardWrapper, boolean z) {
-        if (smartspaceProto$CardWrapper == null) {
+    public static SmartSpaceCard fromWrapper(Context context, CardWrapper cardWrapper, boolean z) {
+        if (cardWrapper == null) {
             return null;
         }
         try {
