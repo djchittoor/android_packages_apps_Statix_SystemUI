@@ -245,15 +245,15 @@ public class SmartSpaceCard {
             return null;
         }
         try {
-            SmartspaceUpdate.SmartspaceCard.TapAction tapAction = smartspaceProto$CardWrapper.card.tapAction;
-            Intent parseUri = (tapAction == null || TextUtils.isEmpty(tapAction.intent)) ? null : Intent.parseUri(smartspaceProto$CardWrapper.card.tapAction.intent, 0);
-            byte[] bArr = smartspaceProto$CardWrapper.icon;
+            SmartspaceUpdate.SmartspaceCard.TapAction tapAction = cardWrapper.card.tapAction;
+            Intent parseUri = (tapAction == null || TextUtils.isEmpty(tapAction.intent)) ? null : Intent.parseUri(cardWrapper.card.tapAction.intent, 0);
+            byte[] bArr = cardWrapper.icon;
             Bitmap decodeByteArray = bArr != null ? BitmapFactory.decodeByteArray(bArr, 0, bArr.length, null) : null;
             int dimensionPixelSize = context.getResources().getDimensionPixelSize(R.dimen.header_icon_size);
             if (decodeByteArray != null && decodeByteArray.getHeight() > dimensionPixelSize) {
                 decodeByteArray = Bitmap.createScaledBitmap(decodeByteArray, (int) (decodeByteArray.getWidth() * (dimensionPixelSize / decodeByteArray.getHeight())), dimensionPixelSize, true);
             }
-            return new SmartSpaceCard(context, smartspaceProto$CardWrapper.card, parseUri, z, decodeByteArray, smartspaceProto$CardWrapper.isIconGrayscale, smartspaceProto$CardWrapper.publishTime);
+            return new SmartSpaceCard(context, cardWrapper.card, parseUri, z, decodeByteArray, cardWrapper.isIconGrayscale, cardWrapper.publishTime);
         } catch (Exception e) {
             Log.e("SmartspaceCard", "from proto", e);
             return null;
