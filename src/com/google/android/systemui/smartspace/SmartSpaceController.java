@@ -49,10 +49,10 @@ public class SmartSpaceController implements Dumpable {
         KeyguardUpdateMonitorCallback keyguardUpdateMonitorCallback = new KeyguardUpdateMonitorCallback() { // from class: com.google.android.systemui.smartspace.SmartSpaceController.1
             @Override // com.android.keyguard.KeyguardUpdateMonitorCallback
             public void onTimeChanged() {
-                if (SmartSpaceController.mData == null || !SmartSpaceController.mData.hasCurrent() || SmartSpaceController.mData.getExpirationRemainingMillis() <= 0) {
+                if (mData == null || !mData.hasCurrent() || mData.getExpirationRemainingMillis() <= 0) {
                     return;
                 }
-                SmartSpaceController.update();
+                update();
             }
         };
         mKeyguardMonitorCallback = keyguardUpdateMonitorCallback;
