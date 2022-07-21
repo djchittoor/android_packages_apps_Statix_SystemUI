@@ -85,10 +85,10 @@ public class SmartSpaceController implements Dumpable {
     }
 
     private SmartSpaceCard loadSmartSpaceData(boolean z) {
-        CardWrapper CardWrapper = new CardWrapper();
+        CardWrapper cardWrapper = new CardWrapper();
         ProtoStore protoStore = mStore;
-        if (protoStore.load("smartspace_" + mCurrentUserId + "_" + z, CardWrapper)) {
-            return SmartSpaceCard.fromWrapper(mContext, CardWrapper, !z);
+        if (protoStore.load("smartspace_" + mCurrentUserId + "_" + z, cardWrapper)) {
+            return SmartSpaceCard.fromWrapper(mContext, cardWrapper, !z);
         }
         return null;
     }
