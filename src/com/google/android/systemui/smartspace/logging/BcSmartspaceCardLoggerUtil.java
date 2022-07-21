@@ -2,8 +2,8 @@ package com.google.android.systemui.smartspace.logging;
 
 import android.app.smartspace.SmartspaceAction;
 import android.app.smartspace.SmartspaceTarget;
-import com.android.systemui.smartspace.nano.SmartspaceProto$SmartSpaceCardMetadata;
-import com.android.systemui.smartspace.nano.SmartspaceProto$SmartSpaceSubcards;
+import com.android.systemui.smartspace.nano.SmartSpaceCardMetadata;
+import com.android.systemui.smartspace.nano.SmartSpaceSubcards;
 import com.google.android.systemui.smartspace.InstanceId;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardMetadataLoggingInfo;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceSubcardLoggingInfo;
@@ -16,18 +16,18 @@ public class BcSmartspaceCardLoggerUtil {
         if (bcSmartspaceSubcardLoggingInfo == null || bcSmartspaceSubcardLoggingInfo.getSubcards() == null || bcSmartspaceSubcardLoggingInfo.getSubcards().isEmpty()) {
             return null;
         }
-        SmartspaceProto$SmartSpaceSubcards smartspaceProto$SmartSpaceSubcards = new SmartspaceProto$SmartSpaceSubcards();
+        SmartSpaceSubcards smartspaceProto$SmartSpaceSubcards = new SmartSpaceSubcards();
         smartspaceProto$SmartSpaceSubcards.clickedSubcardIndex = bcSmartspaceSubcardLoggingInfo.getClickedSubcardIndex();
         List<BcSmartspaceCardMetadataLoggingInfo> subcards = bcSmartspaceSubcardLoggingInfo.getSubcards();
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < subcards.size(); i++) {
             BcSmartspaceCardMetadataLoggingInfo bcSmartspaceCardMetadataLoggingInfo = subcards.get(i);
-            SmartspaceProto$SmartSpaceCardMetadata smartspaceProto$SmartSpaceCardMetadata = new SmartspaceProto$SmartSpaceCardMetadata();
+            SmartSpaceCardMetadata smartspaceProto$SmartSpaceCardMetadata = new SmartSpaceCardMetadata();
             smartspaceProto$SmartSpaceCardMetadata.instanceId = bcSmartspaceCardMetadataLoggingInfo.getInstanceId();
             smartspaceProto$SmartSpaceCardMetadata.cardTypeId = bcSmartspaceCardMetadataLoggingInfo.getCardTypeId();
             arrayList.add(smartspaceProto$SmartSpaceCardMetadata);
         }
-        smartspaceProto$SmartSpaceSubcards.subcards = (SmartspaceProto$SmartSpaceCardMetadata[]) arrayList.toArray(new SmartspaceProto$SmartSpaceCardMetadata[arrayList.size()]);
+        smartspaceProto$SmartSpaceSubcards.subcards = (SmartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
         return MessageNano.toByteArray(smartspaceProto$SmartSpaceSubcards);
     }
 

@@ -10,18 +10,18 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
-import com.android.systemui.smartspace.nano.SmartspaceProto$CardWrapper;
-import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
+import com.android.systemui.smartspace.nano.CardWrapper;
+import com.android.systemui.smartspace.nano.SmartspaceUpdate;
 import java.io.ByteArrayOutputStream;
 
 public class NewCardInfo {
-    private final SmartspaceProto$SmartspaceUpdate.SmartspaceCard mCard;
+    private final SmartspaceUpdate.SmartspaceCard mCard;
     private final Intent mIntent;
     private final boolean mIsPrimary;
     private final PackageInfo mPackageInfo;
     private final long mPublishTime;
 
-    public NewCardInfo(SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard, Intent intent, boolean z, long j, PackageInfo packageInfo) {
+    public NewCardInfo(SmartspaceUpdate.SmartspaceCard smartspaceCard, Intent intent, boolean z, long j, PackageInfo packageInfo) {
         mCard = smartspaceCard;
         mIsPrimary = z;
         mIntent = intent;
@@ -34,7 +34,7 @@ public class NewCardInfo {
     }
 
     public Bitmap retrieveIcon(Context context) {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Image image = mCard.icon;
+        SmartspaceUpdate.SmartspaceCard.Image image = mCard.icon;
         if (image == null) {
             return null;
         }
@@ -58,8 +58,8 @@ public class NewCardInfo {
         return null;
     }
 
-    public SmartspaceProto$CardWrapper toWrapper(Context context) {
-        SmartspaceProto$CardWrapper smartspaceProto$CardWrapper = new SmartspaceProto$CardWrapper();
+    public CardWrapper toWrapper(Context context) {
+        CardWrapper smartspaceProto$CardWrapper = new CardWrapper();
         Bitmap retrieveIcon = retrieveIcon(context);
         if (retrieveIcon != null) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -99,7 +99,7 @@ public class NewCardInfo {
     }
 
     public boolean shouldDiscard() {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
+        SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         return smartspaceCard == null || smartspaceCard.shouldDiscard;
     }
 }

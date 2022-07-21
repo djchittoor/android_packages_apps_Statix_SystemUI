@@ -7,7 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.UserHandle;
 import android.util.Log;
-import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
+import com.android.systemui.smartspace.nano.SmartspaceUpdate;
 import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 
@@ -20,7 +20,7 @@ public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
 
     @Override // android.content.BroadcastReceiver
     public void onReceive(Context context, Intent intent) {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard[] smartspaceCardArr;
+        SmartspaceUpdate.SmartspaceCard[] smartspaceCardArr;
         if (SmartSpaceController.DEBUG) {
             Log.d("SmartSpaceReceiver", "receiving update");
         }
@@ -39,10 +39,10 @@ public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
         }
         byte[] byteArrayExtra = intent.getByteArrayExtra("com.google.android.apps.nexuslauncher.extra.SMARTSPACE_CARD");
         if (byteArrayExtra != null) {
-            SmartspaceProto$SmartspaceUpdate smartspaceProto$SmartspaceUpdate = new SmartspaceProto$SmartspaceUpdate();
+            SmartspaceUpdate smartspaceProto$SmartspaceUpdate = new SmartspaceUpdate();
             try {
                 MessageNano.mergeFrom(smartspaceProto$SmartspaceUpdate, byteArrayExtra);
-                for (SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard : smartspaceProto$SmartspaceUpdate.card) {
+                for (SmartspaceUpdate.SmartspaceCard smartspaceCard : smartspaceProto$SmartspaceUpdate.card) {
                     int i = smartspaceCard.cardPriority;
                     boolean z = i == 1;
                     boolean z2 = i == 2;
@@ -60,7 +60,7 @@ public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
         Log.e("SmartSpaceReceiver", "receiving update with no proto: " + intent.getExtras());
     }
 
-    private void notify(SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard, Context context, Intent intent, boolean z) {
+    private void notify(SmartspaceUpdate.SmartspaceCard smartspaceCard, Context context, Intent intent, boolean z) {
         PackageInfo packageInfo;
         long currentTimeMillis = System.currentTimeMillis();
         try {

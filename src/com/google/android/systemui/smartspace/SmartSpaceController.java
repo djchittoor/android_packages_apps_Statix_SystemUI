@@ -16,7 +16,7 @@ import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
 import com.android.systemui.Dumpable;
 import com.android.systemui.dump.DumpManager;
-import com.android.systemui.smartspace.nano.SmartspaceProto$CardWrapper;
+import com.android.systemui.smartspace.nano.CardWrapper;
 import com.android.systemui.util.Assert;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
@@ -85,7 +85,7 @@ public class SmartSpaceController implements Dumpable {
     }
 
     private SmartSpaceCard loadSmartSpaceData(boolean z) {
-        SmartspaceProto$CardWrapper smartspaceProto$CardWrapper = new SmartspaceProto$CardWrapper();
+        CardWrapper smartspaceProto$CardWrapper = new CardWrapper();
         ProtoStore protoStore = mStore;
         if (protoStore.load("smartspace_" + mCurrentUserId + "_" + z, smartspaceProto$CardWrapper)) {
             return SmartSpaceCard.fromWrapper(mContext, smartspaceProto$CardWrapper, !z);
@@ -103,7 +103,7 @@ public class SmartSpaceController implements Dumpable {
                 mBackgroundHandler.post(new Runnable() { // from class: com.google.android.systemui.smartspace.SmartSpaceController$$ExternalSyntheticLambda1
                     @Override // java.lang.Runnable
                     public final void run() {
-                        SmartspaceProto$CardWrapper wrapper = newCardInfo.toWrapper(mContext);
+                        CardWrapper wrapper = newCardInfo.toWrapper(mContext);
                         if (!mHidePrivateData || !mHideWorkData) {
                             ProtoStore protoStore = mStore;
                             protoStore.store(wrapper, "smartspace_" + mCurrentUserId + "_" + newCardInfo.isPrimary());

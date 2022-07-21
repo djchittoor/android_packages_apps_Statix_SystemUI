@@ -10,12 +10,12 @@ import android.util.Log;
 import com.android.systemui.R.dimen;
 import com.android.systemui.R.plurals;
 import com.android.systemui.R.string;
-import com.android.systemui.smartspace.nano.SmartspaceProto$CardWrapper;
-import com.android.systemui.smartspace.nano.SmartspaceProto$SmartspaceUpdate;
+import com.android.systemui.smartspace.nano.CardWrapper;
+import com.android.systemui.smartspace.nano.SmartspaceUpdate;
 
 public class SmartSpaceCard {
     private static int sRequestCode;
-    private final SmartspaceProto$SmartspaceUpdate.SmartspaceCard mCard;
+    private final SmartspaceUpdate.SmartspaceCard mCard;
     private final Context mContext;
     private Bitmap mIcon;
     private boolean mIconProcessed;
@@ -25,7 +25,7 @@ public class SmartSpaceCard {
     private final long mPublishTime;
     private int mRequestCode;
 
-    public SmartSpaceCard(Context context, SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard, Intent intent, boolean z, Bitmap bitmap, boolean z2, long j) {
+    public SmartSpaceCard(Context context, SmartspaceUpdate.SmartspaceCard smartspaceCard, Intent intent, boolean z, Bitmap bitmap, boolean z2, long j) {
         mContext = context.getApplicationContext();
         mCard = smartspaceCard;
         mIsWeather = z;
@@ -74,10 +74,10 @@ public class SmartSpaceCard {
     }
 
     public CharSequence getFormattedTitle() {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText;
+        SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText;
         String str;
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam[] formatParamArr;
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message = getMessage();
+        SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam[] formatParamArr;
+        SmartspaceUpdate.SmartspaceCard.Message message = getMessage();
         if (message == null || (formattedText = message.title) == null || (str = formattedText.text) == null) {
             return "";
         }
@@ -92,7 +92,7 @@ public class SmartSpaceCard {
             if (i >= formatParamArr.length) {
                 break;
             }
-            SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam = formatParamArr[i];
+            SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam = formatParamArr[i];
             if (formatParam != null) {
                 int i2 = formatParam.formatParamArgs;
                 if (i2 == 1 || i2 == 2) {
@@ -103,7 +103,7 @@ public class SmartSpaceCard {
             }
             i++;
         }
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
+        SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         if (smartspaceCard.cardType == 3 && formatParamArr.length == 2) {
             str3 = formatParamArr[0].text;
             str2 = formatParamArr[1].text;
@@ -124,18 +124,18 @@ public class SmartSpaceCard {
         return substitute(false);
     }
 
-    private SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message getMessage() {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message;
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message2;
+    private SmartspaceUpdate.SmartspaceCard.Message getMessage() {
+        SmartspaceUpdate.SmartspaceCard.Message message;
+        SmartspaceUpdate.SmartspaceCard.Message message2;
         long currentTimeMillis = System.currentTimeMillis();
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
+        SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         long j = smartspaceCard.eventTimeMillis;
         long j2 = smartspaceCard.eventDurationMillis + j;
         if (currentTimeMillis >= j || (message2 = smartspaceCard.preEvent) == null) {
             if (currentTimeMillis > j2 && (message = smartspaceCard.postEvent) != null) {
                 return message;
             }
-            SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message3 = smartspaceCard.duringEvent;
+            SmartspaceUpdate.SmartspaceCard.Message message3 = smartspaceCard.duringEvent;
             if (message3 == null) {
                 return null;
             }
@@ -144,23 +144,23 @@ public class SmartSpaceCard {
         return message2;
     }
 
-    private SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText getFormattedText(boolean z) {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message message = getMessage();
+    private SmartspaceUpdate.SmartspaceCard.Message.FormattedText getFormattedText(boolean z) {
+        SmartspaceUpdate.SmartspaceCard.Message message = getMessage();
         if (message != null) {
             return z ? message.title : message.subtitle;
         }
         return null;
     }
 
-    private boolean hasParams(SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText) {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam[] formatParamArr;
+    private boolean hasParams(SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText) {
+        SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam[] formatParamArr;
         return (formattedText == null || formattedText.text == null || (formatParamArr = formattedText.formatParam) == null || formatParamArr.length <= 0) ? false : true;
     }
 
-    long getMillisToEvent(SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
+    long getMillisToEvent(SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
         long j;
         if (formatParam.formatParamArgs == 2) {
-            SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
+            SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
             j = smartspaceCard.eventTimeMillis + smartspaceCard.eventDurationMillis;
         } else {
             j = mCard.eventTimeMillis;
@@ -168,7 +168,7 @@ public class SmartSpaceCard {
         return Math.abs(System.currentTimeMillis() - j);
     }
 
-    private int getMinutesToEvent(SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
+    private int getMinutesToEvent(SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
         return (int) Math.ceil(getMillisToEvent(formatParam) / 60000.0d);
     }
 
@@ -176,7 +176,7 @@ public class SmartSpaceCard {
         return substitute(z, null);
     }
 
-    private String[] getTextArgs(SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam[] formatParamArr, String str) {
+    private String[] getTextArgs(SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam[] formatParamArr, String str) {
         int length = formatParamArr.length;
         String[] strArr = new String[length];
         for (int i = 0; i < length; i++) {
@@ -202,7 +202,7 @@ public class SmartSpaceCard {
         return strArr;
     }
 
-    private String getDurationText(SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
+    private String getDurationText(SmartspaceUpdate.SmartspaceCard.Message.FormattedText.FormatParam formatParam) {
         int minutesToEvent = getMinutesToEvent(formatParam);
         if (minutesToEvent >= 60) {
             int i = minutesToEvent / 60;
@@ -218,7 +218,7 @@ public class SmartSpaceCard {
 
     private String substitute(boolean z, String str) {
         String str2;
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText = getFormattedText(z);
+        SmartspaceUpdate.SmartspaceCard.Message.FormattedText formattedText = getFormattedText(z);
         return (formattedText == null || (str2 = formattedText.text) == null) ? "" : hasParams(formattedText) ? String.format(str2, getTextArgs(formattedText.formatParam, str)) : str2;
     }
 
@@ -227,8 +227,8 @@ public class SmartSpaceCard {
     }
 
     public long getExpiration() {
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard.ExpiryCriteria expiryCriteria;
-        SmartspaceProto$SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
+        SmartspaceUpdate.SmartspaceCard.ExpiryCriteria expiryCriteria;
+        SmartspaceUpdate.SmartspaceCard smartspaceCard = mCard;
         if (smartspaceCard == null || (expiryCriteria = smartspaceCard.expiryCriteria) == null) {
             return 0L;
         }
@@ -240,12 +240,12 @@ public class SmartSpaceCard {
     }
 
     /* JADX INFO: Access modifiers changed from: package-private */
-    public static SmartSpaceCard fromWrapper(Context context, SmartspaceProto$CardWrapper smartspaceProto$CardWrapper, boolean z) {
+    public static SmartSpaceCard fromWrapper(Context context, CardWrapper smartspaceProto$CardWrapper, boolean z) {
         if (smartspaceProto$CardWrapper == null) {
             return null;
         }
         try {
-            SmartspaceProto$SmartspaceUpdate.SmartspaceCard.TapAction tapAction = smartspaceProto$CardWrapper.card.tapAction;
+            SmartspaceUpdate.SmartspaceCard.TapAction tapAction = smartspaceProto$CardWrapper.card.tapAction;
             Intent parseUri = (tapAction == null || TextUtils.isEmpty(tapAction.intent)) ? null : Intent.parseUri(smartspaceProto$CardWrapper.card.tapAction.intent, 0);
             byte[] bArr = smartspaceProto$CardWrapper.icon;
             Bitmap decodeByteArray = bArr != null ? BitmapFactory.decodeByteArray(bArr, 0, bArr.length, null) : null;
