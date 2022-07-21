@@ -273,11 +273,11 @@ public class SmartSpaceController implements Dumpable {
                 Log.d("SmartSpaceController", "Switching user: " + intent.getAction() + " uid: " + UserHandle.myUserId());
             }
             if (intent.getAction().equals("android.intent.action.USER_SWITCHED")) {
-                SmartSpaceController.mCurrentUserId = intent.getIntExtra("android.intent.extra.user_handle", -1);
-                SmartSpaceController.mData.clear();
-                SmartSpaceController.onExpire(true);
+                mCurrentUserId = intent.getIntExtra("android.intent.extra.user_handle", -1);
+                mData.clear();
+                onExpire(true);
             }
-            SmartSpaceController.onExpire(true);
+            onExpire(true);
         }
     }
 }

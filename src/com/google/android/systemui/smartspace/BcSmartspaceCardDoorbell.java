@@ -137,7 +137,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
         addFramesToAnimatedDrawable((List) list.stream().map(new Function() { // from class: com.google.android.systemui.smartspace.BcSmartspaceCardDoorbell$$ExternalSyntheticLambda2
             @Override // java.util.function.Function
             public final Object apply(Object obj) {
-                DrawableWithUri drawableWithUri = new DrawableWithUri(obj, contentResolver, dimensionPixelOffset, dimension);
+                DrawableWithUri drawableWithUri = new DrawableWithUri((Uri) obj, contentResolver, dimensionPixelOffset, dimension);
                 new LoadUriTask().execute(drawableWithUri);
                 return drawableWithUri;
             }
