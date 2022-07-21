@@ -24,7 +24,7 @@ public final class KeyguardMediaViewController {
     private final BroadcastDispatcher broadcastDispatcher;
     private final Context context;
     private final ComponentName mediaComponent;
-    private final NotificationMediaManager mediaListener = new NotificationMediaManager.MediaListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1
+    private final MediaListener mediaListener = new NotificationMediaManager.MediaListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1
         @Override // com.android.systemui.statusbar.NotificationMediaManager.MediaListener
         public void onPrimaryMetadataOrStateChanged(final MediaMetadata mediaMetadata, final int i) {
             DelayableExecutor uiExecutor = getUiExecutor();

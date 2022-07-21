@@ -59,7 +59,7 @@ public final class BcSmartSpaceUtil {
                 FalsingManager falsingManager = sFalsingManager;
                 if (falsingManager == null || !falsingManager.isFalseTap(1)) {
                     if (!z) {
-                        intentStarter.startFromAction(smartspaceAction, view2, z2);
+                        intentStarter2.startFromAction(smartspaceAction, view2, z2);
                     }
                     if (onClickListener != null) {
                         onClickListener.onClick(view2);
