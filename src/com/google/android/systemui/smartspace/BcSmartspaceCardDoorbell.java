@@ -156,7 +156,7 @@ public class BcSmartspaceCardDoorbell extends BcSmartspaceCardGenericImage {
     }
 
     private List<Uri> getImageUris(SmartspaceTarget smartspaceTarget) {
-        return (List) smartspaceTarget.getIconGrid().stream().filter(getExtras().containsKey("imageUri");).map(getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
+        return (List) smartspaceTarget.getIconGrid().stream().filter(getExtras().containsKey("imageUri")).map(getExtras().getString("imageUri")).map(uri -> Uri.parse(uri)).collect(Collectors.toList());
     }
 
     private boolean isSysUiContext() {

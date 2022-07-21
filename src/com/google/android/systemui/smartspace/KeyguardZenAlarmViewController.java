@@ -26,7 +26,6 @@ import kotlin.reflect.KFunction;
 
 /* compiled from: KeyguardZenAlarmViewController.kt */
 public final class KeyguardZenAlarmViewController {
-    public static final Companion Companion = new Companion(null);
     private final Drawable alarmImage;
     private final AlarmManager alarmManager;
     private final Context context;
@@ -36,7 +35,7 @@ public final class KeyguardZenAlarmViewController {
     private final ZenModeController zenModeController;
     private Set<BcSmartspaceDataPlugin.SmartspaceView> smartspaceViews = new LinkedHashSet();
     private final KFunction<Unit> showNextAlarm = new KeyguardZenAlarmViewController$showNextAlarm$1(this);
-    private final KeyguardZenAlarmViewController$zenModeCallback$1 zenModeCallback = new ZenModeController.Callback() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$zenModeCallback$1
+    private final ZenModeController zenModeCallback = new ZenModeController.Callback() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$zenModeCallback$1
         @Override // com.android.systemui.statusbar.policy.ZenModeController.Callback
         public void onZenChanged(int i) {
             KeyguardZenAlarmViewController.updateDnd();

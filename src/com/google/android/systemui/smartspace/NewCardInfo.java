@@ -59,21 +59,21 @@ public class NewCardInfo {
     }
 
     public CardWrapper toWrapper(Context context) {
-        CardWrapper smartspaceProto$CardWrapper = new CardWrapper();
+        CardWrapper CardWrapper = new CardWrapper();
         Bitmap retrieveIcon = retrieveIcon(context);
         if (retrieveIcon != null) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             retrieveIcon.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            smartspaceProto$CardWrapper.icon = byteArrayOutputStream.toByteArray();
+            CardWrapper.icon = byteArrayOutputStream.toByteArray();
         }
-        smartspaceProto$CardWrapper.card = mCard;
-        smartspaceProto$CardWrapper.publishTime = mPublishTime;
+        CardWrapper.card = mCard;
+        CardWrapper.publishTime = mPublishTime;
         PackageInfo packageInfo = mPackageInfo;
         if (packageInfo != null) {
-            smartspaceProto$CardWrapper.gsaVersionCode = packageInfo.versionCode;
-            smartspaceProto$CardWrapper.gsaUpdateTime = packageInfo.lastUpdateTime;
+            CardWrapper.gsaVersionCode = packageInfo.versionCode;
+            CardWrapper.gsaUpdateTime = packageInfo.lastUpdateTime;
         }
-        return smartspaceProto$CardWrapper;
+        return CardWrapper;
     }
 
     private static <T> T retrieveFromIntent(String str, Intent intent) {

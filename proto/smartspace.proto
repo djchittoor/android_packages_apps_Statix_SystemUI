@@ -20,7 +20,7 @@ message SmartSpaceCardMetadata {
 
 message SmartSpaceSubcards {
     required int32 clickedSubcardIndex = 1;
-    required BcSmartspaceCardMetadataLoggingInfo subcards = 2; 
+    required SmartSpaceCardMetadata subcards = 2;
 }
 
 message SmartspaceUpdate {
