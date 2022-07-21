@@ -79,7 +79,7 @@ public final class KeyguardMediaViewController {
                 NotificationMediaManager.MediaListener  keyguardMediaViewController;
                 Intrinsics.checkNotNullParameter(v, "v");
                 setSmartspaceView((BcSmartspaceDataPlugin.SmartspaceView) v);
-                notificationMediaManager = KeyguardMediaViewController.mediaManager;
+                notificationMediaManager = mediaManager;
                 keyguardMediaViewController = mediaListener;
                 notificationMediaManager.addCallback(keyguardMediaViewController);
             }

@@ -81,7 +81,7 @@ public final class KeyguardZenAlarmViewController {
                 if (getSmartspaceViews().size() == 1) {
                     zenModeController = zenModeController;
                     keyguardZenAlarmViewController = zenModeCallback;
-                    zenModeController.addCallback(keyguardZenAlarmViewController;
+                    zenModeController.addCallback(keyguardZenAlarmViewController);
                     nextAlarmController = nextAlarmController;
                     nextAlarmChangeCallback = nextAlarmCallback;
                     nextAlarmController.addCallback(nextAlarmChangeCallback);

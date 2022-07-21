@@ -27,7 +27,7 @@ public class BcSmartspaceCardLoggerUtil {
             smartSpaceCardMetadata.cardTypeId = bcSmartspaceCardMetadataLoggingInfo.getCardTypeId();
             arrayList.add(smartSpaceCardMetadata);
         }
-        smartSpaceSubcards.subcards = (smartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
+        smartSpaceSubcards.subcards = (SmartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
         return MessageNano.toByteArray(smartSpaceSubcards);
     }
 
