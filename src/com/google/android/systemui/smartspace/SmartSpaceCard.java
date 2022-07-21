@@ -10,8 +10,8 @@ import android.util.Log;
 import com.android.systemui.R.dimen;
 import com.android.systemui.R.plurals;
 import com.android.systemui.R.string;
-import com.android.systemui.smartspace.nano.CardWrapper;
-import com.android.systemui.smartspace.nano.SmartspaceUpdate;
+import com.android.systemui.smartspace.nano.SmartspaceProto.CardWrapper;
+import com.android.systemui.smartspace.nano.SmartspaceProto.SmartspaceUpdate;
 
 public class SmartSpaceCard {
     private static int sRequestCode;

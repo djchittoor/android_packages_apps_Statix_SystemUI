@@ -2,8 +2,8 @@ package com.google.android.systemui.smartspace.logging;
 
 import android.app.smartspace.SmartspaceAction;
 import android.app.smartspace.SmartspaceTarget;
-import com.android.systemui.smartspace.nano.SmartSpaceCardMetadata;
-import com.android.systemui.smartspace.nano.SmartSpaceSubcards;
+import com.android.systemui.smartspace.nano.SmartspaceProto.SmartSpaceCardMetadata;
+import com.android.systemui.smartspace.nano.SmartspaceProto.SmartSpaceSubcards;
 import com.google.android.systemui.smartspace.InstanceId;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceCardMetadataLoggingInfo;
 import com.google.android.systemui.smartspace.logging.BcSmartspaceSubcardLoggingInfo;

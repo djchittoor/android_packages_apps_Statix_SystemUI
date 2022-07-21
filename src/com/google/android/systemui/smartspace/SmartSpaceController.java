@@ -16,7 +16,7 @@ import com.android.keyguard.KeyguardUpdateMonitor;
 import com.android.keyguard.KeyguardUpdateMonitorCallback;
 import com.android.systemui.Dumpable;
 import com.android.systemui.dump.DumpManager;
-import com.android.systemui.smartspace.nano.CardWrapper;
+import com.android.systemui.smartspace.nano.SmartspaceProto.CardWrapper;
 import com.android.systemui.util.Assert;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;

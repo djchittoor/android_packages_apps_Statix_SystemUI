@@ -7,7 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.UserHandle;
 import android.util.Log;
-import com.android.systemui.smartspace.nano.SmartspaceUpdate;
+import com.android.systemui.smartspace.nano.SmartspaceProto.SmartspaceUpdate;
 import com.google.protobuf.nano.InvalidProtocolBufferNanoException;
 import com.google.protobuf.nano.MessageNano;
 
