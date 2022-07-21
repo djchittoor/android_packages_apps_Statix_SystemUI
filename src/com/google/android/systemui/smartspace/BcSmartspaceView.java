@@ -366,4 +366,4 @@ public class BcSmartspaceView extends FrameLayout implements BcSmartspaceDataPlu
     private static boolean isAodEnabled(Context context) {
         return Settings.Secure.getIntForUser(context.getContentResolver(), "doze_always_on", 0, context.getUserId()) == 1;
     }
-mLastReceivedTargets.addAllmLastReceivedTargets.addAll}
+}
