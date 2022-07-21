@@ -39,10 +39,10 @@ public class SmartSpaceBroadcastReceiver extends BroadcastReceiver {
         }
         byte[] byteArrayExtra = intent.getByteArrayExtra("com.google.android.apps.nexuslauncher.extra.SMARTSPACE_CARD");
         if (byteArrayExtra != null) {
-            SmartspaceUpdate smartspaceProto$SmartspaceUpdate = new SmartspaceUpdate();
+            SmartspaceUpdate SmartspaceUpdate = new SmartspaceUpdate();
             try {
-                MessageNano.mergeFrom(smartspaceProto$SmartspaceUpdate, byteArrayExtra);
-                for (SmartspaceUpdate.SmartspaceCard smartspaceCard : smartspaceProto$SmartspaceUpdate.card) {
+                MessageNano.mergeFrom(SmartspaceUpdate, byteArrayExtra);
+                for (SmartspaceUpdate.SmartspaceCard smartspaceCard : SmartspaceUpdate.card) {
                     int i = smartspaceCard.cardPriority;
                     boolean z = i == 1;
                     boolean z2 = i == 2;

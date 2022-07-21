@@ -16,19 +16,19 @@ public class BcSmartspaceCardLoggerUtil {
         if (bcSmartspaceSubcardLoggingInfo == null || bcSmartspaceSubcardLoggingInfo.getSubcards() == null || bcSmartspaceSubcardLoggingInfo.getSubcards().isEmpty()) {
             return null;
         }
-        SmartSpaceSubcards smartspaceProto$SmartSpaceSubcards = new SmartSpaceSubcards();
-        smartspaceProto$SmartSpaceSubcards.clickedSubcardIndex = bcSmartspaceSubcardLoggingInfo.getClickedSubcardIndex();
+        SmartSpaceSubcards SmartSpaceSubcards = new SmartSpaceSubcards();
+        SmartSpaceSubcards.clickedSubcardIndex = bcSmartspaceSubcardLoggingInfo.getClickedSubcardIndex();
         List<BcSmartspaceCardMetadataLoggingInfo> subcards = bcSmartspaceSubcardLoggingInfo.getSubcards();
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < subcards.size(); i++) {
             BcSmartspaceCardMetadataLoggingInfo bcSmartspaceCardMetadataLoggingInfo = subcards.get(i);
-            SmartSpaceCardMetadata smartspaceProto$SmartSpaceCardMetadata = new SmartSpaceCardMetadata();
-            smartspaceProto$SmartSpaceCardMetadata.instanceId = bcSmartspaceCardMetadataLoggingInfo.getInstanceId();
-            smartspaceProto$SmartSpaceCardMetadata.cardTypeId = bcSmartspaceCardMetadataLoggingInfo.getCardTypeId();
-            arrayList.add(smartspaceProto$SmartSpaceCardMetadata);
+            SmartSpaceCardMetadata SmartSpaceCardMetadata = new SmartSpaceCardMetadata();
+            SmartSpaceCardMetadata.instanceId = bcSmartspaceCardMetadataLoggingInfo.getInstanceId();
+            SmartSpaceCardMetadata.cardTypeId = bcSmartspaceCardMetadataLoggingInfo.getCardTypeId();
+            arrayList.add(SmartSpaceCardMetadata);
         }
-        smartspaceProto$SmartSpaceSubcards.subcards = (SmartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
-        return MessageNano.toByteArray(smartspaceProto$SmartSpaceSubcards);
+        SmartSpaceSubcards.subcards = (SmartSpaceCardMetadata[]) arrayList.toArray(new SmartSpaceCardMetadata[arrayList.size()]);
+        return MessageNano.toByteArray(SmartSpaceSubcards);
     }
 
     public static void forcePrimaryFeatureTypeAndInjectWeatherSubcard(BcSmartspaceCardLoggingInfo bcSmartspaceCardLoggingInfo, SmartspaceTarget smartspaceTarget, int i) {
