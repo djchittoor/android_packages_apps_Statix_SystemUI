@@ -33,7 +33,7 @@ public final class KeyguardZenAlarmViewController {
     private final ZenModeController zenModeController;
     private Set<BcSmartspaceDataPlugin.SmartspaceView> smartspaceViews = new LinkedHashSet();
     //private final KFunction<Unit> showNextAlarm = new KeyguardZenAlarmViewController$showNextAlarm$1(this);
-    private final ZenModeController zenModeCallback = new ZenModeController.Callback() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$zenModeCallback$1
+    private final ZenModeController.Callback zenModeCallback = new ZenModeController.Callback() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$zenModeCallback$1
         @Override // com.android.systemui.statusbar.policy.ZenModeController.Callback
         public void onZenChanged(int i) {
             updateDnd();
@@ -73,15 +73,15 @@ public final class KeyguardZenAlarmViewController {
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewAttachedToWindow(View v) {
                 ZenModeController zenModeController;
-                KeyguardZenAlarmViewController$zenModeCallback$1 keyguardZenAlarmViewController$zenModeCallback$1;
+                ZenModeController.Callback keyguardZenAlarmViewController;
                 NextAlarmController nextAlarmController;
                 NextAlarmController.NextAlarmChangeCallback nextAlarmChangeCallback;
                 Intrinsics.checkNotNullParameter(v, "v");
                 getSmartspaceViews().add((BcSmartspaceDataPlugin.SmartspaceView) v);
                 if (getSmartspaceViews().size() == 1) {
                     zenModeController = zenModeController;
-                    keyguardZenAlarmViewController$zenModeCallback$1 = zenModeCallback;
-                    zenModeController.addCallback(keyguardZenAlarmViewController$zenModeCallback$1);
+                    keyguardZenAlarmViewController = zenModeCallback;
+                    zenModeController.addCallback(keyguardZenAlarmViewController;
                     nextAlarmController = nextAlarmController;
                     nextAlarmChangeCallback = nextAlarmCallback;
                     nextAlarmController.addCallback(nextAlarmChangeCallback);
@@ -92,15 +92,15 @@ public final class KeyguardZenAlarmViewController {
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewDetachedFromWindow(View v) {
                 ZenModeController zenModeController;
-                KeyguardZenAlarmViewController$zenModeCallback$1 keyguardZenAlarmViewController$zenModeCallback$1;
+                ZenModeController.Callback keyguardZenAlarmViewController;
                 NextAlarmController nextAlarmController;
                 NextAlarmController.NextAlarmChangeCallback nextAlarmChangeCallback;
                 Intrinsics.checkNotNullParameter(v, "v");
                 getSmartspaceViews().remove((BcSmartspaceDataPlugin.SmartspaceView) v);
                 if (getSmartspaceViews().isEmpty()) {
                     zenModeController = zenModeController;
-                    keyguardZenAlarmViewController$zenModeCallback$1 = zenModeCallback;
-                    zenModeController.removeCallback(keyguardZenAlarmViewController$zenModeCallback$1);
+                    keyguardZenAlarmViewController = zenModeCallback;
+                    zenModeController.removeCallback(keyguardZenAlarmViewController);
                     nextAlarmController = nextAlarmController;
                     nextAlarmChangeCallback = nextAlarmCallback;
                     nextAlarmController.removeCallback(nextAlarmChangeCallback);

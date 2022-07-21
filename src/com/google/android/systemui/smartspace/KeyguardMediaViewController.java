@@ -24,7 +24,7 @@ public final class KeyguardMediaViewController {
     private final BroadcastDispatcher broadcastDispatcher;
     private final Context context;
     private final ComponentName mediaComponent;
-    private final MediaListener mediaListener = new NotificationMediaManager.MediaListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1
+    private final NotificationMediaManager.MediaListener mediaListener = new NotificationMediaManager.MediaListener() { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$mediaListener$1
         @Override // com.android.systemui.statusbar.NotificationMediaManager.MediaListener
         public void onPrimaryMetadataOrStateChanged(final MediaMetadata mediaMetadata, final int i) {
             DelayableExecutor uiExecutor = getUiExecutor();
@@ -76,23 +76,23 @@ public final class KeyguardMediaViewController {
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewAttachedToWindow(View v) {
                 NotificationMediaManager notificationMediaManager;
-                KeyguardMediaViewController$mediaListener$1 keyguardMediaViewController$mediaListener$1;
+                NotificationMediaManager.MediaListener  keyguardMediaViewController;
                 Intrinsics.checkNotNullParameter(v, "v");
                 setSmartspaceView((BcSmartspaceDataPlugin.SmartspaceView) v);
                 notificationMediaManager = KeyguardMediaViewController.mediaManager;
-                keyguardMediaViewController$mediaListener$1 = mediaListener;
-                notificationMediaManager.addCallback(keyguardMediaViewController$mediaListener$1);
+                keyguardMediaViewController = mediaListener;
+                notificationMediaManager.addCallback(keyguardMediaViewController);
             }
 
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewDetachedFromWindow(View v) {
                 NotificationMediaManager notificationMediaManager;
-                KeyguardMediaViewController$mediaListener$1 keyguardMediaViewController$mediaListener$1;
+                NotificationMediaManager.MediaListener  keyguardMediaViewController;
                 Intrinsics.checkNotNullParameter(v, "v");
                 setSmartspaceView(null);
                 notificationMediaManager = mediaManager;
-                keyguardMediaViewController$mediaListener$1 = mediaListener;
-                notificationMediaManager.removeCallback(keyguardMediaViewController$mediaListener$1);
+                keyguardMediaViewController = mediaListener;
+                notificationMediaManager.removeCallback(keyguardMediaViewController);
             }
         });
         final BroadcastDispatcher broadcastDispatcher = broadcastDispatcher;
