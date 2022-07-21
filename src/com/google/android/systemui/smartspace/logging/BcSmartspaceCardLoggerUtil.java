@@ -17,7 +17,7 @@ public class BcSmartspaceCardLoggerUtil {
             return null;
         }
         SmartSpaceSubcards smartSpaceSubcards = new SmartSpaceSubcards();
-        SmartSpaceSubcards.clickedSubcardIndex = bcSmartspaceSubcardLoggingInfo.getClickedSubcardIndex();
+        smartSpaceSubcards.clickedSubcardIndex = bcSmartspaceSubcardLoggingInfo.getClickedSubcardIndex();
         List<BcSmartspaceCardMetadataLoggingInfo> subcards = bcSmartspaceSubcardLoggingInfo.getSubcards();
         ArrayList arrayList = new ArrayList();
         for (int i = 0; i < subcards.size(); i++) {

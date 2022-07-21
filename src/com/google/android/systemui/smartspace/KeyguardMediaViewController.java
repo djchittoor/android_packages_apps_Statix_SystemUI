@@ -95,7 +95,6 @@ public final class KeyguardMediaViewController {
                 notificationMediaManager.removeCallback(keyguardMediaViewController);
             }
         });
-        final BroadcastDispatcher broadcastDispatcher = broadcastDispatcher;
         userTracker = new CurrentUserTracker(broadcastDispatcher) { // from class: com.google.android.systemui.smartspace.KeyguardMediaViewController$init$2
             @Override // com.android.systemui.settings.CurrentUserTracker
             public void onUserSwitched(int i) {
@@ -149,7 +148,7 @@ public final class KeyguardMediaViewController {
     public final void reset() {
         title = null;
         artist = null;
-        BcSmartspaceDataPlugin.SmartspaceView smartspaceView = smartspaceView;
+        BcSmartspaceDataPlugin.SmartspaceView smartspaceView = getSmartspaceView();
         if (smartspaceView == null) {
             return;
         }
