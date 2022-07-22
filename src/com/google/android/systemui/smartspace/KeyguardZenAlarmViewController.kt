@@ -26,14 +26,13 @@ class KeyguardZenAlarmViewController constructor(
 ) {
     val alarmImage = context.getResources().getDrawable(R.drawable.ic_access_alarms_big, null)
     val smartspaceViews: Set<BcSmartspaceDataPlugin.SmartspaceView> = LinkedHashSet()
-    val zenModeCallback: ZenModeController.Callback = object : Callback() {
+    val zenModeCallback object : ZenModeController.Callback {
         override fun onZenChanged(i: Int) {
             updateDnd()
         }
     }
     
-    val nextAlarmCallback: NextAlarmController.NextAlarmChangeCallback =
-        object : NextAlarmChangeCallback() {
+    val nextAlarmCallback object : NextAlarmController.NextAlarmChangeCallback {
             override fun onNextAlarmChanged(alarmClockInfo: AlarmManager.AlarmClockInfo?) {
                 updateNextAlarm()
             }
