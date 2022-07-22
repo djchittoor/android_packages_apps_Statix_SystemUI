@@ -21,7 +21,7 @@ message SmartSpaceCardMetadata {
 
 message SmartSpaceSubcards {
     required int32 clickedSubcardIndex = 1;
-    required SmartSpaceCardMetadata subcards = 2;
+    repeated SmartSpaceCardMetadata subcards = 2;
 }
 
 message SmartspaceUpdate {
