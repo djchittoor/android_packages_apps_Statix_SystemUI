@@ -72,29 +72,22 @@ public final class KeyguardZenAlarmViewController {
         plugin.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() { // from class: com.google.android.systemui.smartspace.KeyguardZenAlarmViewController$init$1
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewAttachedToWindow(View v) {
-                ZenModeController.Callback keyguardZenAlarmViewController;
-                NextAlarmController.NextAlarmChangeCallback nextAlarmChangeCallback;
                 Intrinsics.checkNotNullParameter(v, "v");
                 getSmartspaceViews().add((BcSmartspaceDataPlugin.SmartspaceView) v);
                 if (getSmartspaceViews().size() == 1) {
-                    zenModeController.addCallback(keyguardZenAlarmViewController);
-                    nextAlarmChangeCallback = nextAlarmCallback;
-                    nextAlarmController.addCallback(nextAlarmChangeCallback);
+                    zenModeController.addCallback(zenModeCallback);
+                    nextAlarmController.addCallback(nextAlarmCallback);
                 }
                 refresh();
             }
 
             @Override // android.view.View.OnAttachStateChangeListener
             public void onViewDetachedFromWindow(View v) {
-                ZenModeController.Callback keyguardZenAlarmViewController;
-                NextAlarmController.NextAlarmChangeCallback nextAlarmChangeCallback;
                 Intrinsics.checkNotNullParameter(v, "v");
                 getSmartspaceViews().remove((BcSmartspaceDataPlugin.SmartspaceView) v);
                 if (getSmartspaceViews().isEmpty()) {
-                    keyguardZenAlarmViewController = zenModeCallback;
-                    zenModeController.removeCallback(keyguardZenAlarmViewController);
-                    nextAlarmChangeCallback = nextAlarmCallback;
-                    nextAlarmController.removeCallback(nextAlarmChangeCallback);
+                    zenModeController.removeCallback(zenModeCallback);
+                    nextAlarmController.removeCallback(nextAlarmCallback);
                 }
             }
         });
