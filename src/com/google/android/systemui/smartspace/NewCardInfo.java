@@ -13,6 +13,7 @@ import android.util.Log;
 import com.android.systemui.smartspace.nano.SmartspaceProto.CardWrapper;
 import com.android.systemui.smartspace.nano.SmartspaceProto.SmartspaceUpdate;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class NewCardInfo {
     private final SmartspaceUpdate.SmartspaceCard mCard;
@@ -47,8 +48,12 @@ public class NewCardInfo {
             Log.e("NewCardInfo", "retrieving bitmap uri=" + image.uri + " gsaRes=" + image.gsaResourceName);
         }
         if (!TextUtils.isEmpty(image.uri)) {
-            return MediaStore.Images.Media.getBitmap(context.getContentResolver(), Uri.parse(image.uri));
-        }
+	    try {
+                return MediaStore.Images.Media.getBitmap(context.getContentResolver(), Uri.parse(image.uri));
+            } catch (IOException e) {
+                Log.e("NewCardInfo", "failed to get bitmap from uri");
+	    }
+	}    
         if (!TextUtils.isEmpty(image.gsaResourceName)) {
             Intent.ShortcutIconResource shortcutIconResource = new Intent.ShortcutIconResource();
             shortcutIconResource.packageName = "com.google.android.googlequicksearchbox";

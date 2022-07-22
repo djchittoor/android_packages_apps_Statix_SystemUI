@@ -51,11 +51,11 @@ public final class KeyguardMediaViewController {
         Intrinsics.checkNotNullParameter(uiExecutor, "uiExecutor");
         Intrinsics.checkNotNullParameter(mediaManager, "mediaManager");
         Intrinsics.checkNotNullParameter(broadcastDispatcher, "broadcastDispatcher");
-        context = context;
-        plugin = plugin;
-        uiExecutor = uiExecutor;
-        mediaManager = mediaManager;
-        broadcastDispatcher = broadcastDispatcher;
+        this.context = context;
+        this.plugin = plugin;
+        this.uiExecutor = uiExecutor;
+        this.mediaManager = mediaManager;
+        this.broadcastDispatcher = broadcastDispatcher;
         mediaComponent = new ComponentName(context, KeyguardMediaViewController.class);
     }
 
